@@ -26,8 +26,7 @@ in this wealth of instructions.
 These notes and files exist because I was not able to get ANY of the
 aforementioned setup processes to work without modification.  In my
 view the LSST unified setup instructions came closest to a coherent
-narrative but these scripts are derived from earlier investigations
-with only 1-2 security insights from LSST.
+narrative.
 
 **NOTE:** At this time, the resulting HTCondor system still has
 significant security vulnerabilities:
@@ -51,11 +50,10 @@ of the instance,  it can also run worker processes.
 3. Storage: 20G SSD GP2 100 IOPS
 4. Network Security Group   (ssh-only for now)
 5. Public / Private Key identity name (condor-annex)
-6. Master node login:  ec2-user with full sudo
+6. Master node login:  centos with full sudo
 
-Other yum based distributions such as centos and amazon2 may be
-adaptable but have not been demonstrated as working.  Same for Debian
-and Ubuntu.
+Other yum based distributions such as amazon2 may be adaptable but
+have not been demonstrated as working.  Same for Debian and Ubuntu.
 
 ### Ssh to master node, clone these utils,  run setup script
 
@@ -93,6 +91,33 @@ From the line labelled “annex-user”, copy the value in the column labelled �
 On the line labelled “annex-user”, click the “Show” link in the column labelled “Secret access key”; copy the revealed value to the file privateKeyFile.
 Hit the “Close” button.
 The ‘annex-user’ now has full privileges to your account.
+
+### Try out condor_master
+
+```
+[centos@ip-172-31-94-54 aws-annex-setup]$ condor_status
+Name                         OpSys      Arch   State     Activity LoadAv Mem   ActvtyTime
+
+ip-172-31-94-54.ec2.internal LINUX      X86_64 Unclaimed Idle      0.000  989  0+00:00:03
+
+               Machines Owner Claimed Unclaimed Matched Preempting  Drain
+
+  X86_64/LINUX        1     0       0         1       0          0      0
+
+         Total        1     0       0         1       0          0      0
+
+
+[centos@ip-172-31-94-54 aws-annex-setup]$ condor_q
+
+
+-- Schedd: ip-172-31-94-54.ec2.internal : <184.73.40.122:9618?... @ 11/01/19 21:29:38
+OWNER BATCH_NAME      SUBMITTED   DONE   RUN    IDLE   HOLD  TOTAL JOB_IDS
+
+Total for query: 0 jobs; 0 completed, 0 removed, 0 idle, 0 running, 0 held, 0 suspended 
+Total for centos: 0 jobs; 0 completed, 0 removed, 0 idle, 0 running, 0 held, 0 suspended 
+Total for all users: 0 jobs; 0 completed, 0 removed, 0 idle, 0 running, 0 held, 0 suspended
+
+```
 
 ### Perform condor_annex Setup and Checkout
 
