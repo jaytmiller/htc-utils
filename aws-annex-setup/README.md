@@ -110,4 +110,14 @@ group which opens HTCondor port 9618 and ssh port 22 to the world.
 Using the AWS console, add the master EC2 node being created here to
 this security group.  Remove redundant groups like ssh-only, etc.
 
+### Create EC2 worker nodes
 
+Run the start_annex script.
+
+```
+$ ./start_annex
+Will request 1 t2.micro on-demand instance for 8.00 hours.  Each instance will terminate after being idle for 8.00 hours.
+Is that OK?  (Type 'yes' or 'no'): yes
+Starting annex...
+Annex started.  Its identity with the cloud provider is 'MyFirstAnnex_7af2f955-ae1a-41b5-869d-2e5ff771a2cc'.  It will take about three minutes for the new machines to join the pool.
+```
