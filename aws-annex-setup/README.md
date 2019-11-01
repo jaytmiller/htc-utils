@@ -181,13 +181,10 @@ Checking for security group... OK.
 Your setup looks OK.
 ```
 
-### Add HTCondor security group
+### Look at CloudFormation
 
-One of the artifacts created by startup_annex is a network security
-group which opens HTCondor port 9618 and ssh port 22 to the world.
-
-Using the AWS console, add the master EC2 node being created here to
-this security group.  Remove redundant groups like ssh-only, etc.
+CloudFormation should now have 4 new HTCondorAnnex.... stacks built by setup_annex.
+One of these is a security group you may want to tighten up.
 
 ### Create EC2 worker nodes
 
