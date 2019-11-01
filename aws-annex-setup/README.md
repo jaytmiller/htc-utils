@@ -1,13 +1,17 @@
 # AWS setup for condor_annex
 
+## Overview 
+
 This set of scripts and pre-fab configuration files creates a basic
 condor_annex setup capable of spawning EC2 worker nodes automatically
-and running jobs on them.  The fundamental AWS configuration comes
-from the condor_annex system; these instructions and scripts attempt
-to sort out the Annex installation process for one working
-configuration which fulfills the original Annex goal of easier setup.
+and running jobs on them.  
 
-It is a modernization and consolidation of these Annex setup links:
+The fundamental HTCondor configuration for AWS comes from the
+condor_annex system; these instructions and scripts attempt to sort
+out the Annex installation process for one working configuration as
+a starting point for beginners.
+
+This is a modernization and consolidation of these Annex setup links:
 
   - [Cloud seeded Annex,  scratch AMI] (https://htcondor-wiki.cs.wisc.edu/index.cgi/wiki?p=CondorInTheCloudSeedConstruction)
   - [HTCondor Uwisc rpm Repo Setup] (https://research.cs.wisc.edu/htcondor/instructions/el/7/development/)
@@ -19,13 +23,13 @@ It is a modernization and consolidation of these Annex setup links:
 It scripts some of the rote processes and file transformations documented
 in this wealth of instructions.
 
-As a side note I was not able to get ANY of the aforementioned setup
-processes to work without modification.  In my view the LSST unified
-setup instructions came closest to a coherent narrative but these
-scripts are derived from earlier investigations with only 1-2 
-security insights from LSST.
+These notes and files exist because I was not able to get ANY of the
+aforementioned setup processes to work without modification.  In my
+view the LSST unified setup instructions came closest to a coherent
+narrative but these scripts are derived from earlier investigations
+with only 1-2 security insights from LSST.
 
-NOTE: At this time, the resulting HTCondor system still has
+**NOTE:** At this time, the resulting HTCondor system still has
 significant security vulnerabilities:
 
   - Ports 22 (ssh) and 9618 (HTCondor) are open to the world.
@@ -37,14 +41,21 @@ significant security vulnerabilities:
 
 ## Set up master EC2 node
 
-For a conservative installation,  start from an official RHEL-7.6 AMI.
+First create and EC2 instance to host the HTCondor master processes.  Depending on the size
+of the instance,  it can also run worker processes.
 
-For playing around, a t2.micro is sufficient for a master node.  A
-larger EC2 instance will add aditional local worker processes by
-default.
+### Arbitrary setup choices
+
+1. EC2 instance:  t2.micro
+2. Official AMI image RHEL-7.7 (RHEL-7.7_HVM-20190923-x86_64-0-Hourly2-GP2 (ami-029c0fbe456d58bd1))
+3. Storage: 10G SSD GP2 100 IOPS
+4. Network Security Group   (ssh-only for now)
+5. Public / Private Key identity name (condor-annex)
+6. Master node login:  ec2-user with full sudo
 
 Other yum based distributions such as centos and amazon2 may be
-adaptable but have not been demonstrated as working.
+adaptable but have not been demonstrated as working.  Same for Debian
+and Ubuntu.
 
 ## Ssh to master node, clone these utils,  run setup script
 
