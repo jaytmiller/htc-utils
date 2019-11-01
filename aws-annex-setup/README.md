@@ -121,10 +121,25 @@ Total for all users: 0 jobs; 0 completed, 0 removed, 0 idle, 0 running, 0 held, 
 
 ### Perform condor_annex Setup and Checkout
 
-These scripts will create artifacts in CloudFormation and check them:
+The setup_annex script runs condor_annex commands used to initialize the annex
+and check it.  It produces 4 cloud formation artifacts.
 
 ```
 ./setup_annex
+
+Setting up condor_annex...
+Creating configuration bucket (this takes less than a minute)..... complete.
+Creating Lambda functions (this takes about a minute)...... complete.
+Creating instance profile (this takes about two minutes)................ complete.
+Creating security group (this takes less than a minute).... complete.
+Setup successful.
+Checking condor_annex...
+Checking security configuration... OK.
+Checking for configuration bucket... OK.
+Checking for Lambda functions... OK.
+Checking for instance profile... OK.
+Checking for security group... OK.
+Your setup looks OK.
 ```
 
 ### Add HTCondor security group
@@ -137,7 +152,9 @@ this security group.  Remove redundant groups like ssh-only, etc.
 
 ### Create EC2 worker nodes
 
-Run the start_annex script.
+Run the start_annex script.   This will create a default EC2 worker instance.
+
+Dump the script for more info on parameters.
 
 ```
 $ ./start_annex
