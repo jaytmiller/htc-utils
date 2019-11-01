@@ -278,3 +278,16 @@ Total for centos: 5 jobs; 0 completed, 0 removed, 3 idle, 2 running, 0 held, 0 s
 Total for all users: 5 jobs; 0 completed, 0 removed, 3 idle, 2 running, 0 held, 0 suspended
 
 ```
+
+## Tear Down
+
+This condor annex setup can be torn down by:
+
+0. Stopping all the EC2s
+1. Going to S3 and deleting the contents of any htcondorannex-.... buckets
+2. Going to Cloud Formation and deleting the 4 different HTCondorAnnex.... stacks
+3. Deleting worker EC2s
+4. Deleting the master EC2
+5. Deleting the annex-user user
+6. Deleting the condor-master security group
+
