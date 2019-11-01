@@ -47,8 +47,8 @@ of the instance,  it can also run worker processes.
 ### Arbitrary setup choices
 
 1. EC2 instance:  t2.micro
-2. Official AMI image RHEL-7.7 (RHEL-7.7_HVM-20190923-x86_64-0-Hourly2-GP2 (ami-029c0fbe456d58bd1))
-3. Storage: 10G SSD GP2 100 IOPS
+2. CentOS-7 AMI image (CentOS Linux 7 x86_64 HVM EBS ENA 1901_01-b7ee8a69-ee97-4a49-9e68-afaee216db2e-ami-05713873c6794f575.4 (ami-02eac2c0129f6376b))
+3. Storage: 20G SSD GP2 100 IOPS
 4. Network Security Group   (ssh-only for now)
 5. Public / Private Key identity name (condor-annex)
 6. Master node login:  ec2-user with full sudo
@@ -57,7 +57,18 @@ Other yum based distributions such as centos and amazon2 may be
 adaptable but have not been demonstrated as working.  Same for Debian
 and Ubuntu.
 
-## Ssh to master node, clone these utils,  run setup script
+### Ssh to master node, clone these utils,  run setup script
+
+```
+sudo yum update
+sudo yum install wget 
+sudo yum install git 
+sudo yum install emacs
+git clone https://github.com/jaytmiller/htc-utils.git
+cd htc-utils/aws-annex-setup
+
+sudo ./setup_annex   # hopefully follow along and occasionally hit "y"
+```
 
 ## Create annex-user and set up Key files
 
@@ -82,9 +93,11 @@ The ‘annex-user’ now has full privileges to your account.
 
 ## Perform condor_annex Setup and Checkout
 
-These scripts will create artifacts in CloudFormation:
+These scripts will create artifacts in CloudFormation and check them:
 
-./startup_annex
+```
+sudo ./startup_annex
+```
 
 ## Add HTCondor security group
 

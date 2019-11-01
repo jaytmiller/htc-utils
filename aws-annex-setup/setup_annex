@@ -1,9 +1,10 @@
-#! /bin/bash -x
+#! /bin/bash 
+
+USER=centos
 
 function cont () {
-   echo -n "Continue (y/n)?"
    while true; do
-       read -p "Continue (y/n)?" yn
+       read -p "Continue (y/n)? " yn
        case $yn in
            [Yy]* ) make install; break;;
            [Nn]* ) exit;;
@@ -14,12 +15,9 @@ function cont () {
 
 # ..................................................................................
 echo "============================================================"
-echo "This script installs HTCondor and condor_annex on an AWS EC2 RHEL-7.6 instance."
-echo "Updating Linux with yum."
-yum update yum
-yum update
-yum install wget
-cont()
+echo "This script installs HTCondor and condor_annex on a yum-based EC2 instance."
+echo "============================================================"
+cont
 
 # ..................................................................................
 # From https://research.cs.wisc.edu/htcondor/instructions/el/7/development/
@@ -27,8 +25,7 @@ echo "============================================================"
 echo "Setting up HTCondor cs.wisc repo and starting condor service"
 wget https://research.cs.wisc.edu/htcondor/yum/RPM-GPG-KEY-HTCondor
 rpm --import RPM-GPG-KEY-HTCondor
-cd /etc/yum.repos.d
-wget https://research.cs.wisc.edu/htcondor/yum/repo.d/htcondor-development-rhel7.repo
+(cd /etc/yum.repos.d; wget https://research.cs.wisc.edu/htcondor/yum/repo.d/htcondor-development-rhel7.repo)
 
 yum install condor-all
 
@@ -36,7 +33,7 @@ systemctl start condor
 systemctl enable condor
 
 ps ax | grep condor
-cont()
+cont
 
 # ..................................................................................
 # From https://htcondor-wiki.cs.wisc.edu/index.cgi/wiki?p=CondorInTheCloudSeedConstruction
@@ -49,7 +46,7 @@ pip install awscli
 
 # ..................................................................................
 echo "Add an AWS role which can run condor_annex and assign it to this EC2."
-cont()
+cont
 
 echo "Installing local as /etc/condor/config.d/local"
 cp  -v supporting_files/local   /etc/condor/config.d/local
@@ -65,16 +62,17 @@ echo "Copying condor-annex-ec2 to /usr/libexec/condor/condor-annex-ec2"
 cp -v supporting_files/condor-annex-ec2  /usr/libexec/condor/condor-annex-ec2
 
 echo "Starting service condor-annex-ec2"
-systemctl enable condor-annex-ec2
+systemctl start  condor-annex-ec2
 
 echo "Enter Condor SEC_PASSWORD_FILE password"
 passwd_file=`condor_config_val SEC_PASSWORD_FILE`
-condor_store_cred -c add -f $passd_file
+condor_store_cred -c add -f $passwd_file
 chown root.root $passwd_file
 chmod 600 $passwd_file
 
-echo "Creating ~ec2-user/.condor"
-mkdir ~ec2-user/.condor
-
-echo "Installing ~ec2-user/user_config"
-cp supporting_files  ~ec2-user/.condor/user_config
+echo "Installing /home/$USER/.condor"
+mkdir -p /home/$USER/.condor
+cp supporting_files/dot_condor/*  /home/$USER/.condor
+cp $passwd_file /home/$USER/.condor
+chown -R $USER.$USER /home/$USER/.condor
+chmod 600 /home/$USER/.condor/*
