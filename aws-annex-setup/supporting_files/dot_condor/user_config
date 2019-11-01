@@ -1,0 +1,2 @@
+SEC_PASSWORD_FILE = /home/ec2-user/.condor/condor_pool_password
+

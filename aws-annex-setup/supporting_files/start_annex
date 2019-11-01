@@ -1,0 +1,11 @@
+#! /bin/bash
+
+COUNT=${1:-1}
+INSTANCE=${2:-t2.micro}
+DURATION=${3:-8}
+IDLE=${4:-$DURATION}
+
+condor_annex -annex-name MyFirstAnnex -duration $DURATION  -idle $IDLE  -count $COUNT -owner ec2-user -aws-on-demand-instance-type $INSTANCE
+
+
+
