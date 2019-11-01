@@ -70,6 +70,9 @@ cd htc-utils/aws-annex-setup
 sudo ./install_annex   # hopefully follow along and occasionally hit "y"
 ```
 
+**NOTE:** some of the configuration files explitly name the EC2 user and
+are currently configured with "centos".
+
 ### Create annex-user and set up Key files
 
 To download a new pair of security tokens for condor_annex to use, go to the IAM console at the following URL; log in if you need to:
@@ -91,20 +94,20 @@ On the line labelled “annex-user”, click the “Show” link in the column l
 Hit the “Close” button.
 The ‘annex-user’ now has full privileges to your account.
 
-## Perform condor_annex Setup and Checkout
+### Perform condor_annex Setup and Checkout
 
 These scripts will create artifacts in CloudFormation and check them:
 
 ```
-sudo ./setup_annex
+./setup_annex
 ```
 
-## Add HTCondor security group
+### Add HTCondor security group
 
 One of the artifacts created by startup_annex is a network security
 group which opens HTCondor port 9618 and ssh port 22 to the world.
 
-Using the AWS consolte, add the master EC2 node being created here to
+Using the AWS console, add the master EC2 node being created here to
 this security group.  Remove redundant groups like ssh-only, etc.
 
 
