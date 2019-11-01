@@ -163,3 +163,79 @@ Is that OK?  (Type 'yes' or 'no'): yes
 Starting annex...
 Annex started.  Its identity with the cloud provider is 'MyFirstAnnex_7af2f955-ae1a-41b5-869d-2e5ff771a2cc'.  It will take about three minutes for the new machines to join the pool.
 ```
+
+You can repeat this command multiple times to establish multiple
+workers. Using parameters you can choose other EC2 instance types with
+more cores or RAM.
+
+### Check Annex Status
+
+Wait a few minutes and check the status of your cluster.
+
+**NOTE:**  As you create new worker EC2s it's a good idea to go to the AWS
+web console and add a Name tag something like e.g. condor-worker-1
+
+```
+[centos@ip-172-31-94-54 aws-annex-setup]$ condor_status
+Name                          OpSys      Arch   State     Activity LoadAv Mem   ActvtyTime
+
+ip-172-31-84-204.ec2.internal LINUX      X86_64 Unclaimed Idle      0.000  983  0+00:00:03
+ip-172-31-94-54.ec2.internal  LINUX      X86_64 Unclaimed Idle      0.000  989  0+00:29:36
+
+               Machines Owner Claimed Unclaimed Matched Preempting  Drain
+
+  X86_64/LINUX        2     0       0         2       0          0      0
+
+         Total        2     0       0         2       0          0      0
+[centos@ip-172-31-94-54 aws-annex-setup]$ condor_q
+
+
+-- Schedd: ip-172-31-94-54.ec2.internal : <184.73.40.122:9618?... @ 11/01/19 21:58:11
+OWNER BATCH_NAME      SUBMITTED   DONE   RUN    IDLE   HOLD  TOTAL JOB_IDS
+
+Total for query: 0 jobs; 0 completed, 0 removed, 0 idle, 0 running, 0 held, 0 suspended 
+Total for centos: 0 jobs; 0 completed, 0 removed, 0 idle, 0 running, 0 held, 0 suspended 
+Total for all users: 0 jobs; 0 completed, 0 removed, 0 idle, 0 running, 0 held, 0 suspended
+
+```
+
+### Run Example Jobs
+
+Use the condor_submit command to start some example jobs.
+
+```
+[centos@ip-172-31-94-54 aws-annex-setup]$ condor_submit test_jobs/sleep.submit 
+Submitting job(s).
+1 job(s) submitted to cluster 1.
+[centos@ip-172-31-94-54 aws-annex-setup]$ condor_submit test_jobs/sleep.submit 
+Submitting job(s).
+1 job(s) submitted to cluster 2.
+[centos@ip-172-31-94-54 aws-annex-setup]$ condor_submit test_jobs/sleep.submit 
+Submitting job(s).
+1 job(s) submitted to cluster 3.
+[centos@ip-172-31-94-54 aws-annex-setup]$ condor_submit test_jobs/sleep.submit 
+Submitting job(s).
+1 job(s) submitted to cluster 4.
+[centos@ip-172-31-94-54 aws-annex-setup]$ condor_submit test_jobs/sleep.submit 
+Submitting job(s).
+1 job(s) submitted to cluster 5.
+```
+
+Wait a minute and check the queue status to see how jobs are running:
+
+```
+[centos@ip-172-31-94-54 aws-annex-setup]$ condor_q
+
+-- Schedd: ip-172-31-94-54.ec2.internal : <184.73.40.122:9618?... @ 11/01/19 22:01:24
+OWNER  BATCH_NAME    SUBMITTED   DONE   RUN    IDLE  TOTAL JOB_IDS
+centos ID: 1       11/1  22:00      _      1      _      1 1.0
+centos ID: 2       11/1  22:00      _      1      _      1 2.0
+centos ID: 3       11/1  22:00      _      _      1      1 3.0
+centos ID: 4       11/1  22:00      _      _      1      1 4.0
+centos ID: 5       11/1  22:00      _      _      1      1 5.0
+
+Total for query: 5 jobs; 0 completed, 0 removed, 3 idle, 2 running, 0 held, 0 suspended 
+Total for centos: 5 jobs; 0 completed, 0 removed, 3 idle, 2 running, 0 held, 0 suspended 
+Total for all users: 5 jobs; 0 completed, 0 removed, 3 idle, 2 running, 0 held, 0 suspended
+
+```
