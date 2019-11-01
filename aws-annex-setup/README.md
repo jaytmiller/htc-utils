@@ -55,7 +55,7 @@ of the instance,  it can also run worker processes.
 Other yum based distributions such as amazon2 may be adaptable but
 have not been demonstrated as working.  Same for Debian and Ubuntu.
 
-### Ssh to master node, clone these utils,  run setup script
+### Ssh to master node, update EC2,  clone these utils
 
 ```
 sudo yum update
@@ -64,8 +64,6 @@ sudo yum install git
 sudo yum install emacs
 git clone https://github.com/jaytmiller/htc-utils.git
 cd htc-utils/aws-annex-setup
-
-sudo ./install_annex   # hopefully follow along and occasionally hit "y"
 ```
 
 **NOTE:** some of the configuration files explitly name the EC2 user and
@@ -73,24 +71,65 @@ are currently configured with "centos".
 
 ### Create annex-user and set up Key files
 
-To download a new pair of security tokens for condor_annex to use, go to the IAM console at the following URL; log in if you need to:
+To download a new pair of security tokens for condor_annex to use, go
+to the IAM console at the following URL; log in if you need to:
 
 https://console.aws.amazon.com/iam/home?region=us-east-1#/users
 
-The following instructions assume you are logged in as a user with the privilege to create new users. (The ‘root’ user for any account has this privilege; other accounts may as well.)
+The following instructions assume you are logged in as a user with the
+privilege to create new users. (The ‘root’ user for any account has
+this privilege; other accounts may as well.)
+
 Click the “Add User” button.
+
 Enter name in the User name box; “annex-user” is a fine choice.
+
 Click the check box labelled “Programmatic access”.
+
 Click the button labelled “Next: Permissions”.
+
 Select “Attach existing policies directly”.
+
 Type “AdministratorAccess” in the box labelled “Filter”.
+
 Click the check box on the single line that will appear below (labelled “AdministratorAccess”).
+
 Click the “Next: review” button (you may need to scroll down).
+
 Click the “Create user” button.
-From the line labelled “annex-user”, copy the value in the column labelled “Access key ID” to the file publicKeyFile.
-On the line labelled “annex-user”, click the “Show” link in the column labelled “Secret access key”; copy the revealed value to the file privateKeyFile.
+
+From the line labelled “annex-user”, copy the value in the column
+labelled “Access key ID” to the file
+supporting_files/dot_condor/publicKeyFile.
+
+On the line labelled “annex-user”, click the “Show” link in the column
+labelled “Secret access key”; copy the revealed value tothe file
+supporting_files/dot_condor/privateKeyFile.
+
 Hit the “Close” button.
-The ‘annex-user’ now has full privileges to your account.
+
+When the install script is run, the ‘annex-user’ will have full
+privileges to your account.
+
+### Create condor-master network security group
+
+Create a new network secruity group condor-master:
+
+1. Open ssh to appropriate hosts (e.g. 0.0.0.0,  world)
+2. Open condor port 9618 to appropriate hosts (e.g. 0.0.0.0, world)
+
+### Run install_condor
+
+The install_condor script performs the initial steps of installing condor
+via rpms from the uwisc repository.  It also starts the condor service and
+master and defines the condor password.  Finally,  it sets up some config
+in $HOME/.condor.  This step uses predefined condor configuration files,
+particularly supporting_files/local.
+
+```
+./install_condor
+```
+
 
 ### Try out condor_master
 
