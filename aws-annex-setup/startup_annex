@@ -1,8 +1,0 @@
-#! /bin/bash
-
-echo "Setting up condor_annex..."
-condor_annex -setup
-
-echo "Checking condor_annex..."
-condor_annex -check-setup
-

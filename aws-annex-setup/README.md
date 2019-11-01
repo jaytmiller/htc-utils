@@ -67,10 +67,10 @@ sudo yum install emacs
 git clone https://github.com/jaytmiller/htc-utils.git
 cd htc-utils/aws-annex-setup
 
-sudo ./setup_annex   # hopefully follow along and occasionally hit "y"
+sudo ./install_annex   # hopefully follow along and occasionally hit "y"
 ```
 
-## Create annex-user and set up Key files
+### Create annex-user and set up Key files
 
 To download a new pair of security tokens for condor_annex to use, go to the IAM console at the following URL; log in if you need to:
 
@@ -96,7 +96,7 @@ The ‘annex-user’ now has full privileges to your account.
 These scripts will create artifacts in CloudFormation and check them:
 
 ```
-sudo ./startup_annex
+sudo ./setup_annex
 ```
 
 ## Add HTCondor security group
