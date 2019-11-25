@@ -25,7 +25,7 @@ echo "============================================================"
 echo "Setting up HTCondor cs.wisc repo and starting condor service"
 wget https://research.cs.wisc.edu/htcondor/yum/RPM-GPG-KEY-HTCondor
 sudo rpm --import RPM-GPG-KEY-HTCondor
-sudo (cd /etc/yum.repos.d; wget https://research.cs.wisc.edu/htcondor/yum/repo.d/htcondor-development-rhel7.repo)
+(cd /etc/yum.repos.d; sudo wget https://research.cs.wisc.edu/htcondor/yum/repo.d/htcondor-development-rhel7.repo)
 
 sudo yum install condor-all --skip-broken
 
@@ -53,7 +53,7 @@ sudo cp  -v supporting_files/local   /etc/condor/config.d/local
 
 # ..................................................................................
 echo "Enabling condor-annex-ec2 service"
-systemctl enable condor-annex-ec2
+sudo systemctl enable condor-annex-ec2
 
 echo "Removing /etc/condor/config.d/xxxxx.config"
 sudo rm -v /etc/condor/config.d/50ec2.config
@@ -74,7 +74,7 @@ echo "Installing /home/$USER/.condor"
 mkdir -p /home/$USER/.condor
 cp supporting_files/dot_condor/*  /home/$USER/.condor
 cp $passwd_file /home/$USER/.condor
-chown -R $USER.$USER /home/$USER/.condor
+sudo chown -R $USER.$USER /home/$USER/.condor
 chmod 600 /home/$USER/.condor/*
 
 condor_restart
