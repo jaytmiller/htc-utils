@@ -72,8 +72,8 @@ sudo chmod 600 $passwd_file
 
 echo "Installing /home/$USER/.condor"
 mkdir -p /home/$USER/.condor
-cp supporting_files/dot_condor/*  /home/$USER/.condor
-cp $passwd_file /home/$USER/.condor
+sudo cp supporting_files/dot_condor/*  /home/$USER/.condor
+sudo cp $passwd_file /home/$USER/.condor
 sudo chown -R $USER.$USER /home/$USER/.condor
 chmod 600 /home/$USER/.condor/*
 
