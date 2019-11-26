@@ -116,13 +116,16 @@ Click the “Next: review” button (you may need to scroll down).
 
 Click the “Create user” button.
 
-From the line labelled “annex-user”, copy the value in the column
+**IMPORTANT:** From the line labelled “annex-user”, copy the value in the column
 labelled “Access key ID” to the file
 supporting_files/dot_condor/publicKeyFile.
 
-On the line labelled “annex-user”, click the “Show” link in the column
+**IMPORTANT:** On the line labelled “annex-user”, click the “Show” link in the column
 labelled “Secret access key”; copy the revealed value tothe file
 supporting_files/dot_condor/privateKeyFile.
+
+**IMPORTANT:** You'll thank yourself later if you set aside the annex-user keys in
+a local file on you laptop,  similar to a .pem key.
 
 Hit the “Close” button.
 
