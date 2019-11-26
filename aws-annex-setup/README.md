@@ -61,7 +61,6 @@ have not been demonstrated as working.  Same for Debian and Ubuntu.
 sudo yum update
 sudo yum install wget 
 sudo yum install git 
-sudo yum install emacs
 git clone https://github.com/jaytmiller/htc-utils.git
 cd htc-utils/aws-annex-setup
 ```
