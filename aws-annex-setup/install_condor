@@ -29,8 +29,8 @@ sudo rpm --import RPM-GPG-KEY-HTCondor
 
 sudo yum install condor-all --skip-broken
 
-sudo systemctl start condor
 sudo systemctl enable condor
+sudo systemctl start condor
 
 ps ax | grep condor
 cont
