@@ -45,15 +45,34 @@ of the instance,  it can also run worker processes.
 
 ### Arbitrary setup choices
 
-1. EC2 instance:  t2.micro
-2. Amazon Linux 2 AMI image (amzn2-ami-hvm-2.0.20191116.0-x86_64-gp2 (ami-00068cd7555f543d5))
-3. Storage: 20G SSD GP2 100 IOPS
-4. Network Security Group   (ssh-only for now)
-5. Public / Private Key identity name (annex-user,  AdministratorAccess)
+5. Condor Public / Private Key identity name (annex-user,  AdministratorAccess)
+6. IAM EC2 service role (HTCondorAnnex-master, AdministratorAccess)
 6. Master node login:  ec2-user with full sudo
 
 Other yum based distributions such as amazon2 may be adaptable but
 have not been demonstrated as working.  Same for Debian and Ubuntu.
+
+### Create condor-master network security group
+
+Create a new network secruity group condor-master:
+
+1. Open ssh to appropriate hosts (e.g. 0.0.0.0,  world)
+2. Open condor port 9618 to appropriate hosts (e.g. 0.0.0.0, world)
+
+### Create HTCondorAnnex-master EC2 service role
+
+1. Create an IAM role with AdministratorAccess named HTCondorAnnex-master
+
+### Create condor-annex-master EC2 node
+
+Launch an annex master EC2 instance
+
+1. EC2 instance:  t2.micro
+2. Amazon Linux 2 AMI image (amzn2-ami-hvm-2.0.20191116.0-x86_64-gp2 (ami-00068cd7555f543d5))
+3. Storage: 20G SSD GP2 100 IOPS
+4. Network Security Group   (condor-master)
+5. IAM Role  (HTCondorAnnex-master)
+6. Any key pair for ssh access
 
 ### Ssh to master node, update EC2,  clone these utils
 
@@ -66,9 +85,9 @@ cd htc-utils/aws-annex-setup
 ```
 
 **NOTE:** some of the configuration files explitly name the EC2 user and
-are currently configured with "ec2-user".
+are currently configured with "ec2-user".  So does install_condor.
 
-### Create annex-user and set up Key files
+### Create annex-user and set up Key files for condor annex install
 
 To download a new pair of security tokens for condor_annex to use, go
 to the IAM console at the following URL; log in if you need to:
@@ -109,13 +128,6 @@ Hit the “Close” button.
 
 When the install script is run, the ‘annex-user’ will have full
 privileges to your account.
-
-### Create condor-master network security group
-
-Create a new network secruity group condor-master:
-
-1. Open ssh to appropriate hosts (e.g. 0.0.0.0,  world)
-2. Open condor port 9618 to appropriate hosts (e.g. 0.0.0.0, world)
 
 ### Run install_condor
 
