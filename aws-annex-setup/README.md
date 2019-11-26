@@ -46,11 +46,11 @@ of the instance,  it can also run worker processes.
 ### Arbitrary setup choices
 
 1. EC2 instance:  t2.micro
-2. CentOS-7 AMI image (CentOS Linux 7 x86_64 HVM EBS ENA 1901_01-b7ee8a69-ee97-4a49-9e68-afaee216db2e-ami-05713873c6794f575.4 (ami-02eac2c0129f6376b))
+2. Amazon Linux 2 AMI image (amzn2-ami-hvm-2.0.20191116.0-x86_64-gp2 (ami-00068cd7555f543d5))
 3. Storage: 20G SSD GP2 100 IOPS
 4. Network Security Group   (ssh-only for now)
-5. Public / Private Key identity name (condor-annex)
-6. Master node login:  centos with full sudo
+5. Public / Private Key identity name (annex-user,  AdministratorAccess)
+6. Master node login:  ec2-user with full sudo
 
 Other yum based distributions such as amazon2 may be adaptable but
 have not been demonstrated as working.  Same for Debian and Ubuntu.
@@ -67,7 +67,7 @@ cd htc-utils/aws-annex-setup
 ```
 
 **NOTE:** some of the configuration files explitly name the EC2 user and
-are currently configured with "centos".
+are currently configured with "ec2-user".
 
 ### Create annex-user and set up Key files
 
