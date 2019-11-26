@@ -13,7 +13,7 @@ a starting point for beginners.
 
 This is a modernization and consolidation of these Annex setup links:
 
-  - [Cloud seeded Annex,  scratch AMI] (https://htcondor-wiki.cs.wisc.edu/index.cgi/wiki?p=CondorInTheCloudSeedConstruction)
+  - [Cloud Seeded Annex,  scratch AMI] (https://htcondor-wiki.cs.wisc.edu/index.cgi/wiki?p=CondorInTheCloudSeedConstruction)
   - [HTCondor Uwisc rpm Repo Setup] (https://research.cs.wisc.edu/htcondor/instructions/el/7/development/)
   - [Multi-platform Uwisc Repo Setup, also Debian + Ubuntu] (https://research.cs.wisc.edu/htcondor/instructions/)
   - [First Annex time setup and use] (https://research.cs.wisc.edu/htcondor/manual/v8.7/UsingCondorannexfortheFirstTime.html)
@@ -26,7 +26,7 @@ in this wealth of instructions.
 These notes and files exist because I was not able to get ANY of the
 aforementioned setup processes to work without modification.  In my
 view the LSST unified setup instructions came closest to a coherent
-narrative.
+narrative but these are most closely related to *Cloud Seeded Annex*.
 
 **NOTE:** At this time, the resulting HTCondor system still has
 significant security vulnerabilities:
