@@ -45,9 +45,9 @@ of the instance,  it can also run worker processes.
 
 ### Arbitrary setup choices
 
-5. Condor Public / Private Key identity name (annex-user,  AdministratorAccess)
-6. IAM EC2 service role (HTCondorAnnex-master, AdministratorAccess)
-6. Master node login:  ec2-user with full sudo
+1. Condor Public / Private Key identity name (annex-user,  AdministratorAccess)
+2. IAM EC2 service role (HTCondorAnnex-master, AdministratorAccess)
+3. Master node login:  ec2-user with full sudo
 
 Other yum based distributions such as amazon2 may be adaptable but
 have not been demonstrated as working.  Same for Debian and Ubuntu.
@@ -61,7 +61,7 @@ Create a new network secruity group condor-master:
 
 ### Create HTCondorAnnex-master EC2 service role
 
-1. Create an IAM role with AdministratorAccess named HTCondorAnnex-master
+1. Create an IAM EC2 service role with AdministratorAccess named HTCondorAnnex-master
 
 ### Create condor-annex-master EC2 node
 
