@@ -49,9 +49,6 @@ of the instance,  it can also run worker processes.
 2. IAM EC2 service role (HTCondorAnnex-master, AdministratorAccess)
 3. Master node login:  ec2-user with full sudo
 
-Other yum based distributions such as amazon2 may be adaptable but
-have not been demonstrated as working.  Same for Debian and Ubuntu.
-
 ### Create condor-master network security group
 
 Create a new network secruity group condor-master:
