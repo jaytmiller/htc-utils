@@ -64,7 +64,7 @@ sudo cp -v supporting_files/condor-annex-ec2  /usr/libexec/condor/condor-annex-e
 echo "Starting service condor-annex-ec2"
 sudo systemctl start  condor-annex-ec2
 
-echo "Enter Condor SEC_PASSWORD_FILE password"
+echo "Make up a Condor SEC_PASSWORD_FILE password"
 passwd_file=`sudo condor_config_val SEC_PASSWORD_FILE`
 sudo condor_store_cred -c add -f $passwd_file
 sudo chown root.root $passwd_file
