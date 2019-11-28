@@ -1,6 +1,6 @@
 #! /bin/bash
 
-USER=ec2-user
+USER=centos
 
 function cont () {
    while true; do
