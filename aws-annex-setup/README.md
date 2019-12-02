@@ -46,8 +46,7 @@ of the instance,  it can also run worker processes.
 ### Arbitrary setup choices
 
 1. Condor Public / Private Key identity name (annex-user,  AdministratorAccess)
-2. IAM EC2 service role (HTCondorAnnex-master, AdministratorAccess)
-3. Master node login:  ec2-user with full sudo
+2. Master node login:  centos with full sudo
 
 ### Create condor-master network security group
 
@@ -56,25 +55,19 @@ Create a new network secruity group condor-master:
 1. Open ssh to appropriate hosts (e.g. 0.0.0.0,  world)
 2. Open condor port 9618 to appropriate hosts (e.g. 0.0.0.0, world)
 
-### Create HTCondorAnnex-master EC2 service role
-
-1. Create an IAM EC2 service role with AdministratorAccess named HTCondorAnnex-master
-
 ### Create condor-annex-master EC2 node
 
 Launch an annex master EC2 instance
 
 1. EC2 instance:  t2.micro
-2. Amazon Linux 2 AMI image (amzn2-ami-hvm-2.0.20191116.0-x86_64-gp2 (ami-00068cd7555f543d5))
+2. CentOS-7.6 (ami-0b7b19126d27a691f)
 3. Storage: 20G SSD GP2 100 IOPS
 4. Network Security Group   (condor-master)
-5. IAM Role  (HTCondorAnnex-master)
-6. Any key pair for ssh access
+5. Any key pair for ssh access
 
 ### Ssh to master node, update EC2,  clone these utils
 
 ```
-sudo yum update
 sudo yum install wget
 sudo yum install git
 git clone https://github.com/jaytmiller/htc-utils.git
@@ -82,7 +75,7 @@ cd htc-utils/aws-annex-setup
 ```
 
 **NOTE:** some of the configuration files explitly name the EC2 user and
-are currently configured with "ec2-user".  So does install_condor.
+are currently configured with "centos".  So does install_condor.
 
 ### Create annex-user and set up Key files for condor annex install
 
@@ -145,7 +138,7 @@ particularly supporting_files/local.
 ### Try out condor_master
 
 ```
-[ec2-user@ip-172-31-94-54 aws-annex-setup]$ condor_status
+[centos@ip-172-31-94-54 aws-annex-setup]$ condor_status
 Name                         OpSys      Arch   State     Activity LoadAv Mem   ActvtyTime
 
 ip-172-31-94-54.ec2.internal LINUX      X86_64 Unclaimed Idle      0.000  989  0+00:00:03
@@ -157,14 +150,14 @@ ip-172-31-94-54.ec2.internal LINUX      X86_64 Unclaimed Idle      0.000  989  0
          Total        1     0       0         1       0          0      0
 
 
-[ec2-user@ip-172-31-94-54 aws-annex-setup]$ condor_q
+[centos@ip-172-31-94-54 aws-annex-setup]$ condor_q
 
 
 -- Schedd: ip-172-31-94-54.ec2.internal : <184.73.40.122:9618?... @ 11/01/19 21:29:38
 OWNER BATCH_NAME      SUBMITTED   DONE   RUN    IDLE   HOLD  TOTAL JOB_IDS
 
 Total for query: 0 jobs; 0 completed, 0 removed, 0 idle, 0 running, 0 held, 0 suspended
-Total for ec2-user: 0 jobs; 0 completed, 0 removed, 0 idle, 0 running, 0 held, 0 suspended
+Total for centos: 0 jobs; 0 completed, 0 removed, 0 idle, 0 running, 0 held, 0 suspended
 Total for all users: 0 jobs; 0 completed, 0 removed, 0 idle, 0 running, 0 held, 0 suspended
 
 ```
@@ -223,7 +216,7 @@ Wait a few minutes and check the status of your cluster.
 web console and add a Name tag something like e.g. condor-worker-1
 
 ```
-[ec2-user@ip-172-31-94-54 aws-annex-setup]$ condor_status
+[centos@ip-172-31-94-54 aws-annex-setup]$ condor_status
 Name                          OpSys      Arch   State     Activity LoadAv Mem   ActvtyTime
 
 ip-172-31-84-204.ec2.internal LINUX      X86_64 Unclaimed Idle      0.000  983  0+00:00:03
@@ -234,14 +227,14 @@ ip-172-31-94-54.ec2.internal  LINUX      X86_64 Unclaimed Idle      0.000  989  
   X86_64/LINUX        2     0       0         2       0          0      0
 
          Total        2     0       0         2       0          0      0
-[ec2-user@ip-172-31-94-54 aws-annex-setup]$ condor_q
+[centos@ip-172-31-94-54 aws-annex-setup]$ condor_q
 
 
 -- Schedd: ip-172-31-94-54.ec2.internal : <184.73.40.122:9618?... @ 11/01/19 21:58:11
 OWNER BATCH_NAME      SUBMITTED   DONE   RUN    IDLE   HOLD  TOTAL JOB_IDS
 
 Total for query: 0 jobs; 0 completed, 0 removed, 0 idle, 0 running, 0 held, 0 suspended
-Total for ec2-user: 0 jobs; 0 completed, 0 removed, 0 idle, 0 running, 0 held, 0 suspended
+Total for centos: 0 jobs; 0 completed, 0 removed, 0 idle, 0 running, 0 held, 0 suspended
 Total for all users: 0 jobs; 0 completed, 0 removed, 0 idle, 0 running, 0 held, 0 suspended
 
 ```
@@ -251,19 +244,19 @@ Total for all users: 0 jobs; 0 completed, 0 removed, 0 idle, 0 running, 0 held, 
 Use the condor_submit command to start some example jobs.
 
 ```
-[ec2-user@ip-172-31-94-54 aws-annex-setup]$ condor_submit test_jobs/sleep.submit
+[centos@ip-172-31-94-54 aws-annex-setup]$ condor_submit test_jobs/sleep.submit
 Submitting job(s).
 1 job(s) submitted to cluster 1.
-[ec2-user@ip-172-31-94-54 aws-annex-setup]$ condor_submit test_jobs/sleep.submit
+[centos@ip-172-31-94-54 aws-annex-setup]$ condor_submit test_jobs/sleep.submit
 Submitting job(s).
 1 job(s) submitted to cluster 2.
-[ec2-user@ip-172-31-94-54 aws-annex-setup]$ condor_submit test_jobs/sleep.submit
+[centos@ip-172-31-94-54 aws-annex-setup]$ condor_submit test_jobs/sleep.submit
 Submitting job(s).
 1 job(s) submitted to cluster 3.
-[ec2-user@ip-172-31-94-54 aws-annex-setup]$ condor_submit test_jobs/sleep.submit
+[centos@ip-172-31-94-54 aws-annex-setup]$ condor_submit test_jobs/sleep.submit
 Submitting job(s).
 1 job(s) submitted to cluster 4.
-[ec2-user@ip-172-31-94-54 aws-annex-setup]$ condor_submit test_jobs/sleep.submit
+[centos@ip-172-31-94-54 aws-annex-setup]$ condor_submit test_jobs/sleep.submit
 Submitting job(s).
 1 job(s) submitted to cluster 5.
 ```
@@ -271,18 +264,18 @@ Submitting job(s).
 Wait a minute and check the queue status to see how jobs are running:
 
 ```
-[ec2-user@ip-172-31-94-54 aws-annex-setup]$ condor_q
+[centos@ip-172-31-94-54 aws-annex-setup]$ condor_q
 
 -- Schedd: ip-172-31-94-54.ec2.internal : <184.73.40.122:9618?... @ 11/01/19 22:01:24
 OWNER  BATCH_NAME    SUBMITTED   DONE   RUN    IDLE  TOTAL JOB_IDS
-ec2-user ID: 1       11/1  22:00      _      1      _      1 1.0
-ec2-user ID: 2       11/1  22:00      _      1      _      1 2.0
-ec2-user ID: 3       11/1  22:00      _      _      1      1 3.0
-ec2-user ID: 4       11/1  22:00      _      _      1      1 4.0
-ec2-user ID: 5       11/1  22:00      _      _      1      1 5.0
+centos ID: 1       11/1  22:00      _      1      _      1 1.0
+centos ID: 2       11/1  22:00      _      1      _      1 2.0
+centos ID: 3       11/1  22:00      _      _      1      1 3.0
+centos ID: 4       11/1  22:00      _      _      1      1 4.0
+centos ID: 5       11/1  22:00      _      _      1      1 5.0
 
 Total for query: 5 jobs; 0 completed, 0 removed, 3 idle, 2 running, 0 held, 0 suspended
-Total for ec2-user: 5 jobs; 0 completed, 0 removed, 3 idle, 2 running, 0 held, 0 suspended
+Total for centos: 5 jobs; 0 completed, 0 removed, 3 idle, 2 running, 0 held, 0 suspended
 Total for all users: 5 jobs; 0 completed, 0 removed, 3 idle, 2 running, 0 held, 0 suspended
 
 ```
@@ -299,7 +292,6 @@ This condor annex setup can be torn down by:
 5. Deleting the annex-user user created by you
 6. Deleting the condor-master security group created by you
 7. Deleting the HTCondorAnnex... security group created by condor annex
-8. Deleting the HTCondorAnnex-master IAM role created by you
 
 NOTE: If the S3 bucket is not empty the cloudformation step which attempts to delete it will fail.
 Hence I added an explicit step to remove the S3 bucket manually.
