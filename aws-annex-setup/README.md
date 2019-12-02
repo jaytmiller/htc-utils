@@ -137,6 +137,10 @@ particularly supporting_files/local.
 
 ### Try out condor_master
 
+**IMPORTANT:**  there's still an issue with fetching the public IP of the master node
+during setup.  If condor_status fails,  run ./install_condor again and it will 
+correctly configure the public IP.
+
 ```
 [centos@ip-172-31-94-54 aws-annex-setup]$ condor_status
 Name                         OpSys      Arch   State     Activity LoadAv Mem   ActvtyTime
