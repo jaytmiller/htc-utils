@@ -46,8 +46,7 @@ of the instance,  it can also run worker processes.
 ### Arbitrary setup choices
 
 1. Condor Public / Private Key identity name (annex-user,  AdministratorAccess)
-2. IAM EC2 service role (HTCondorAnnex-master, AdministratorAccess)
-3. Master node login:  centos with full sudo
+2. Master node login:  centos with full sudo
 
 ### Create condor-master network security group
 

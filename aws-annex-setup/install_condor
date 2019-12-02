@@ -3,6 +3,7 @@
 USER=centos
 
 function cont () {
+   return
    while true; do
        read -p "Continue (y/n)? " yn
        case $yn in
@@ -27,7 +28,7 @@ wget https://research.cs.wisc.edu/htcondor/yum/RPM-GPG-KEY-HTCondor
 sudo rpm --import RPM-GPG-KEY-HTCondor
 (cd /etc/yum.repos.d; sudo wget https://research.cs.wisc.edu/htcondor/yum/repo.d/htcondor-development-rhel7.repo)
 
-sudo yum install condor-all --skip-broken
+sudo yum install -y condor-all i --skip-broken
 
 sudo systemctl enable condor
 sudo systemctl start condor
@@ -37,10 +38,10 @@ cont
 
 # ..................................................................................
 # From https://htcondor-wiki.cs.wisc.edu/index.cgi/wiki?p=CondorInTheCloudSeedConstruction
-sudo yum install condor-annex-ec2
+sudo yum install -y condor-annex-ec2
+sudo yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+sudo yum install -y python-pip
 
-sudo yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
-sudo yum install python-pip
 sudo pip install --upgrade pip
 sudo pip install awscli
 
