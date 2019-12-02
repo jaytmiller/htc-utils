@@ -1,5 +1,6 @@
 # Make this a single-node pool.
-DAEMON_LIST = MASTER COLLECTOR SCHEDD STARTD NEGOTIATOR
+# DAEMON_LIST = MASTER COLLECTOR SCHEDD STARTD NEGOTIATOR
+DAEMON_LIST = MASTER COLLECTOR SCHEDD NEGOTIATOR
 
 # Taken from the manual's instructions on installing a minicondor.
 # ------------------------------------------------------------------------------
