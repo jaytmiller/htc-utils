@@ -44,11 +44,12 @@ if [ "${EC2InstanceID}"x == x ]; then
 	exit 1
 fi
 
+
 # Configure iptables to deny any nonroot user access to the metadata server.
 # This will prevent them from using the credentials located there.
-/sbin/iptables -A OUTPUT \
-	-m owner --destination 169.254.169.254 ! --uid-owner 0 \
-	-j REJECT
+# /sbin/iptables -A OUTPUT \
+# 	-m owner --destination 169.254.169.254 ! --uid-owner 0 \
+# 	-j REJECT
 
 # Set the EC2PublicIP and EC2InstanceID macros.  The example EC2 configuration
 # uses these values (advertises the latter and sets TCP_FORWARDING_HOST to
