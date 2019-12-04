@@ -28,7 +28,8 @@ aforementioned setup processes to work without modification.  In my
 view the LSST unified setup instructions came closest to a coherent
 narrative but these are most closely related to *Cloud Seeded Annex*.
 
-**NOTE:** At this time, the resulting HTCondor system still has
+**NOTE:** At this time, this is a prototype installation only, not
+intended for production use.  The resulting HTCondor system still has
 significant security vulnerabilities:
 
   - Ports 22 (ssh) and 9618 (HTCondor) are open to the world.
@@ -135,11 +136,7 @@ particularly supporting_files/local.
 ```
 
 
-### Try outbasic condor commands
-
-**IMPORTANT:**  there may still an issue with fetching the public IP of the master node
-during setup.  If condor_status fails,  run ./install_condor again and it will 
-correctly configure the public IP.
+### Try out basic condor commands
 
 Try out condor_status and condor_q.   Since the default configuration no longer runs
 jobs on the master node,  condor_status should return no output but does check
@@ -160,6 +157,9 @@ Total for centos: 0 jobs; 0 completed, 0 removed, 0 idle, 0 running, 0 held, 0 s
 Total for all users: 0 jobs; 0 completed, 0 removed, 0 idle, 0 running, 0 held, 0 suspended
 
 ```
+
+If you do want the master node to run jobs,  edit supporting_files/local and change the
+DAEMON_LIST to include STARTD.  Then re-run ./install_condor.
 
 ### Perform condor_annex Setup and Checkout
 
@@ -211,8 +211,7 @@ Annex started.  Its identity with the cloud provider is 'MyFirstAnnex_7af2f955-a
 ```
 
 You can repeat this command multiple times to establish multiple
-workers. Using parameters you can choose other EC2 instance types with
-more cores or RAM.
+workers, or just run it once with the desired worker count.
 
 **IMPORTANT:**  
 
