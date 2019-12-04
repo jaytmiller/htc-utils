@@ -1,5 +1,9 @@
 # Make this a single-node pool.
+
+# This version of DAEMON_LIST includes the master in the worker pool.
 # DAEMON_LIST = MASTER COLLECTOR SCHEDD STARTD NEGOTIATOR
+
+# This version of DAEMON_LIST excludes the master from the worker pool.
 DAEMON_LIST = MASTER COLLECTOR SCHEDD NEGOTIATOR
 
 # Taken from the manual's instructions on installing a minicondor.

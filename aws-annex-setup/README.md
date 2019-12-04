@@ -135,24 +135,19 @@ particularly supporting_files/local.
 ```
 
 
-### Try out condor_master
+### Try outbasic condor commands
 
-**IMPORTANT:**  there's still an issue with fetching the public IP of the master node
+**IMPORTANT:**  there may still an issue with fetching the public IP of the master node
 during setup.  If condor_status fails,  run ./install_condor again and it will 
 correctly configure the public IP.
 
+Try out condor_status and condor_q.   Since the default configuration no longer runs
+jobs on the master node,  condor_status should return no output but does check
+communication with the master daemons.   Since no jobs have been queued,  likewise
+condor_q has little to report.
+
 ```
 [centos@ip-172-31-94-54 aws-annex-setup]$ condor_status
-Name                         OpSys      Arch   State     Activity LoadAv Mem   ActvtyTime
-
-ip-172-31-94-54.ec2.internal LINUX      X86_64 Unclaimed Idle      0.000  989  0+00:00:03
-
-               Machines Owner Claimed Unclaimed Matched Preempting  Drain
-
-  X86_64/LINUX        1     0       0         1       0          0      0
-
-         Total        1     0       0         1       0          0      0
-
 
 [centos@ip-172-31-94-54 aws-annex-setup]$ condor_q
 
@@ -169,7 +164,11 @@ Total for all users: 0 jobs; 0 completed, 0 removed, 0 idle, 0 running, 0 held, 
 ### Perform condor_annex Setup and Checkout
 
 The setup_annex script runs condor_annex commands used to initialize the annex
-and check it.  It produces 4 cloud formation artifacts.
+and check it.  It produces 4 cloud formation artifacts which have generic names.
+
+Note that setup checking doesn't appear to verify correct operation of the 4
+artifacts,  merely that they exist.  If you're debugging,  make sure to delete
+the cloud formations before re-running condor_annex.
 
 ```
 ./setup_annex
@@ -198,7 +197,10 @@ One of these is a security group you may want to tighten up.
 
 Run the start_annex script.   This will create a default EC2 worker instance.
 
-Dump the script for more info on parameters.
+Dump the script for more info on parameters which can be used to specify instance count, type, duration, and shutdown idle time.
+
+The start_annex script also specifies the exact AWS AMI which will be run,  which currently also defines the version of CAL code
+pre-installed on the AMI.
 
 ```
 $ ./start_annex
@@ -212,6 +214,15 @@ You can repeat this command multiple times to establish multiple
 workers. Using parameters you can choose other EC2 instance types with
 more cores or RAM.
 
+**IMPORTANT:**  
+
+As you create your annex nodes,  they will be assigned a role like:
+
+   arn:aws:iam::162808325377:role/HTCondorAnnex-InstancePro-InstanceConfigurationRol-JZTES9L6Y1YH
+
+Any additional permissions/policies required to run your jobs should be added to that role using the IAM console.
+In particular,  running the JWST CAL code requires S3FullAccess in order to fetch inputs and store output files.
+
 ### Check Annex Status
 
 Wait a few minutes and check the status of your cluster.
@@ -219,18 +230,20 @@ Wait a few minutes and check the status of your cluster.
 **NOTE:**  As you create new worker EC2s it's a good idea to go to the AWS
 web console and add a Name tag something like e.g. condor-worker-1
 
+Since you now have at least one compute node,  condor_status will report the state of those resources:
+
 ```
 [centos@ip-172-31-94-54 aws-annex-setup]$ condor_status
 Name                          OpSys      Arch   State     Activity LoadAv Mem   ActvtyTime
 
 ip-172-31-84-204.ec2.internal LINUX      X86_64 Unclaimed Idle      0.000  983  0+00:00:03
-ip-172-31-94-54.ec2.internal  LINUX      X86_64 Unclaimed Idle      0.000  989  0+00:29:36
 
                Machines Owner Claimed Unclaimed Matched Preempting  Drain
 
-  X86_64/LINUX        2     0       0         2       0          0      0
+  X86_64/LINUX        1     0       0         1       0          0      0
 
-         Total        2     0       0         2       0          0      0
+         Total        1     0       0         1       0          0      0
+
 [centos@ip-172-31-94-54 aws-annex-setup]$ condor_q
 
 
@@ -273,14 +286,14 @@ Wait a minute and check the queue status to see how jobs are running:
 -- Schedd: ip-172-31-94-54.ec2.internal : <184.73.40.122:9618?... @ 11/01/19 22:01:24
 OWNER  BATCH_NAME    SUBMITTED   DONE   RUN    IDLE  TOTAL JOB_IDS
 centos ID: 1       11/1  22:00      _      1      _      1 1.0
-centos ID: 2       11/1  22:00      _      1      _      1 2.0
+centos ID: 2       11/1  22:00      _      -      1      1 2.0
 centos ID: 3       11/1  22:00      _      _      1      1 3.0
 centos ID: 4       11/1  22:00      _      _      1      1 4.0
 centos ID: 5       11/1  22:00      _      _      1      1 5.0
 
-Total for query: 5 jobs; 0 completed, 0 removed, 3 idle, 2 running, 0 held, 0 suspended
-Total for centos: 5 jobs; 0 completed, 0 removed, 3 idle, 2 running, 0 held, 0 suspended
-Total for all users: 5 jobs; 0 completed, 0 removed, 3 idle, 2 running, 0 held, 0 suspended
+Total for query: 5 jobs; 0 completed, 0 removed, 4 idle, 1 running, 0 held, 0 suspended
+Total for centos: 5 jobs; 0 completed, 0 removed, 4 idle, 1 running, 0 held, 0 suspended
+Total for all users: 5 jobs; 0 completed, 0 removed, 4 idle, 1 running, 0 held, 0 suspended
 
 ```
 
