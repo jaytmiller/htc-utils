@@ -148,91 +148,91 @@ Total for all users: 8 jobs; 0 completed, 0 removed, 4 idle, 4 running, 0 held, 
 """
 
 _RESULT_QUEUE = """
-([{'batch_name': '309',
-   'done': '_',
-   'idle': '_',
-   'job_id': '309.0',
-   'owner': 'centos',
-   'run': '1',
-   'submitted': '12/5 08:42',
-   'total': '1'},
-  {'batch_name': '310',
-   'done': '_',
-   'idle': '_',
-   'job_id': '310.0',
-   'owner': 'centos',
-   'run': '1',
-   'submitted': '12/5 08:42',
-   'total': '1'},
-  {'batch_name': '311',
-   'done': '_',
-   'idle': '_',
-   'job_id': '311.0',
-   'owner': 'centos',
-   'run': '1',
-   'submitted': '12/5 08:42',
-   'total': '1'},
-  {'batch_name': '312',
-   'done': '_',
-   'idle': '_',
-   'job_id': '312.0',
-   'owner': 'centos',
-   'run': '1',
-   'submitted': '12/5 08:42',
-   'total': '1'},
-  {'batch_name': '313',
-   'done': '_',
-   'idle': '1',
-   'job_id': '313.0',
-   'owner': 'centos',
-   'run': '_',
-   'submitted': '12/5 08:42',
-   'total': '1'},
-  {'batch_name': '314',
-   'done': '_',
-   'idle': '1',
-   'job_id': '314.0',
-   'owner': 'centos',
-   'run': '_',
-   'submitted': '12/5 08:42',
-   'total': '1'},
-  {'batch_name': '315',
-   'done': '_',
-   'idle': '1',
-   'job_id': '315.0',
-   'owner': 'centos',
-   'run': '_',
-   'submitted': '12/5 08:42',
-   'total': '1'},
-  {'batch_name': '316',
-   'done': '_',
-   'idle': '1',
-   'job_id': '316.0',
-   'owner': 'centos',
-   'run': '_',
-   'submitted': '12/5 08:42',
-   'total': '1'}],
- {'Total for all users': {'completed': 0,
-                          'held': 0,
-                          'idle': 4,
-                          'jobs': 8,
-                          'removed': 0,
-                          'running': 4,
-                          'suspended': 0},
-  'Total for centos': {'completed': 0,
-                       'held': 0,
-                       'idle': 4,
-                       'jobs': 8,
-                       'removed': 0,
-                       'running': 4,
-                       'suspended': 0},
-  'Total for query': {'completed': 0,
-                      'held': 0,
-                      'idle': 4,
-                      'jobs': 8,
-                      'removed': 0,
-                      'running': 4,
-                      'suspended': 0}})
+{'job_info': [{'batch_name': '309',
+               'done': '_',
+               'idle': '_',
+               'job_id': '309.0',
+               'owner': 'centos',
+               'run': '1',
+               'submitted': '12/5 08:42',
+               'total': '1'},
+              {'batch_name': '310',
+               'done': '_',
+               'idle': '_',
+               'job_id': '310.0',
+               'owner': 'centos',
+               'run': '1',
+               'submitted': '12/5 08:42',
+               'total': '1'},
+              {'batch_name': '311',
+               'done': '_',
+               'idle': '_',
+               'job_id': '311.0',
+               'owner': 'centos',
+               'run': '1',
+               'submitted': '12/5 08:42',
+               'total': '1'},
+              {'batch_name': '312',
+               'done': '_',
+               'idle': '_',
+               'job_id': '312.0',
+               'owner': 'centos',
+               'run': '1',
+               'submitted': '12/5 08:42',
+               'total': '1'},
+              {'batch_name': '313',
+               'done': '_',
+               'idle': '1',
+               'job_id': '313.0',
+               'owner': 'centos',
+               'run': '_',
+               'submitted': '12/5 08:42',
+               'total': '1'},
+              {'batch_name': '314',
+               'done': '_',
+               'idle': '1',
+               'job_id': '314.0',
+               'owner': 'centos',
+               'run': '_',
+               'submitted': '12/5 08:42',
+               'total': '1'},
+              {'batch_name': '315',
+               'done': '_',
+               'idle': '1',
+               'job_id': '315.0',
+               'owner': 'centos',
+               'run': '_',
+               'submitted': '12/5 08:42',
+               'total': '1'},
+              {'batch_name': '316',
+               'done': '_',
+               'idle': '1',
+               'job_id': '316.0',
+               'owner': 'centos',
+               'run': '_',
+               'submitted': '12/5 08:42',
+               'total': '1'}],
+ 'queue_info': {'Total for all users': {'completed': 0,
+                                        'held': 0,
+                                        'idle': 4,
+                                        'jobs': 8,
+                                        'removed': 0,
+                                        'running': 4,
+                                        'suspended': 0},
+                'Total for centos': {'completed': 0,
+                                     'held': 0,
+                                     'idle': 4,
+                                     'jobs': 8,
+                                     'removed': 0,
+                                     'running': 4,
+                                     'suspended': 0},
+                'Total for query': {'completed': 0,
+                                    'held': 0,
+                                    'idle': 4,
+                                    'jobs': 8,
+                                    'removed': 0,
+                                    'running': 4,
+                                    'suspended': 0}}}
 """
 
 def parse_htc_queue(queue_str):
@@ -270,7 +270,38 @@ def parse_htc_queue(queue_str):
             job.total = words[8]
             job.job_id = words[9]
             job_info.append(job)
-    return job_info, queue_info
+    return Struct({
+        "job_info": job_info,
+        "queue_info": queue_info
+        })
+
+class _CondorStatus:
+    def __init__(self, status, queue):
+        self.status = status
+        self.queue = queue
+
+    @property
+    def idle_jobs(self):
+        return self.queue.queue_info["Total for all users"].idle
+
+    @property
+    def total_slots(self):
+        return len(self.status.slots)
+
+    @property
+    def claimed_slots(self):
+        return len([slot for slot in self.status.slots
+                    if slot.State == "Claimed"])
+    @property
+    def idle_slots(self):
+        return len([slot for slot in self.status.slots
+                    if slot.State == "Idle"])
+
+class CondorStatus(_CondorStatus):
+    def __init__(self):
+        super(CondorStatus, self).__init__(
+            get_htc_status(),
+            get_htc_queue())
 
 def main():
     """

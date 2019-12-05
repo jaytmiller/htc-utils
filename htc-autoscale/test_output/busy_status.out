@@ -1,0 +1,24 @@
+Name                               OpSys      Arch   State     Activity LoadAv Mem   ActvtyTime
+
+slot1@ip-172-31-1-79.ec2.internal  LINUX      X86_64 Claimed   Busy      1.000 7974  0+00:13:20
+slot2@ip-172-31-1-79.ec2.internal  LINUX      X86_64 Unclaimed Idle      0.000 7974  0+00:02:18
+slot3@ip-172-31-1-79.ec2.internal  LINUX      X86_64 Unclaimed Idle      0.000 7974  0+00:02:18
+slot4@ip-172-31-1-79.ec2.internal  LINUX      X86_64 Unclaimed Idle      0.000 7974  0+00:02:36
+slot5@ip-172-31-1-79.ec2.internal  LINUX      X86_64 Unclaimed Idle      0.410 7974  0+00:00:25
+slot6@ip-172-31-1-79.ec2.internal  LINUX      X86_64 Unclaimed Idle      0.330 7974  0+00:00:20
+slot7@ip-172-31-1-79.ec2.internal  LINUX      X86_64 Claimed   Busy      1.000 7974  0+00:13:30
+slot8@ip-172-31-1-79.ec2.internal  LINUX      X86_64 Unclaimed Idle      0.000 7974  0+00:01:57
+slot1@ip-172-31-13-77.ec2.internal LINUX      X86_64 Unclaimed Idle      0.000 7974  0+00:02:09
+slot2@ip-172-31-13-77.ec2.internal LINUX      X86_64 Unclaimed Idle      0.000 7974  0+00:01:00
+slot3@ip-172-31-13-77.ec2.internal LINUX      X86_64 Unclaimed Idle      0.000 7974  0+00:02:39
+slot4@ip-172-31-13-77.ec2.internal LINUX      X86_64 Claimed   Busy      1.000 7974  0+00:13:22
+slot5@ip-172-31-13-77.ec2.internal LINUX      X86_64 Unclaimed Idle      0.000 7974  0+00:02:36
+slot6@ip-172-31-13-77.ec2.internal LINUX      X86_64 Unclaimed Idle      0.250 7974  0+00:00:43
+slot7@ip-172-31-13-77.ec2.internal LINUX      X86_64 Unclaimed Idle      0.000 7974  0+00:02:57
+slot8@ip-172-31-13-77.ec2.internal LINUX      X86_64 Unclaimed Idle      0.000 7974  0+00:02:40
+
+               Machines Owner Claimed Unclaimed Matched Preempting  Drain
+
+  X86_64/LINUX       16     0       3        13       0          0      0
+
+         Total       16     0       3        13       0          0      0
