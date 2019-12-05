@@ -1,0 +1,12 @@
+Name                               OpSys      Arch   State     Activity LoadAv Mem   ActvtyTime
+
+slot1@ip-172-31-21-35.ec2.internal LINUX      X86_64 Unclaimed Idle      0.000 7947  0+00:14:43
+slot2@ip-172-31-21-35.ec2.internal LINUX      X86_64 Unclaimed Idle      0.000 7947  0+00:15:03
+slot3@ip-172-31-21-35.ec2.internal LINUX      X86_64 Unclaimed Idle      0.000 7947  0+00:15:03
+slot4@ip-172-31-21-35.ec2.internal LINUX      X86_64 Unclaimed Idle      0.000 7947  0+00:15:03
+
+               Machines Owner Claimed Unclaimed Matched Preempting  Drain
+
+  X86_64/LINUX        4     0       0         4       0          0      0
+
+         Total        4     0       0         4       0          0      0
