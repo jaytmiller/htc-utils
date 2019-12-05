@@ -1,6 +1,6 @@
 """
 This module implements a crude autoscaler for htcondor annex.   Based on the number of queued jobs
-and available slots,  it automatically creates new worker nodes with relatively aggressive idle 
+and available slots,  it automatically creates new worker nodes with relatively aggressive idle
 termination times.
 """
 
@@ -9,7 +9,7 @@ from pprint import pprint as pp
 
 import pysh
 
-# ========================================================================================
+# ========================================================================
 
 class Struct(dict):
     """A dictionary which supports dotted access to members."""
@@ -22,7 +22,7 @@ class Struct(dict):
     def __setattr__(self, name, val):
         self[name] = val
 
-# ========================================================================================
+# ========================================================================
 
 def get_htc_status():
     status_out_str = pysh.out("condor_status")
@@ -32,7 +32,7 @@ def get_htc_queue():
     queue_out_str = pysh.out("condor_q")
     return parse_htc_queue(queue_out_str)
 
-# ========================================================================================
+# ========================================================================
 
 _TEST_STATUS = """
     Name                               OpSys      Arch   State     Activity LoadAv Mem   ActvtyTime
@@ -119,16 +119,16 @@ def parse_htc_status(status_str):
             slot_words += [words]
         else:
             machine_words += [words]
-    slot_objs = [ Struct(zip(slot_colnames, words)) 
+    slot_objs = [ Struct(zip(slot_colnames, words))
                   for words in slot_words ]
-    machine_objs =  [ Struct(zip(machine_colnames, words)) 
+    machine_objs =  [ Struct(zip(machine_colnames, words))
                       for words in machine_words ]
     return  Struct({
         "slots" : slot_objs,
         "machines" : machine_objs,
         })
 
-# ========================================================================================
+# ========================================================================
 
 _TEST_QUEUE = """
 -- Schedd: ip-172-31-83-21.ec2.internal : <35.175.246.184:9618?... @ 12/05/19 08:44:17
@@ -142,8 +142,8 @@ centos ID: 314     12/5  08:42      _      _      1      1 314.0
 centos ID: 315     12/5  08:42      _      _      1      1 315.0
 centos ID: 316     12/5  08:42      _      _      1      1 316.0
 
-Total for query: 8 jobs; 0 completed, 0 removed, 4 idle, 4 running, 0 held, 0 suspended 
-Total for centos: 8 jobs; 0 completed, 0 removed, 4 idle, 4 running, 0 held, 0 suspended 
+Total for query: 8 jobs; 0 completed, 0 removed, 4 idle, 4 running, 0 held, 0 suspended
+Total for centos: 8 jobs; 0 completed, 0 removed, 4 idle, 4 running, 0 held, 0 suspended
 Total for all users: 8 jobs; 0 completed, 0 removed, 4 idle, 4 running, 0 held, 0 suspended
 """
 
@@ -275,6 +275,8 @@ def parse_htc_queue(queue_str):
         "queue_info": queue_info
         })
 
+# ========================================================================
+
 class _CondorStatus:
     def __init__(self, status, queue):
         self.status = status
@@ -293,9 +295,9 @@ class _CondorStatus:
         return len([slot for slot in self.status.slots
                     if slot.State == "Claimed"])
     @property
-    def idle_slots(self):
+    def unclaimed_slots(self):
         return len([slot for slot in self.status.slots
-                    if slot.State == "Idle"])
+                    if slot.State == "Unclaimed"])
 
 class CondorStatus(_CondorStatus):
     def __init__(self):
@@ -303,17 +305,10 @@ class CondorStatus(_CondorStatus):
             get_htc_status(),
             get_htc_queue())
 
-def main():
-    """
-    """
-
 def test():
     import doctest
-    import htc_autoscale
-    return doctest.testmod(htc_autoscale)
+    import htc_poll
+    return doctest.testmod(htc_poll)
 
 if __name__ == "__main__":
-    if len(sys.argv) == 1:
-        main()
-    elif sys.argv[1] == "test":
-       print(test())
+    print(test())
