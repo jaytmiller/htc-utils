@@ -5,7 +5,7 @@ INSTANCE=${2:-t2.micro}
 DURATION=${3:-8}
 IDLE=${4:-$DURATION}
 
-WORKER_AMI="ami-0d7077e45f4342bcd"
+WORKER_AMI="ami-076c79d19eb4a7d37"
 
 condor_annex -annex-name MyFirstAnnex -duration $DURATION  -idle $IDLE  -count $COUNT -owner centos  -aws-on-demand-instance-type $INSTANCE  -aws-on-demand-ami-id $WORKER_AMI
 
