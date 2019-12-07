@@ -276,6 +276,22 @@ def parse_htc_queue(queue_str):
         })
 
 class _CondorStatus:
+    """
+    >>> s = parse_htc_status(_TEST_STATUS)
+    >>> q = parse_htc_queue(_TEST_QUEUE)
+    >>> c = _CondorStatus(s, q)
+    
+    >>> c.idle_jobs
+    4
+    >>> c.total_slots
+    4
+    >>> c.claimed_slots
+    4
+    >>> c.idle_slots
+    0
+    >>> c.unique_ips
+    {'ip-172-31-21-35.ec2.internal'}
+    """
     def __init__(self, status, queue):
         self.status = status
         self.queue = queue
@@ -297,15 +313,16 @@ class _CondorStatus:
         return len([slot for slot in self.status.slots
                     if slot.State == "Idle"])
 
+    @property
+    def unique_ips(self):
+        return { slot.Name.split("@")[1]
+                 for slot in self.status.slots }
+
 class CondorStatus(_CondorStatus):
     def __init__(self):
         super(CondorStatus, self).__init__(
             get_htc_status(),
             get_htc_queue())
-
-def main():
-    """
-    """
 
 def test():
     import doctest
@@ -313,7 +330,4 @@ def test():
     return doctest.testmod(htc_autoscale)
 
 if __name__ == "__main__":
-    if len(sys.argv) == 1:
-        main()
-    elif sys.argv[1] == "test":
-       print(test())
+    print(test())
