@@ -166,12 +166,7 @@ DAEMON_LIST to include STARTD.  Then re-run ./install_condor.
 ### Perform condor_annex Setup and Checkout
 
 The setup_annex script runs condor_annex commands used to initialize the annex
-and check it.  It produces 4 cloud formation artifacts which have generic names:
-
-- HTCondorAnnex-SecurityGroup
-- HTCondorAnnex-InstanceProfile
-- HTCondorAnnex-LambdaFunctions
-- HTCondorAnnex-ConfigurationBucket
+and check it.   Run it now:
 
 ```
 ./setup_annex
@@ -191,24 +186,22 @@ Checking for security group... OK.
 Your setup looks OK.
 ```
 
+setup_annex produces 4 cloud formation artifacts which have generic names:
+
+- HTCondorAnnex-SecurityGroup
+- HTCondorAnnex-InstanceProfile
+- HTCondorAnnex-LambdaFunctions
+- HTCondorAnnex-ConfigurationBucket
+
 Note that setup checking doesn't appear to verify correct operation of the 4
 artifacts,  merely that they exist.  If you're debugging,  make sure to delete
 the cloud formations before re-running condor_annex.
 
-### Look at CloudFormation
-
-CloudFormation should now have 4 new HTCondorAnnex.... stacks built by setup_annex.
-One of these is a security group you may want to tighten up.
+You may want to tighten up the security group once you prove condor is working.
 
 ### Create EC2 worker nodes
 
 Run the start_annex script.   This will create a default EC2 worker instance.
-
-Dump the script for more info on parameters which can be used to specify
-instance count, type, duration, and shutdown idle time.
-
-The start_annex script also specifies the exact AWS AMI which will be run,
-which currently also defines the version of CAL code pre-installed on the AMI.
 
 ```
 $ ./start_annex
@@ -220,6 +213,12 @@ Annex started.  Its identity with the cloud provider is 'MyFirstAnnex_7af2f955-a
 
 You can repeat this command multiple times to establish multiple
 workers, or just run it once with the desired worker count.
+
+Dump the script for more info on parameters which can be used to specify
+instance count, type, duration, and shutdown idle time.
+
+The start_annex script also specifies the exact AWS AMI which will be run,
+which currently also defines the version of CAL code pre-installed on the AMI.
 
 **IMPORTANT:**
 
