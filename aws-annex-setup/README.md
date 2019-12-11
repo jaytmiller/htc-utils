@@ -43,7 +43,7 @@ produce a master node which DOES NOT run jobs.
 ### Arbitrary setup choices
 
 1. Condor Public / Private Key identity name (annex-user,  AdministratorAccess)
-2. Master node login:  centos with full sudo
+2. Master node login:  ec2-user with full sudo
 
 ### Create condor-master network security group
 
@@ -57,10 +57,14 @@ Create a new network secruity group condor-master:
 Launch an annex master EC2 instance
 
 1. EC2 instance:  t2.micro
-2. CentOS-7.6 (ami-0b7b19126d27a691f)
-3. Storage: 20G SSD GP2 100 IOPS
+2. Amazon Linux 2 AMI (HVM), SSD Volume Type ami-00068cd7555f543d5 (64-bit x86)
+3. Storage: 8G SSD GP2 100 IOPS
 4. Network Security Group   (condor-master)
 5. Any key pair for ssh access
+
+For large numbers of job slots, it may be necessary to use a larger master node
+since condor currently runs a process on master for every worker process to
+gather the logs, etc.
 
 ### Ssh to master node, update EC2,  clone these utils
 
@@ -72,11 +76,11 @@ cd htc-utils/aws-annex-setup
 ```
 
 **NOTE:** some of the configuration files explitly name the EC2 user and
-are currently configured with "centos".  To switch to an alternate distribution
+are currently configured with "ec2-user".  To switch to an alternate distribution
 you can run a perl snippet over all files to rename the user, e.g.:
 
 ```
-find . -type f | xargs perl -pi -e's/centos/ec2-user/g'
+find . -type f | xargs perl -pi -e's/ec2-user/ec2-user/g'
 ```
 
 ### Create annex-user and set up Key files for condor annex install
@@ -144,19 +148,19 @@ jobs on the master node,  condor_status should return no output but does check
 communication with the master daemons.
 
 ```
-[centos@ip-172-31-94-54 aws-annex-setup]$ condor_status
+[ec2-user@ip-172-31-94-54 aws-annex-setup]$ condor_status
 ```
 
 Since no jobs have been queued, likewise condor_q has little to report.
 
 ```
-[centos@ip-172-31-94-54 aws-annex-setup]$ condor_q
+[ec2-user@ip-172-31-94-54 aws-annex-setup]$ condor_q
 
 -- Schedd: ip-172-31-94-54.ec2.internal : <184.73.40.122:9618?... @ 11/01/19 21:29:38
 OWNER BATCH_NAME      SUBMITTED   DONE   RUN    IDLE   HOLD  TOTAL JOB_IDS
 
 Total for query: 0 jobs; 0 completed, 0 removed, 0 idle, 0 running, 0 held, 0 suspended
-Total for centos: 0 jobs; 0 completed, 0 removed, 0 idle, 0 running, 0 held, 0 suspended
+Total for ec2-user: 0 jobs; 0 completed, 0 removed, 0 idle, 0 running, 0 held, 0 suspended
 Total for all users: 0 jobs; 0 completed, 0 removed, 0 idle, 0 running, 0 held, 0 suspended
 ```
 
@@ -240,7 +244,7 @@ web console and add a Name tag something like e.g. condor-worker-1
 Since you now have at least one compute node,  condor_status will report the state of those resources:
 
 ```
-[centos@ip-172-31-94-54 aws-annex-setup]$ condor_status
+[ec2-user@ip-172-31-94-54 aws-annex-setup]$ condor_status
 Name                          OpSys      Arch   State     Activity LoadAv Mem   ActvtyTime
 
 ip-172-31-84-204.ec2.internal LINUX      X86_64 Unclaimed Idle      0.000  983  0+00:00:03
@@ -251,14 +255,14 @@ ip-172-31-84-204.ec2.internal LINUX      X86_64 Unclaimed Idle      0.000  983  
 
          Total        1     0       0         1       0          0      0
 
-[centos@ip-172-31-94-54 aws-annex-setup]$ condor_q
+[ec2-user@ip-172-31-94-54 aws-annex-setup]$ condor_q
 
 
 -- Schedd: ip-172-31-94-54.ec2.internal : <184.73.40.122:9618?... @ 11/01/19 21:58:11
 OWNER BATCH_NAME      SUBMITTED   DONE   RUN    IDLE   HOLD  TOTAL JOB_IDS
 
 Total for query: 0 jobs; 0 completed, 0 removed, 0 idle, 0 running, 0 held, 0 suspended
-Total for centos: 0 jobs; 0 completed, 0 removed, 0 idle, 0 running, 0 held, 0 suspended
+Total for ec2-user: 0 jobs; 0 completed, 0 removed, 0 idle, 0 running, 0 held, 0 suspended
 Total for all users: 0 jobs; 0 completed, 0 removed, 0 idle, 0 running, 0 held, 0 suspended
 
 ```
@@ -268,19 +272,19 @@ Total for all users: 0 jobs; 0 completed, 0 removed, 0 idle, 0 running, 0 held, 
 Use the condor_submit command to start some example jobs.
 
 ```
-[centos@ip-172-31-94-54 aws-annex-setup]$ condor_submit test_jobs/sleep.submit
+[ec2-user@ip-172-31-94-54 aws-annex-setup]$ condor_submit test_jobs/sleep.submit
 Submitting job(s).
 1 job(s) submitted to cluster 1.
-[centos@ip-172-31-94-54 aws-annex-setup]$ condor_submit test_jobs/sleep.submit
+[ec2-user@ip-172-31-94-54 aws-annex-setup]$ condor_submit test_jobs/sleep.submit
 Submitting job(s).
 1 job(s) submitted to cluster 2.
-[centos@ip-172-31-94-54 aws-annex-setup]$ condor_submit test_jobs/sleep.submit
+[ec2-user@ip-172-31-94-54 aws-annex-setup]$ condor_submit test_jobs/sleep.submit
 Submitting job(s).
 1 job(s) submitted to cluster 3.
-[centos@ip-172-31-94-54 aws-annex-setup]$ condor_submit test_jobs/sleep.submit
+[ec2-user@ip-172-31-94-54 aws-annex-setup]$ condor_submit test_jobs/sleep.submit
 Submitting job(s).
 1 job(s) submitted to cluster 4.
-[centos@ip-172-31-94-54 aws-annex-setup]$ condor_submit test_jobs/sleep.submit
+[ec2-user@ip-172-31-94-54 aws-annex-setup]$ condor_submit test_jobs/sleep.submit
 Submitting job(s).
 1 job(s) submitted to cluster 5.
 ```
@@ -288,18 +292,18 @@ Submitting job(s).
 Check the queue status to see how jobs are running:
 
 ```
-[centos@ip-172-31-94-54 aws-annex-setup]$ condor_q
+[ec2-user@ip-172-31-94-54 aws-annex-setup]$ condor_q
 
 -- Schedd: ip-172-31-94-54.ec2.internal : <184.73.40.122:9618?... @ 11/01/19 22:01:24
 OWNER  BATCH_NAME    SUBMITTED   DONE   RUN    IDLE  TOTAL JOB_IDS
-centos ID: 1       11/1  22:00      _      1      _      1 1.0
-centos ID: 2       11/1  22:00      _      -      1      1 2.0
-centos ID: 3       11/1  22:00      _      _      1      1 3.0
-centos ID: 4       11/1  22:00      _      _      1      1 4.0
-centos ID: 5       11/1  22:00      _      _      1      1 5.0
+ec2-user ID: 1       11/1  22:00      _      1      _      1 1.0
+ec2-user ID: 2       11/1  22:00      _      -      1      1 2.0
+ec2-user ID: 3       11/1  22:00      _      _      1      1 3.0
+ec2-user ID: 4       11/1  22:00      _      _      1      1 4.0
+ec2-user ID: 5       11/1  22:00      _      _      1      1 5.0
 
 Total for query: 5 jobs; 0 completed, 0 removed, 4 idle, 1 running, 0 held, 0 suspended
-Total for centos: 5 jobs; 0 completed, 0 removed, 4 idle, 1 running, 0 held, 0 suspended
+Total for ec2-user: 5 jobs; 0 completed, 0 removed, 4 idle, 1 running, 0 held, 0 suspended
 Total for all users: 5 jobs; 0 completed, 0 removed, 4 idle, 1 running, 0 held, 0 suspended
 
 ```
