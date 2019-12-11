@@ -140,6 +140,9 @@ particularly supporting_files/local.
 ./install_condor
 ```
 
+**NOTE:** At this time install_condor has a number of failed yum dependencies during the
+install of condor-all.   This may cause issues with using the condor Python interface
+but the resulting annex still works at a basic level with true remote worker nodes.
 
 ### Try out basic condor commands
 
