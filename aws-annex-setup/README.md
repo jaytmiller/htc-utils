@@ -75,14 +75,6 @@ git clone https://github.com/jaytmiller/htc-utils.git
 cd htc-utils/aws-annex-setup
 ```
 
-**NOTE:** some of the configuration files explitly name the EC2 user and
-are currently configured with "ec2-user".  To switch to an alternate distribution
-you can run a perl snippet over all files to rename the user, e.g.:
-
-```
-find . -type f | xargs perl -pi -e's/ec2-user/ec2-user/g'
-```
-
 ### Create annex-user and set up Key files for condor annex install
 
 To download a new pair of security tokens for condor_annex to use, go
