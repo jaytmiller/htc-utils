@@ -26,4 +26,5 @@ sudo /bin/sh -c 'rm -fr ~/.ssh/authorized_keys'
 sudo /bin/sh -c 'rm -fr ~/.ssh/known_hosts'
 rm -fr ~/.ssh/authorized_keys
 rm -fr ~/.ssh/known_hosts
+git checkout -- supporting_files
 

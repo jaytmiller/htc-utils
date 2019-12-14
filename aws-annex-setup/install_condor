@@ -54,7 +54,7 @@ sudo systemctl start  condor-annex-ec2
 
 echo "Make up a Condor SEC_PASSWORD_FILE password"
 passwd_file=`sudo condor_config_val SEC_PASSWORD_FILE`
-sudo condor_store_cred -c add -f $passwd_file
+sudo condor_store_cred -c add -f $passwd_file <supporting_files/dot_condor/condorKeyFile
 sudo chown root.root $passwd_file
 sudo chmod 600 $passwd_file
 

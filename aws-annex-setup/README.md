@@ -69,8 +69,8 @@ gather the logs, etc.
 ### Ssh to master node, update EC2,  clone these utils
 
 ```
-sudo yum install wget
-sudo yum install git
+sudo yum update
+sudo yum install wget git emacs
 git clone https://github.com/jaytmiller/htc-utils.git
 cd htc-utils/aws-annex-setup
 ```
@@ -104,13 +104,13 @@ Click the “Next: review” button (you may need to scroll down).
 
 Click the “Create user” button.
 
-**IMPORTANT:** From the line labelled “annex-user”, copy the value in the column
-labelled “Access key ID” to the file
+**IMPORTANT:** From the line labelled “annex-user”, copy the value in
+the column labelled “Access key ID” to the file
 supporting_files/dot_condor/publicKeyFile.
 
-**IMPORTANT:** On the line labeled “annex-user”, click the “Show” link in the column
-labelled “Secret access key”; copy the revealed value to the file
-supporting_files/dot_condor/privateKeyFile.
+**IMPORTANT:** On the line labeled “annex-user”, click the “Show” link
+in the column labelled “Secret access key”; copy the revealed value to
+the file supporting_files/dot_condor/privateKeyFile.
 
 **IMPORTANT:** Set aside the annex-user keys in a local file on you laptop,
 similar to a .pem key.
@@ -119,6 +119,9 @@ Hit the “Close” button.
 
 When the install script is run, the ‘annex-user’ will have full
 privileges to your account.
+
+**IMPORTANT:** Make up a condor password.  Copy your password into the
+file supporting_files/dot_condor/condorKeyFile.
 
 ### Run install_condor
 
@@ -132,15 +135,16 @@ particularly supporting_files/local.
 ./install_condor
 ```
 
-**NOTE:** At this time install_condor has a number of failed yum dependencies during the
-install of condor-all.   This may cause issues with using the condor Python interface
-but the resulting annex still works at a basic level with true remote worker nodes.
+**NOTE:** At this time install_condor has a number of failed yum
+dependencies during the install of condor-all.  This may cause issues
+with using the condor Python interface but the resulting annex still
+works at a basic level with true remote worker nodes.
 
 ### Try out basic condor commands
 
-Try out condor_status and condor_q.   Since the default configuration no longer runs
-jobs on the master node,  condor_status should return no output but does check
-communication with the master daemons.
+Try out condor_status and condor_q.  Since the default configuration
+no longer runs jobs on the master node, condor_status should return no
+output but does check communication with the master daemons.
 
 ```
 [ec2-user@ip-172-31-94-54 aws-annex-setup]$ condor_status
@@ -159,8 +163,9 @@ Total for ec2-user: 0 jobs; 0 completed, 0 removed, 0 idle, 0 running, 0 held, 0
 Total for all users: 0 jobs; 0 completed, 0 removed, 0 idle, 0 running, 0 held, 0 suspended
 ```
 
-If you do want the master node to run jobs,  edit supporting_files/local and change the
-DAEMON_LIST to include STARTD.  Then re-run ./install_condor.
+If you do want the master node to run jobs, edit
+supporting_files/local and change the DAEMON_LIST to include STARTD.
+Then re-run ./install_condor.
 
 ### Perform condor_annex Setup and Checkout
 
@@ -194,7 +199,7 @@ setup_annex produces 4 cloud formation artifacts which have generic names:
 
 Note that setup checking doesn't appear to verify correct operation of the 4
 artifacts,  merely that they exist.  If you're debugging,  make sure to delete
-the cloud formations before re-running condor_annex.
+the cloud formations before re-running setup_annex.
 
 You may want to tighten up the security group once you prove condor is working.
 
