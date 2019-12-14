@@ -23,11 +23,6 @@ This is a modernization and consolidation of these Annex setup links:
 It scripts some of the rote processes and file transformations documented
 in this wealth of instructions.
 
-These notes and files exist because I was not able to get ANY of the
-aforementioned setup processes to work without modification.  In my
-view the LSST unified setup instructions came closest to a coherent
-narrative but these are most closely related to *Cloud Seeded Annex*.
-
 **NOTE:** At this time, this is a prototype installation only, not
 intended for production use.  The resulting HTCondor system still has
 significant security vulnerabilities:
@@ -41,13 +36,14 @@ significant security vulnerabilities:
 
 ## Set up master EC2 node
 
-First create and EC2 instance to host the HTCondor master processes.  Depending on the size
-of the instance,  it can also run worker processes.
+First create an EC2 instance to host the HTCondor master processes.  Depending on the size
+of the instance,  it can also run worker processes.   By default,  these instructions
+produce a master node which DOES NOT run jobs.
 
 ### Arbitrary setup choices
 
 1. Condor Public / Private Key identity name (annex-user,  AdministratorAccess)
-2. Master node login:  centos with full sudo
+2. Master node login:  ec2-user with full sudo
 
 ### Create condor-master network security group
 
@@ -61,10 +57,14 @@ Create a new network secruity group condor-master:
 Launch an annex master EC2 instance
 
 1. EC2 instance:  t2.micro
-2. CentOS-7.6 (ami-0b7b19126d27a691f)
-3. Storage: 20G SSD GP2 100 IOPS
+2. Amazon Linux 2 AMI (HVM), SSD Volume Type ami-00068cd7555f543d5 (64-bit x86)
+3. Storage: 8G SSD GP2 100 IOPS
 4. Network Security Group   (condor-master)
 5. Any key pair for ssh access
+
+For large numbers of job slots, it may be necessary to use a larger master node
+since condor currently runs a process on master for every worker process to
+gather the logs, etc.
 
 ### Ssh to master node, update EC2,  clone these utils
 
@@ -76,7 +76,12 @@ cd htc-utils/aws-annex-setup
 ```
 
 **NOTE:** some of the configuration files explitly name the EC2 user and
-are currently configured with "centos".  So does install_condor.
+are currently configured with "ec2-user".  To switch to an alternate distribution
+you can run a perl snippet over all files to rename the user, e.g.:
+
+```
+find . -type f | xargs perl -pi -e's/ec2-user/ec2-user/g'
+```
 
 ### Create annex-user and set up Key files for condor annex install
 
@@ -111,12 +116,12 @@ Click the “Create user” button.
 labelled “Access key ID” to the file
 supporting_files/dot_condor/publicKeyFile.
 
-**IMPORTANT:** On the line labelled “annex-user”, click the “Show” link in the column
-labelled “Secret access key”; copy the revealed value tothe file
+**IMPORTANT:** On the line labeled “annex-user”, click the “Show” link in the column
+labelled “Secret access key”; copy the revealed value to the file
 supporting_files/dot_condor/privateKeyFile.
 
-**IMPORTANT:** You'll thank yourself later if you set aside the annex-user keys in
-a local file on you laptop,  similar to a .pem key.
+**IMPORTANT:** Set aside the annex-user keys in a local file on you laptop,
+similar to a .pem key.
 
 Hit the “Close” button.
 
@@ -135,27 +140,31 @@ particularly supporting_files/local.
 ./install_condor
 ```
 
+**NOTE:** At this time install_condor has a number of failed yum dependencies during the
+install of condor-all.   This may cause issues with using the condor Python interface
+but the resulting annex still works at a basic level with true remote worker nodes.
 
 ### Try out basic condor commands
 
 Try out condor_status and condor_q.   Since the default configuration no longer runs
 jobs on the master node,  condor_status should return no output but does check
-communication with the master daemons.   Since no jobs have been queued,  likewise
-condor_q has little to report.
+communication with the master daemons.
 
 ```
-[centos@ip-172-31-94-54 aws-annex-setup]$ condor_status
+[ec2-user@ip-172-31-94-54 aws-annex-setup]$ condor_status
+```
 
-[centos@ip-172-31-94-54 aws-annex-setup]$ condor_q
+Since no jobs have been queued, likewise condor_q has little to report.
 
+```
+[ec2-user@ip-172-31-94-54 aws-annex-setup]$ condor_q
 
 -- Schedd: ip-172-31-94-54.ec2.internal : <184.73.40.122:9618?... @ 11/01/19 21:29:38
 OWNER BATCH_NAME      SUBMITTED   DONE   RUN    IDLE   HOLD  TOTAL JOB_IDS
 
 Total for query: 0 jobs; 0 completed, 0 removed, 0 idle, 0 running, 0 held, 0 suspended
-Total for centos: 0 jobs; 0 completed, 0 removed, 0 idle, 0 running, 0 held, 0 suspended
+Total for ec2-user: 0 jobs; 0 completed, 0 removed, 0 idle, 0 running, 0 held, 0 suspended
 Total for all users: 0 jobs; 0 completed, 0 removed, 0 idle, 0 running, 0 held, 0 suspended
-
 ```
 
 If you do want the master node to run jobs,  edit supporting_files/local and change the
@@ -164,11 +173,7 @@ DAEMON_LIST to include STARTD.  Then re-run ./install_condor.
 ### Perform condor_annex Setup and Checkout
 
 The setup_annex script runs condor_annex commands used to initialize the annex
-and check it.  It produces 4 cloud formation artifacts which have generic names.
-
-Note that setup checking doesn't appear to verify correct operation of the 4
-artifacts,  merely that they exist.  If you're debugging,  make sure to delete
-the cloud formations before re-running condor_annex.
+and check it.   Run it now:
 
 ```
 ./setup_annex
@@ -188,19 +193,22 @@ Checking for security group... OK.
 Your setup looks OK.
 ```
 
-### Look at CloudFormation
+setup_annex produces 4 cloud formation artifacts which have generic names:
 
-CloudFormation should now have 4 new HTCondorAnnex.... stacks built by setup_annex.
-One of these is a security group you may want to tighten up.
+- HTCondorAnnex-SecurityGroup
+- HTCondorAnnex-InstanceProfile
+- HTCondorAnnex-LambdaFunctions
+- HTCondorAnnex-ConfigurationBucket
+
+Note that setup checking doesn't appear to verify correct operation of the 4
+artifacts,  merely that they exist.  If you're debugging,  make sure to delete
+the cloud formations before re-running condor_annex.
+
+You may want to tighten up the security group once you prove condor is working.
 
 ### Create EC2 worker nodes
 
 Run the start_annex script.   This will create a default EC2 worker instance.
-
-Dump the script for more info on parameters which can be used to specify instance count, type, duration, and shutdown idle time.
-
-The start_annex script also specifies the exact AWS AMI which will be run,  which currently also defines the version of CAL code
-pre-installed on the AMI.
 
 ```
 $ ./start_annex
@@ -213,14 +221,21 @@ Annex started.  Its identity with the cloud provider is 'MyFirstAnnex_7af2f955-a
 You can repeat this command multiple times to establish multiple
 workers, or just run it once with the desired worker count.
 
-**IMPORTANT:**  
+Dump the script for more info on parameters which can be used to specify
+instance count, type, duration, and shutdown idle time.
+
+The start_annex script also specifies the exact AWS AMI which will be run,
+which currently also defines the version of CAL code pre-installed on the AMI.
+
+**IMPORTANT:**
 
 As you create your annex nodes,  they will be assigned a role like:
 
    arn:aws:iam::162808325377:role/HTCondorAnnex-InstancePro-InstanceConfigurationRol-JZTES9L6Y1YH
 
-Any additional permissions/policies required to run your jobs should be added to that role using the IAM console.
-In particular,  running the JWST CAL code requires S3FullAccess in order to fetch inputs and store output files.
+Any additional permissions/policies required to run your jobs should be added
+to that role using the IAM console.  In particular, running the JWST CAL code
+requires S3FullAccess in order to fetch inputs and store output files.
 
 ### Check Annex Status
 
@@ -232,7 +247,7 @@ web console and add a Name tag something like e.g. condor-worker-1
 Since you now have at least one compute node,  condor_status will report the state of those resources:
 
 ```
-[centos@ip-172-31-94-54 aws-annex-setup]$ condor_status
+[ec2-user@ip-172-31-94-54 aws-annex-setup]$ condor_status
 Name                          OpSys      Arch   State     Activity LoadAv Mem   ActvtyTime
 
 ip-172-31-84-204.ec2.internal LINUX      X86_64 Unclaimed Idle      0.000  983  0+00:00:03
@@ -243,14 +258,14 @@ ip-172-31-84-204.ec2.internal LINUX      X86_64 Unclaimed Idle      0.000  983  
 
          Total        1     0       0         1       0          0      0
 
-[centos@ip-172-31-94-54 aws-annex-setup]$ condor_q
+[ec2-user@ip-172-31-94-54 aws-annex-setup]$ condor_q
 
 
 -- Schedd: ip-172-31-94-54.ec2.internal : <184.73.40.122:9618?... @ 11/01/19 21:58:11
 OWNER BATCH_NAME      SUBMITTED   DONE   RUN    IDLE   HOLD  TOTAL JOB_IDS
 
 Total for query: 0 jobs; 0 completed, 0 removed, 0 idle, 0 running, 0 held, 0 suspended
-Total for centos: 0 jobs; 0 completed, 0 removed, 0 idle, 0 running, 0 held, 0 suspended
+Total for ec2-user: 0 jobs; 0 completed, 0 removed, 0 idle, 0 running, 0 held, 0 suspended
 Total for all users: 0 jobs; 0 completed, 0 removed, 0 idle, 0 running, 0 held, 0 suspended
 
 ```
@@ -260,38 +275,38 @@ Total for all users: 0 jobs; 0 completed, 0 removed, 0 idle, 0 running, 0 held, 
 Use the condor_submit command to start some example jobs.
 
 ```
-[centos@ip-172-31-94-54 aws-annex-setup]$ condor_submit test_jobs/sleep.submit
+[ec2-user@ip-172-31-94-54 aws-annex-setup]$ condor_submit test_jobs/sleep.submit
 Submitting job(s).
 1 job(s) submitted to cluster 1.
-[centos@ip-172-31-94-54 aws-annex-setup]$ condor_submit test_jobs/sleep.submit
+[ec2-user@ip-172-31-94-54 aws-annex-setup]$ condor_submit test_jobs/sleep.submit
 Submitting job(s).
 1 job(s) submitted to cluster 2.
-[centos@ip-172-31-94-54 aws-annex-setup]$ condor_submit test_jobs/sleep.submit
+[ec2-user@ip-172-31-94-54 aws-annex-setup]$ condor_submit test_jobs/sleep.submit
 Submitting job(s).
 1 job(s) submitted to cluster 3.
-[centos@ip-172-31-94-54 aws-annex-setup]$ condor_submit test_jobs/sleep.submit
+[ec2-user@ip-172-31-94-54 aws-annex-setup]$ condor_submit test_jobs/sleep.submit
 Submitting job(s).
 1 job(s) submitted to cluster 4.
-[centos@ip-172-31-94-54 aws-annex-setup]$ condor_submit test_jobs/sleep.submit
+[ec2-user@ip-172-31-94-54 aws-annex-setup]$ condor_submit test_jobs/sleep.submit
 Submitting job(s).
 1 job(s) submitted to cluster 5.
 ```
 
-Wait a minute and check the queue status to see how jobs are running:
+Check the queue status to see how jobs are running:
 
 ```
-[centos@ip-172-31-94-54 aws-annex-setup]$ condor_q
+[ec2-user@ip-172-31-94-54 aws-annex-setup]$ condor_q
 
 -- Schedd: ip-172-31-94-54.ec2.internal : <184.73.40.122:9618?... @ 11/01/19 22:01:24
 OWNER  BATCH_NAME    SUBMITTED   DONE   RUN    IDLE  TOTAL JOB_IDS
-centos ID: 1       11/1  22:00      _      1      _      1 1.0
-centos ID: 2       11/1  22:00      _      -      1      1 2.0
-centos ID: 3       11/1  22:00      _      _      1      1 3.0
-centos ID: 4       11/1  22:00      _      _      1      1 4.0
-centos ID: 5       11/1  22:00      _      _      1      1 5.0
+ec2-user ID: 1       11/1  22:00      _      1      _      1 1.0
+ec2-user ID: 2       11/1  22:00      _      -      1      1 2.0
+ec2-user ID: 3       11/1  22:00      _      _      1      1 3.0
+ec2-user ID: 4       11/1  22:00      _      _      1      1 4.0
+ec2-user ID: 5       11/1  22:00      _      _      1      1 5.0
 
 Total for query: 5 jobs; 0 completed, 0 removed, 4 idle, 1 running, 0 held, 0 suspended
-Total for centos: 5 jobs; 0 completed, 0 removed, 4 idle, 1 running, 0 held, 0 suspended
+Total for ec2-user: 5 jobs; 0 completed, 0 removed, 4 idle, 1 running, 0 held, 0 suspended
 Total for all users: 5 jobs; 0 completed, 0 removed, 4 idle, 1 running, 0 held, 0 suspended
 
 ```

@@ -1,24 +1,11 @@
 #! /bin/bash
 
-USER=centos
-
-function cont () {
-   return
-   while true; do
-       read -p "Continue (y/n)? " yn
-       case $yn in
-           [Yy]* ) break;;
-           [Nn]* ) exit;;
-           * ) echo "Please answer yes or no.";;
-       esac
-   done
-}
+USER=ec2-user
 
 # ..................................................................................
 echo "============================================================"
 echo "This script installs HTCondor and condor_annex on a yum-based EC2 instance."
 echo "============================================================"
-cont
 
 # ..................................................................................
 # From https://research.cs.wisc.edu/htcondor/instructions/el/7/development/
@@ -28,13 +15,12 @@ wget https://research.cs.wisc.edu/htcondor/yum/RPM-GPG-KEY-HTCondor
 sudo rpm --import RPM-GPG-KEY-HTCondor
 (cd /etc/yum.repos.d; sudo wget https://research.cs.wisc.edu/htcondor/yum/repo.d/htcondor-development-rhel7.repo)
 
-sudo yum install -y condor-all i --skip-broken
+sudo yum install -y condor-all
 
 sudo systemctl enable condor
 sudo systemctl start condor
 
 ps ax | grep condor
-cont
 
 # ..................................................................................
 # From https://htcondor-wiki.cs.wisc.edu/index.cgi/wiki?p=CondorInTheCloudSeedConstruction
@@ -47,7 +33,6 @@ sudo pip install awscli
 
 # ..................................................................................
 echo "Add an AWS role which can run condor_annex and assign it to this EC2."
-cont
 
 echo "Installing local as /etc/condor/config.d/local"
 sudo cp  -v supporting_files/local   /etc/condor/config.d/local
