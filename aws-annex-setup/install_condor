@@ -7,13 +7,16 @@ echo "============================================================"
 echo "This script installs HTCondor and condor_annex on a yum-based EC2 instance."
 echo "============================================================"
 
+echo "Installing EPEL repo"
+sudo yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+
 # ..................................................................................
 # From https://research.cs.wisc.edu/htcondor/instructions/el/7/development/
 echo "============================================================"
 echo "Setting up HTCondor cs.wisc repo and starting condor service"
 wget https://research.cs.wisc.edu/htcondor/yum/RPM-GPG-KEY-HTCondor
 sudo rpm --import RPM-GPG-KEY-HTCondor
-(cd /etc/yum.repos.d; sudo wget https://research.cs.wisc.edu/htcondor/yum/repo.d/htcondor-development-rhel7.repo)
+(cd /etc/yum.repos.d; sudo wget https://research.cs.wisc.edu/htcondor/yum/repo.d/htcondor-prerelease-amzn2.repo)
 
 sudo yum install -y condor-all
 
@@ -25,7 +28,6 @@ ps ax | grep condor
 # ..................................................................................
 # From https://htcondor-wiki.cs.wisc.edu/index.cgi/wiki?p=CondorInTheCloudSeedConstruction
 sudo yum install -y condor-annex-ec2
-sudo yum install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 sudo yum install -y python-pip
 
 sudo pip install --upgrade pip
