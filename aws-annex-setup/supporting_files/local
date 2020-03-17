@@ -49,3 +49,184 @@ TRUST_UID_DOMAIN = true
 # Preferentially target AWS pools if there are any.
 MayUseAWS = true
 SUBMIT_ATTRS = MayUseAWS
+
+# ------------------------------------------------------------------
+# EVENT_LOG setup for tracking job events
+# ------------------------------------------------------------------
+
+# From: https://htcondor.readthedocs.io/en/v8_9_5/admin-manual/configuration-macros.html
+
+# EVENT_LOG
+
+# The full path and file name of the event log. There is no default
+# value for this variable, so no event log will be written, if not
+# defined.
+
+EVENT_LOG = /var/log/condor/EventLog
+
+# EVENT_LOG_MAX_SIZE
+
+# 4G of events based on seeing 10 sleep jobs weigh in at 55k with minimal info
+EVENT_LOG_MAX_SIZE = 4294967296
+
+# Controls the maximum length in bytes to which the event log will be
+# allowed to grow. The log file will grow to the specified length, then
+# be saved to a file with the suffix .old. The .old files are
+# overwritten each time the log is saved. A value of 0 specifies that
+# the file may grow without bounds (and disables rotation). The default
+# is 1 MiB.
+
+# EVENT_LOG_MAX_ROTATIONS
+
+# Controls the maximum number of rotations of the event log that will be
+# stored. If this value is 1 (the default), the event log will be
+# rotated to a “.old” file as described above. However, if this is
+# greater than 1, then multiple rotation files will be stores, up to
+# EVENT_LOG_MAX_ROTATIONS of them. These files will be named, instead of
+# the “.old” suffix, “.1”, “.2”, with the “.1” being the most recent
+# rotation. This is an integer parameter with a default value of 1. If
+# EVENT_LOG is not defined, or if EVENT_LOG_MAX_SIZE has a value of 0
+# (which disables event log rotation), this parameter has no effect.
+
+# EVENT_LOG_ROTATION_LOCK
+
+# Specifies the lock file that will be used to ensure that, when
+# rotating files, the rotation is done by a single process. This is a
+# string parameter; its default value is $(LOCK)/EventLogLock. If an
+# empty value is set, then the file that is used is the file path of the
+# event log itself, with the string .lock appended. If EVENT_LOG is not
+# defined, or if EVENT_LOG_MAX_SIZE has a value of 0 (which disables
+# event log rotation), this configuration variable has no effect.
+
+# EVENT_LOG_FSYNC
+
+# A boolean value that controls whether HTCondor will perform an fsync()
+# after writing each event to the event log. When True, an fsync()
+# operation is performed after each event. This fsync() operation forces
+# the operating system to synchronize the updates to the event log to
+# the disk, but can negatively affect the performance of the
+# system. Defaults to False.
+
+# EVENT_LOG_LOCKING
+
+# A boolean value that defaults to False on Unix platforms and True on
+# Windows platforms. When True, the event log (as specified by
+# EVENT_LOG) will be locked before being written to. When False,
+# HTCondor does not lock the file before writing.
+
+# EVENT_LOG_COUNT_EVENTS
+
+# A boolean value that is False by default. When True, upon rotation of
+# the user’s job event log, a count of the number of job events is taken
+# by scanning the log, such that the newly created, post-rotation user
+# job event log will have this count in its header. This configuration
+# variable is relevant when rotation of the user’s job event log is
+# enabled.
+
+# EVENT_LOG_FORMAT_OPTIONS
+
+# A list of case-insensitive keywords that control formatting of the log
+# events and of timestamps for the log specified by EVENT_LOG. Use zero
+# or one of the following formatting options:
+
+# XML    -  Log events in XML format. This has the same effect EVENT_LOG_USE_XML below
+# JSON   -  Log events in JSON format. This conflicts with EVENT_LOG_USE_XML below
+
+# And zero or more of the following option flags:
+
+# UTC
+
+# Log event timestamps as Universal Coordinated Time. The time value
+# will be printed with a timezone value of Z to indicate that times are
+# UTC.
+
+# ISO_DATE
+
+# Log event timestamps in ISO 8601 format. This format includes a 4
+# digit year and is printed in a way that makes sorting by date easier.
+
+ISO_DATE = 1
+
+# SUB_SECOND
+
+# Include fractional seconds in event timestamps.
+
+SUB_SECOND = 1
+
+# LEGACY
+
+# Set all time formatting flags to be compatible with older versions of
+# HTCondor.  All of the above options are case-insensitive, and can be
+# preceeded by a ! to invert their meaning, so configuring !UTC,
+# !ISO_DATE, !SUB_SECOND gives the same result as configuring LEGACY.
+
+# EVENT_LOG_USE_XML
+
+# A boolean value that defaults to False. When True, events are logged
+# in XML format. If EVENT_LOG is not defined, this parameter has no
+# effect.
+
+# --------------------------------------------------------------------
+
+# EVENT_LOG_JOB_AD_INFORMATION_ATTRS
+
+# A comma separated list of job ClassAd attributes, whose evaluated
+# values form a new event, the JobAdInformationEvent, given Event Number
+# 028. This new event is placed in the event log in addition to each
+# logged event. If EVENT_LOG is not defined, this configuration variable
+# has no effect. This configuration variable is the same as the job
+# ClassAd attribute JobAdInformationAttrs (see Job ClassAd Attributes),
+# but it applies to the system Event Log rather than the user job log.
+
+# See: https://htcondor.readthedocs.io/en/v8_9_5/classad-attributes/job-classad-attributes.html
+
+EVENT_LOG_JOB_AD_INFORMATION_ATTRS = \
+ Owner \
+ MachineAttrMachine0 \
+ JobCurrentStartDate \
+#  Absent \
+#  AcctGroup \
+#  AcctGroupUser \
+#  AllRemoteHosts \
+ Args \
+ Arguments \
+# BatchQueue \
+ BlockReadKbytes \
+ BlockReads \
+ BlockWriteKbytes \
+ BlockWrites \
+#  BoincAuthenticatorFile \
+#  CkptArch \
+#  CkptOpSys \
+#  CloudLabelNames \
+ ClusterId \
+ Cmd \
+#  CommittedTime \
+#  CommittedSlotTime \
+#  CommittedSuspensionTime \
+ CompletionDate 
+# ConcurrencyLimits \
+#  CummulativeSlotTime \
+#  CummulativeSuspensionTime \
+#  CummulativeTranserTime \
+#  CurrentHosts \
+ DAGManJobId \
+#  DAGParentNodeNames \
+#  DAGManNodesLog \
+#  DAGManNodesMask \
+#  DelegateJobGSICredentialsLifetime \
+ DiskUsage
+
+
+# -----------------------------------------------------------------------------
+
+# DEFAULT_USERLOG_FORMAT_OPTIONS
+
+# A list of case-insensitive keywords that control formatting of the
+# events and of timestamps for the log specified by a job’s UserLog or
+# DAGManNodesLog attributes. see EVENT_LOG_FORMAT_OPTIONS above for the
+# permitted options.  DaemonCore Configuration File Entries
+
+# -----------------------------------------------------------------------------
+
+
