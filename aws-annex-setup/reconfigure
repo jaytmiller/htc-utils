@@ -1,0 +1,4 @@
+#! /bin/bash
+
+sudo cp  -v supporting_files/local   /etc/condor/config.d/local
+sudo condor_reconfig -all
