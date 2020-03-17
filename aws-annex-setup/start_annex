@@ -1,11 +1,14 @@
 #! /bin/bash
 
-COUNT=${1:-1}
-INSTANCE=${2:-t2.micro}
-DURATION=${3:-8}
-IDLE=${4:-$DURATION}
+COUNT=${1:-1}              # number of AWS instances to be instantiated
+INSTANCE=${2:-t2.micro}    # type of AWS instances to instantiate
+DURATION=${3:-8}           # time til automatic termination,  fractional hours, e.g.  0.25 == 15 minutes
+IDLE=${4:-$DURATION}       # idle time before automatic terminations,  fractional hours, e.g.  0.25 == 15 minutes
 
-WORKER_AMI="ami-076c79d19eb4a7d37"
+WORKER_AMI="ami-076c79d19eb4a7d37"    # AMI used for annex workers being created. This is the jwst-cal AMI
+WORKER_AMI="ami-067e7084bd1ebee79"    # HST Calibration code AMI
+#WORKER_AMI="ami-02cf16cd9088027b5"    # bad condor AMI
+#WORKER_AMI="ami-02ce5672c4c88146c"    # community condor AMI for 8.8.4 an AL2
 
 condor_annex -annex-name MyFirstAnnex -duration $DURATION  -idle $IDLE  -count $COUNT -owner ec2-user  -aws-on-demand-instance-type $INSTANCE  -aws-on-demand-ami-id $WORKER_AMI
 
