@@ -182,187 +182,259 @@ SUB_SECOND = 1
 
 EVENT_LOG_JOB_AD_INFORMATION_ATTRS = \
  Owner \
-#  Absent \
-#  AcctGroup \
-#  AcctGroupUser \
-#  AllRemoteHosts \
- Args \
- Arguments \
-# BatchQueue \
- BlockReadKbytes \
- BlockReads \
- BlockWriteKbytes \
- BlockWrites \
-#  BoincAuthenticatorFile \
-#  CkptArch \
-#  CkptOpSys \
-#  CloudLabelNames \
- ClusterId \
- Cmd \
-#  CommittedTime \
-#  CommittedSlotTime \
-#  CommittedSuspensionTime \
- CompletionDate \
-# ConcurrencyLimits \
-#  CummulativeSlotTime \
-#  CummulativeSuspensionTime \
-#  CummulativeTranserTime \
-#  CurrentHosts \
  DAGManJobId \
-#  DAGParentNodeNames \
-#  DAGManNodesLog \
-#  DAGManNodesMask \
-#  DelegateJobGSICredentialsLifetime \
- DiskUsage \
-#  EC2AccessKeyId \
-#  EC2AmiID \
-#  EC2BlockDeviceMapping \
-#  EC2ElasticIp \
-#  EC2IamProfileArn \
-#  EC2IamProfileName \
-#  EC2InstanceName \
-#  EC2InstanceType \
-#  EC2KeyPair \
-#  EC2ParameterNames \
-EC2SpotPrice \
-EC2SpotRequestID \
-EC2StatusReasonCode \
-#  EC2TagNames \
-#  EC2KeyPairFile \
-#  EC2RemoteVirtualMachineName \
-#  EC2SecretAccessKey \
-#  EC2SecurityGroups \
-#  EC2SecurityIDs \
-#  EC2UserData \
-#  EC2UserDataFile \
-#  EmailAttributes \
-#  EncryptExecuteDirectory \
-#  EnteredCurrentStatus \
- Env  \
- Environment \
-#  ExecutableSize  \
- ExitBySignal \
- ExitCode \
- ExitSignal \
-#  ExitStatus # obsolete \
-#  GceAuthFile \
-#  GceImage \
-#  GceJsonFile \
-#  GceMachineType \
-#  GceMetadata \
-#  GceMetadataFile \
-#  GcePreemptible \
-#  GlobalJobId \
-#  GridJobStatus \
-#  GridResource \
-#  HoldKillSig \
- HoldReason \
- HoldReasonCode \
- HoldReasonSubCode \
-#  HookKeyword \
- ImageSize \
- IOWait \
-#  IwdFlushNFSCache \
-#  JobAdInformationAttrs \
- IwdFlushNFSCache \
-# JobAdInformationAttrs \
- JobCurrentFinishTransferInputDate \
- JobCurrentFinishTransferOutputDate \
- JobCurrentStartDate \
- JobCurrentStartExecutingDate \
- JobCurrentStartTransferInputDate \
- JobCurrentStartTransferOutputDate \
-#  JobDescription \
-#  JobDisconnectedDate \
-#  JobLeaseDuration \
-#  JobMaxVacateTime \
-#  JobNotification \
- JobPrio \
-#  JobRunCount \
- JobStartDate \
- JobStatus \
- JobUniverse \
- KeepClaimIdle \
-#  KillSig \
-#  KillSigTimeout \
-#  LastMatchTime \
- LastRejectMatchReason \
- LastRejMatchTime \
-#  LastRemotePool \
- LastSuspensionTime \
- LastVacateTime \
-#  LeaveJobInQueue \
- LocalSysCpu \
- JobCurrentStartDate \
  MachineAttrMachine0 \
-#  MaxHosts \
-#  MaxJobRetirementTime \
-#  MaxTransferInputMB \
-#  MaxTransferOutputMB \
- MemoryUsage \
-#  MinHosts \
-#  NextJobStartDelay \
-#  NiceUser \
-#  Nonessential \
-#  NTDomain \
-#  NumCkpts \
-#  NumGlobusSubmits \
- NumJobCompletions \
- NumJobMatches \
- NumJobReconnects \
- NumJobStarts \
-#  NumPids \
-#  NumRestarts \
- NumShadowExceptions \
- NumShadowStarts \
-#  NumSystemHolds \
- OtherJobRemoveRequirements \
- OutputDestination \
- Owner \
-#  ParallelShutdownPolicy \
-#  PostArgs \
-#  PostArguments \
-#  PostCmd \
-#  PostCmdExitBySignal \
-#  PostCmdExitCode \
-#  PostCmdExitSignal \
-#  PostEnv \
-#  PostEnvironment \
-#  PreArgs \
-#  PreArguments \
-#  PreCmd \
-#  PreCmdExitBySignal \
-#  PreCmdExitCode \
-#  PreCmdExitSignal \
-#  PreEnv \
-#  PreEnvironment \
-#  PreJobPrio1 \
-#  PreJobPrio2 \
-#  PostJobPrio1 \
-#  PostJobPrio2 \
-#  PreserveRelativeExecutable \
- ProcId \
- ProportionalSetSizeKb \
- QDate \
- RecentBlockReadKbytes \
- RecentBlockReads \
- RecentBlockWriteKbytes \
- RecentBlockWrites \
- ReleaseReason \
-#  RemoteIwd \
-#  RemotePool \
- RemoteSysCpu \
- CumulativeRemoteSysCpu \
- RemoteUserCpu \
- CumulativeRemoteUserCpu \
- RemoteWallClockTime \
-#  RemoveKillSig \
- RequestCpus \
- RequestDisk \
-#  RequestedChroot \
- RequestMemory \
-#  Requirements \
- ResidentSetSize
+ JobCurrentStartDate \
+ ImageSize
+
+# --- #  Absent \
+# --- #  AcctGroup \
+# --- #  AcctGroupUser \
+# --- #  AllRemoteHosts \
+# ---  Args \
+# ---  Arguments \
+# --- # BatchQueue \
+# ---  BlockReadKbytes \
+# ---  BlockReads \
+# ---  BlockWriteKbytes \
+# ---  BlockWrites \
+# --- #  BoincAuthenticatorFile \
+# --- #  CkptArch \
+# --- #  CkptOpSys \
+# --- #  CloudLabelNames \
+# ---  ClusterId \
+# ---  Cmd \
+# --- #  CommittedTime \
+# --- #  CommittedSlotTime \
+# --- #  CommittedSuspensionTime \
+# ---  CompletionDate \
+# --- # ConcurrencyLimits \
+# --- #  CummulativeSlotTime \
+# --- #  CummulativeSuspensionTime \
+# --- #  CummulativeTranserTime \
+# --- #  CurrentHosts \
+# ---  DAGManJobId \
+# --- #  DAGParentNodeNames \
+# --- #  DAGManNodesLog \
+# --- #  DAGManNodesMask \
+# --- #  DelegateJobGSICredentialsLifetime \
+# ---  DiskUsage \
+# --- #  EC2AccessKeyId \
+# --- #  EC2AmiID \
+# --- #  EC2BlockDeviceMapping \
+# --- #  EC2ElasticIp \
+# --- #  EC2IamProfileArn \
+# --- #  EC2IamProfileName \
+# --- #  EC2InstanceName \
+# --- #  EC2InstanceType \
+# --- #  EC2KeyPair \
+# --- #  EC2ParameterNames \
+# --- EC2SpotPrice \
+# --- EC2SpotRequestID \
+# --- EC2StatusReasonCode \
+# --- #  EC2TagNames \
+# --- #  EC2KeyPairFile \
+# --- #  EC2RemoteVirtualMachineName \
+# --- #  EC2SecretAccessKey \
+# --- #  EC2SecurityGroups \
+# --- #  EC2SecurityIDs \
+# --- #  EC2UserData \
+# --- #  EC2UserDataFile \
+# --- #  EmailAttributes \
+# --- #  EncryptExecuteDirectory \
+# --- #  EnteredCurrentStatus \
+# ---  Env  \
+# ---  Environment \
+# --- #  ExecutableSize  \
+# ---  ExitBySignal \
+# ---  ExitCode \
+# ---  ExitSignal \
+# --- #  ExitStatus # obsolete \
+# --- #  GceAuthFile \
+# --- #  GceImage \
+# --- #  GceJsonFile \
+# --- #  GceMachineType \
+# --- #  GceMetadata \
+# --- #  GceMetadataFile \
+# --- #  GcePreemptible \
+# --- #  GlobalJobId \
+# --- #  GridJobStatus \
+# --- #  GridResource \
+# --- #  HoldKillSig \
+# ---  HoldReason \
+# ---  HoldReasonCode \
+# ---  HoldReasonSubCode \
+# --- #  HookKeyword \
+# ---  ImageSize \
+# ---  IOWait \
+# --- #  IwdFlushNFSCache \
+# --- #  JobAdInformationAttrs \
+# ---  IwdFlushNFSCache \
+# --- # JobAdInformationAttrs \
+# ---  JobCurrentFinishTransferInputDate \
+# ---  JobCurrentFinishTransferOutputDate \
+# ---  JobCurrentStartDate \
+# ---  JobCurrentStartExecutingDate \
+# ---  JobCurrentStartTransferInputDate \
+# ---  JobCurrentStartTransferOutputDate \
+# --- #  JobDescription \
+# --- #  JobDisconnectedDate \
+# --- #  JobLeaseDuration \
+# --- #  JobMaxVacateTime \
+# --- #  JobNotification \
+# ---  JobPrio \
+# --- #  JobRunCount \
+# ---  JobStartDate \
+# ---  JobStatus \
+# ---  JobUniverse \
+# ---  KeepClaimIdle \
+# --- #  KillSig \
+# --- #  KillSigTimeout \
+# --- #  LastMatchTime \
+# ---  LastRejectMatchReason \
+# ---  LastRejMatchTime \
+# --- #  LastRemotePool \
+# ---  LastSuspensionTime \
+# ---  LastVacateTime \
+# --- #  LeaveJobInQueue \
+# ---  LocalSysCpu \
+# ---  JobCurrentStartDate \
+# ---  MachineAttrMachine0 \
+# --- #  MaxHosts \
+# --- #  MaxJobRetirementTime \
+# --- #  MaxTransferInputMB \
+# --- #  MaxTransferOutputMB \
+# ---  MemoryUsage \
+# --- #  MinHosts \
+# --- #  NextJobStartDelay \
+# --- #  NiceUser \
+# --- #  Nonessential \
+# --- #  NTDomain \
+# --- #  NumCkpts \
+# --- #  NumGlobusSubmits \
+# ---  NumJobCompletions \
+# ---  NumJobMatches \
+# ---  NumJobReconnects \
+# ---  NumJobStarts \
+# --- #  NumPids \
+# --- #  NumRestarts \
+# ---  NumShadowExceptions \
+# ---  NumShadowStarts \
+# --- #  NumSystemHolds \
+# ---  OtherJobRemoveRequirements \
+# ---  OutputDestination \
+# ---  Owner \
+# --- #  ParallelShutdownPolicy \
+# --- #  PostArgs \
+# --- #  PostArguments \
+# --- #  PostCmd \
+# --- #  PostCmdExitBySignal \
+# --- #  PostCmdExitCode \
+# --- #  PostCmdExitSignal \
+# --- #  PostEnv \
+# --- #  PostEnvironment \
+# --- #  PreArgs \
+# --- #  PreArguments \
+# --- #  PreCmd \
+# --- #  PreCmdExitBySignal \
+# --- #  PreCmdExitCode \
+# --- #  PreCmdExitSignal \
+# --- #  PreEnv \
+# --- #  PreEnvironment \
+# --- #  PreJobPrio1 \
+# --- #  PreJobPrio2 \
+# --- #  PostJobPrio1 \
+# --- #  PostJobPrio2 \
+# --- #  PreserveRelativeExecutable \
+# ---  ProcId \
+# ---  ProportionalSetSizeKb \
+# ---  QDate \
+# ---  RecentBlockReadKbytes \
+# ---  RecentBlockReads \
+# ---  RecentBlockWriteKbytes \
+# ---  RecentBlockWrites \
+# ---  ReleaseReason \
+# --- #  RemoteIwd \
+# --- #  RemotePool \
+# ---  RemoteSysCpu \
+# ---  CumulativeRemoteSysCpu \
+# ---  RemoteUserCpu \
+# ---  CumulativeRemoteUserCpu \
+# ---  RemoteWallClockTime \
+# --- #  RemoveKillSig \
+# ---  RequestCpus \
+# ---  RequestDisk \
+# --- #  RequestedChroot \
+# ---  RequestMemory \
+# --- #  Requirements \
+# ---  ResidentSetSize
+# --- #  ScitokensFile \
+# --- #  StackSize \
+# --- #  StageOutFinish \
+# --- #  StageOutStart \
+# --- #  StreamErr \
+# --- #  StreamOut \
+# --- #  SubmitterAutoregroup \
+# --- #  SubmitterGlobalJobId \
+# --- #  SubmitterGroup \
+# --- #  SubmitterNegotiatingGroup \
+# --- #  SuccessCheckpointExitBySignal \
+# --- #  SuccessCheckpointExitCode \
+# --- #  SuccessCheckpointExitSignal \
+# --- #  SuccessPreExitBySignal \
+# --- #  SuccessPreExitCode \
+# --- #  SuccessPreExitSignal \
+# --- #  SuccessPostExitBySignal \
+# --- #  SuccessPostExitCode \
+# --- #  SuccessPostExitSignal \
+# --- #  TotalSuspensions \
+# --- #  TransferErr \
+# --- #  TransferExecutable \
+# --- #  TransferIn \
+# --- #  TransferInput \
+# --- #  TransferInFinished \
+# --- #  TransferInQueued \
+# --- #  TransferInStarted \
+# --- #  TransferInputSizeMB \
+# --- #  TransferOut \
+# --- #  TransferOutput \
+# --- #  TransferOutFinished \
+# --- #  TransferOutQueued \
+# --- #  TransferOutStarted \
+# --- #  TransferringInput \
+# --- #  TransferringOutput \
+# --- #  TransferPlugins \
+# --- #  TransferQueued \
+# --- #  UserLog \
+# --- #  WantFTOnCheckpoint \
+# --- #  WantGracefulRemoval \
+# --- #  WindowsBuildNumber \
+# --- #  WindowsMajorVersion \
+# --- #  WindowsMinorVersion \
+# --- #  X509UserProxy \
+# --- #  X509UserProxyEmail \
+# --- #  X509UserProxyExpiration \
+# --- #  X509UserProxyFirstFQAN \
+# --- #  X509UserProxyFQAN \
+# --- #  X509UserProxySubject \
+# --- #  X509UserProxyVOName \
+# --- #  VM_MACAddr \
+# --- #  DAG_InRecovery \
+# --- #  DAG_NodesDone \
+# --- #  DAG_NodesFailed \
+# --- #  DAG_NodesPostrun \
+# --- #  DAG_NodesPrerun \
+# --- #  DAG_NodesQueued \
+# --- #  DAG_NodesReady \
+# --- #  DAG_NodesTotal \
+# --- #  DAG_NodesUnready \
+# --- #  DAG_Status \
+# --- #  CpusProvisioned \
+# --- #  DiskProvisioned \
+# --- #  MemoryProvisioned \
+# --- #  <Name>Provisioned
+
+
 
 
 # -----------------------------------------------------------------------------
