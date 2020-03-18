@@ -45,7 +45,7 @@ SCHEDD_DEBUG = D_FULLDEBUG, D_SECURITY
 
 UID_DOMAIN = 172.31.*.*
 TRUST_UID_DOMAIN = true
- 
+
 # Preferentially target AWS pools if there are any.
 MayUseAWS = true
 SUBMIT_ATTRS = MayUseAWS
@@ -182,8 +182,6 @@ SUB_SECOND = 1
 
 EVENT_LOG_JOB_AD_INFORMATION_ATTRS = \
  Owner \
- MachineAttrMachine0 \
- JobCurrentStartDate \
 #  Absent \
 #  AcctGroup \
 #  AcctGroupUser \
@@ -204,7 +202,7 @@ EVENT_LOG_JOB_AD_INFORMATION_ATTRS = \
 #  CommittedTime \
 #  CommittedSlotTime \
 #  CommittedSuspensionTime \
- CompletionDate 
+ CompletionDate \
 # ConcurrencyLimits \
 #  CummulativeSlotTime \
 #  CummulativeSuspensionTime \
@@ -215,7 +213,156 @@ EVENT_LOG_JOB_AD_INFORMATION_ATTRS = \
 #  DAGManNodesLog \
 #  DAGManNodesMask \
 #  DelegateJobGSICredentialsLifetime \
- DiskUsage
+ DiskUsage \
+#  EC2AccessKeyId \
+#  EC2AmiID \
+#  EC2BlockDeviceMapping \
+#  EC2ElasticIp \
+#  EC2IamProfileArn \
+#  EC2IamProfileName \
+#  EC2InstanceName \
+#  EC2InstanceType \
+#  EC2KeyPair \
+#  EC2ParameterNames \
+EC2SpotPrice \
+EC2SpotRequestID \
+EC2StatusReasonCode \
+#  EC2TagNames \
+#  EC2KeyPairFile \
+#  EC2RemoteVirtualMachineName \
+#  EC2SecretAccessKey \
+#  EC2SecurityGroups \
+#  EC2SecurityIDs \
+#  EC2UserData \
+#  EC2UserDataFile \
+#  EmailAttributes \
+#  EncryptExecuteDirectory \
+#  EnteredCurrentStatus \
+ Env  \
+ Environment \
+#  ExecutableSize  \
+ ExitBySignal \
+ ExitCode \
+ ExitSignal \
+#  ExitStatus # obsolete \
+#  GceAuthFile \
+#  GceImage \
+#  GceJsonFile \
+#  GceMachineType \
+#  GceMetadata \
+#  GceMetadataFile \
+#  GcePreemptible \
+#  GlobalJobId \
+#  GridJobStatus \
+#  GridResource \
+#  HoldKillSig \
+ HoldReason \
+ HoldReasonCode \
+ HoldReasonSubCode \
+#  HookKeyword \
+ ImageSize \
+ IOWait \
+#  IwdFlushNFSCache \
+#  JobAdInformationAttrs \
+ IwdFlushNFSCache \
+# JobAdInformationAttrs \
+ JobCurrentFinishTransferInputDate \
+ JobCurrentFinishTransferOutputDate \
+ JobCurrentStartDate \
+ JobCurrentStartExecutingDate \
+ JobCurrentStartTransferInputDate \
+ JobCurrentStartTransferOutputDate \
+#  JobDescription \
+#  JobDisconnectedDate \
+#  JobLeaseDuration \
+#  JobMaxVacateTime \
+#  JobNotification \
+ JobPrio \
+#  JobRunCount \
+ JobStartDate \
+ JobStatus \
+ JobUniverse \
+ KeepClaimIdle \
+#  KillSig \
+#  KillSigTimeout \
+#  LastMatchTime \
+ LastRejectMatchReason \
+ LastRejMatchTime \
+#  LastRemotePool \
+ LastSuspensionTime \
+ LastVacateTime \
+#  LeaveJobInQueue \
+ LocalSysCpu \
+ JobCurrentStartDate \
+ MachineAttrMachine0 \
+#  MaxHosts \
+#  MaxJobRetirementTime \
+#  MaxTransferInputMB \
+#  MaxTransferOutputMB \
+ MemoryUsage \
+#  MinHosts \
+#  NextJobStartDelay \
+#  NiceUser \
+#  Nonessential \
+#  NTDomain \
+#  NumCkpts \
+#  NumGlobusSubmits \
+ NumJobCompletions \
+ NumJobMatches \
+ NumJobReconnects \
+ NumJobStarts \
+#  NumPids \
+#  NumRestarts \
+ NumShadowExceptions \
+ NumShadowStarts \
+#  NumSystemHolds \
+ OtherJobRemoveRequirements \
+ OutputDestination \
+ Owner \
+#  ParallelShutdownPolicy \
+#  PostArgs \
+#  PostArguments \
+#  PostCmd \
+#  PostCmdExitBySignal \
+#  PostCmdExitCode \
+#  PostCmdExitSignal \
+#  PostEnv \
+#  PostEnvironment \
+#  PreArgs \
+#  PreArguments \
+#  PreCmd \
+#  PreCmdExitBySignal \
+#  PreCmdExitCode \
+#  PreCmdExitSignal \
+#  PreEnv \
+#  PreEnvironment \
+#  PreJobPrio1 \
+#  PreJobPrio2 \
+#  PostJobPrio1 \
+#  PostJobPrio2 \
+#  PreserveRelativeExecutable \
+ ProcId \
+ ProportionalSetSizeKb \
+ QDate \
+ RecentBlockReadKbytes \
+ RecentBlockReads \
+ RecentBlockWriteKbytes \
+ RecentBlockWrites \
+ ReleaseReason \
+#  RemoteIwd \
+#  RemotePool \
+ RemoteSysCpu \
+ CumulativeRemoteSysCpu \
+ RemoteUserCpu \
+ CumulativeRemoteUserCpu \
+ RemoteWallClockTime \
+#  RemoveKillSig \
+ RequestCpus \
+ RequestDisk \
+#  RequestedChroot \
+ RequestMemory \
+#  Requirements \
+ ResidentSetSize
 
 
 # -----------------------------------------------------------------------------
@@ -228,5 +375,3 @@ EVENT_LOG_JOB_AD_INFORMATION_ATTRS = \
 # permitted options.  DaemonCore Configuration File Entries
 
 # -----------------------------------------------------------------------------
-
-
