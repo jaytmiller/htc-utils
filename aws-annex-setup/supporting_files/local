@@ -67,7 +67,8 @@ EVENT_LOG = /var/log/condor/EventLog
 # EVENT_LOG_MAX_SIZE
 
 # 4G of events based on seeing 10 sleep jobs weigh in at 55k with minimal info
-EVENT_LOG_MAX_SIZE = 4294967296
+# EVENT_LOG_MAX_SIZE = 4294967296  # problem???
+EVENT_LOG_MAX_SIZE = 1073741824
 
 # Controls the maximum length in bytes to which the event log will be
 # allowed to grow. The log file will grow to the specified length, then
@@ -77,6 +78,7 @@ EVENT_LOG_MAX_SIZE = 4294967296
 # is 1 MiB.
 
 # EVENT_LOG_MAX_ROTATIONS
+# EVENT_LOG_MAX_ROTATIONS = 4 
 
 # Controls the maximum number of rotations of the event log that will be
 # stored. If this value is 1 (the default), the event log will be
