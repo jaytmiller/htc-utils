@@ -1,0 +1,19 @@
+#! /bin/sh
+
+# Run this as a fix for 'SECMAN:2007:Failed to end classad message.'
+# Ref: https://www-auth.cs.wisc.edu/lists/htcondor-users/2018-September/msg00095.shtml
+
+echo "Stopping condor service..."
+sudo systemctl stop condor
+echo "Waiting 5 seconds..."
+sleep 5
+echo  "Removing job_queue.log..."
+sudo rm /var/lib/condor/spool/job_queue.log
+echo "Restarting condor service..."
+sudo systemctl start condor
+echo "Waiting 5 seconds..."
+sleep 5
+echo "====================== condor_status =================="
+condor_status
+echo "====================== condor_q ======================="
+condor_q
