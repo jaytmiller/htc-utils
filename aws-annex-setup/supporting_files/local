@@ -78,7 +78,7 @@ EVENT_LOG_MAX_SIZE = 1073741824
 # is 1 MiB.
 
 # EVENT_LOG_MAX_ROTATIONS
-# EVENT_LOG_MAX_ROTATIONS = 4 
+EVENT_LOG_MAX_ROTATIONS = 4 
 
 # Controls the maximum number of rotations of the event log that will be
 # stored. If this value is 1 (the default), the event log will be
@@ -138,6 +138,8 @@ EVENT_LOG_MAX_SIZE = 1073741824
 
 # UTC
 
+UTC = 1
+
 # Log event timestamps as Universal Coordinated Time. The time value
 # will be printed with a timezone value of Z to indicate that times are
 # UTC.
@@ -147,13 +149,13 @@ EVENT_LOG_MAX_SIZE = 1073741824
 # Log event timestamps in ISO 8601 format. This format includes a 4
 # digit year and is printed in a way that makes sorting by date easier.
 
-# ISO_DATE = 1
+ISO_DATE = 1
 
 # SUB_SECOND
 
 # Include fractional seconds in event timestamps.
 
-# SUB_SECOND = 1
+SUB_SECOND = 1
 
 # LEGACY
 
