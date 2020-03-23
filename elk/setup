@@ -1,0 +1,9 @@
+#! /bin/sh
+
+sudo docker pull retzkek/condorbeat
+
+sudo sysctl -w vm.max_map_count=262144
+sudo sysctl -w fs.file-max=65536
+
+sudo docker pull sebp/elk
+
