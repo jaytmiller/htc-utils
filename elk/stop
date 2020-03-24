@@ -1,0 +1,5 @@
+#! /bin/sh
+
+docker container stop condorbeat
+docker container stop elk
+
