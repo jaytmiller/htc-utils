@@ -3,3 +3,5 @@
 docker container stop condorbeat
 docker container stop elk
 
+docker container rm condorbeat
+docker container rm elk
