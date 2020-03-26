@@ -1,0 +1,5 @@
+FROM retzkek/condorbeat
+
+COPY condorbeat.yml /condorbeat/condorbeat.yml
+RUN chown root.root /condorbeat/condorbeat.yml && chmod 644 /condorbeat/condorbeat.yml
+

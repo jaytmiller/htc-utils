@@ -1,0 +1,9 @@
+#! /bin/sh
+
+docker run -it  \
+       --rm \
+       --network=elknet \
+       -p 9600:9600 \
+       -v /var/log/condor:/var/log/condor \
+       --name htc-eventlog-logstash \
+       htc-eventlog-logstash

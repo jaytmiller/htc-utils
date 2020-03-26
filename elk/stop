@@ -1,7 +1,10 @@
 #! /bin/sh
 
-docker container stop condorbeat
-docker container stop elk
+for cont in htc-condorbeat htc-kibana htc-logstash htc-elasticsearch; do
+    docker container stop $cont
+    docker container rm $cont
+done
 
-docker container rm condorbeat
-docker container rm elk
+
+
+

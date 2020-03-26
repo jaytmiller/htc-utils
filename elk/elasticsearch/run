@@ -1,0 +1,23 @@
+#! /bin/bash -eu
+
+sudo sysctl -w vm.max_map_count=262144
+sudo sysctl -w fs.file-max=65536
+
+if [[ ! -f /etc/systemd/system/docker.service.d/override.conf ]] ; then
+    sudo touch /etc/systemd/system/docker.service.d/override.conf
+fi
+								    
+if [[ ! $(grep 'MEMLOCK=infinity' /etc/systemd/system/docker.service.d/override.conf) ]] ; then
+    sudo /bin/bash -c '( echo -e "[Service]\nLimitMEMLOCK=infinity" >> /etc/systemd/system/docker.service.d/override.conf )'
+    sudo systemctl daemon-reload
+    sudo systemctl restart docker
+fi
+    
+docker run -it \
+       --network=elknet \
+       -p 9200:9200 \
+       --ulimit nofile=65536:65536 \
+       --ulimit memlock=-1 \
+       -v /usr/share/elasticsearch/data \
+       --name htc-elasticsearch \
+       htc-elasticsearch 

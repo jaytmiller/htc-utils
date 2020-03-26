@@ -1,0 +1,2 @@
+http.host: "htc-eventlog-logstash"
+xpack.monitoring.elasticsearch.hosts: [ "http://htc-elasticsearch:9200" ]
