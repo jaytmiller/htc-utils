@@ -1,8 +1,0 @@
-FROM sebp/elk
-
-ADD 12-condor-eventlog-filter.conf /etc/logstash/conf.d/12-condor-eventlog-filter.conf
-# ADD 30-condor-output.conf /etc/logstash/conf.d/30-output.conf
-
-ADD elasticsearch.yml /etc/elasticsearch/elasticsearch.yml
-
-# CMD [ "/usr/local/bin/start.sh" ]

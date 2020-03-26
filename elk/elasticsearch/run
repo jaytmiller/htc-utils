@@ -13,7 +13,7 @@ if [[ ! $(grep 'MEMLOCK=infinity' /etc/systemd/system/docker.service.d/override.
     sudo systemctl restart docker
 fi
     
-docker run -it \
+docker run -d \
        --network=elknet \
        -p 9200:9200 \
        --ulimit nofile=65536:65536 \

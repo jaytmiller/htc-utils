@@ -1,31 +1,37 @@
 #!  /bin/sh
 
-sudo chown root.root condorbeat.yml
-sudo chmod 644 condorbeat.yml
+#! /bin/sh
 
-sudo docker run -d \
-     --network=elknet \
-     -v `pwd`/condorbeat.yml:/condorbeat/condorbeat.yml \
-     --name condorbeat \
-     --network elknet \
-     retzkek/condorbeat
+for cont in condorbeat kibana logstash elasticsearch; do
+    $cont/run
+done
 
-sudo sysctl -w vm.max_map_count=262144
-sudo sysctl -w fs.file-max=65536
+# sudo chown root.root condorbeat.yml
+# sudo chmod 644 condorbeat.yml
 
-sudo docker run -d \
-     --network=elknet \
-     -p 5601:5601 -p 9200:9200 -p 5044:5044 \
-     --ulimit nofile=65536:65536 \
-     -v elk-data:/var/lib/elasticsearch \
-     -v /var/log/condor:/var/log/condor \
-     --network elknet \
-     --name elk \
-     condor-elk
+# sudo docker run -d \
+#      --network=elknet \
+#      -v `pwd`/condorbeat.yml:/condorbeat/condorbeat.yml \
+#      --name condorbeat \
+#      --network elknet \
+#      retzkek/condorbeat
 
-docker run \
-       docker.elastic.co/beats/filebeat:7.6.1 \
-       setup -E setup.kibana.host=elk:5601 \
-       -E output.elasticsearch.hosts=["elk:9200"]
+# sudo sysctl -w vm.max_map_count=262144
+# sudo sysctl -w fs.file-max=65536
+
+# sudo docker run -d \
+#      --network=elknet \
+#      -p 5601:5601 -p 9200:9200 -p 5044:5044 \
+#      --ulimit nofile=65536:65536 \
+#      -v elk-data:/var/lib/elasticsearch \
+#      -v /var/log/condor:/var/log/condor \
+#      --network elknet \
+#      --name elk \
+#      condor-elk
+
+# docker run \
+#        docker.elastic.co/beats/filebeat:7.6.1 \
+#        setup -E setup.kibana.host=elk:5601 \
+#        -E output.elasticsearch.hosts=["elk:9200"]
 
 

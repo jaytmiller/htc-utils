@@ -1,4 +1,4 @@
 #! /bin/sh
 
-docker build -f Dockerfile.logstash -t htc-eventlog-logstash .
+docker build -f Dockerfile.logstash -t htc-logstash .
 
