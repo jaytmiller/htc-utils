@@ -1,5 +1,7 @@
 FROM retzkek/condorbeat
 
 COPY condorbeat.yml /condorbeat/condorbeat.yml
+COPY fields.yml /condorbeat/fields.yml
 RUN chown root.root /condorbeat/condorbeat.yml && chmod 644 /condorbeat/condorbeat.yml
+RUN chown root.root /condorbeat/fields.yml && chmod 644 /condorbeat/fields.yml
 

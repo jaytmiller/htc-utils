@@ -1,0 +1,12 @@
+#! /bin/bash
+
+docker run -d \
+  --net=host \
+  --mount type=bind,source=/proc,target=/hostfs/proc,readonly \
+  --mount type=bind,source=/sys/fs/cgroup,target=/hostfs/sys/fs/cgroup,readonly \
+  --mount type=bind,source=/,target=/hostfs,readonly \
+  -e -system.hostfs=/hostfs \
+  --name htc-metricbeat \
+  htc-metricbeat 
+
+# docker exec htc-metricbeat   metricbeat setup && metricbeat -e

@@ -1,0 +1,9 @@
+#
+# ** THIS IS AN AUTO-GENERATED FILE **
+#
+
+# Default Kibana configuration for docker target
+server.name: htc-kibana
+server.host: htc-kibana
+elasticsearch.hosts: [ "http://htc-elasticsearch:9200/" ]
+xpack.monitoring.ui.container.elasticsearch.enabled: true
