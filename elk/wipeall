@@ -1,0 +1,4 @@
+#! /bin/bash
+
+docker image rm --force `docker image ls | awk '{print $3}' | grep -v IMAGE`
+
