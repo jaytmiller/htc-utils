@@ -1,4 +1,4 @@
 executable = /bin/sleep
-arguments = 20
+arguments = 600
 queue 
 
