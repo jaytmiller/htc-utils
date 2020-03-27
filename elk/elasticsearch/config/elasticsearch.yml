@@ -21,7 +21,7 @@ cluster.name: htc-elasticsearch
 #
 # Use a descriptive name for the node:
 #
-node.name: htc-elasticsearch-data-1
+node.name: htc-elasticsearch
 
 #
 # Add custom attributes to the node:
@@ -59,7 +59,14 @@ bootstrap.memory_lock: true
 # Set the bind address to a specific IP (IPv4 or IPv6):
 #
 #network.host: 192.168.0.1
-network.host: htc-elasticsearch-data-1
+# network.host: htc-elasticsearch
+network.host: 0.0.0.0
+http.port: 9200
+
+transport:
+    host: localhost
+    tcp:
+        port: 9300
 
 #
 # Set a custom port for HTTP:
@@ -77,8 +84,7 @@ network.host: htc-elasticsearch-data-1
 #
 # Bootstrap the cluster using an initial set of master-eligible nodes:
 #
-cluster.initial_master_nodes:
-    - htc-elasticsearch-data-1
+# cluster.initial_master_nodes: ["htc-elasticsearch"]
 
 #
 # For more information, consult the discovery and cluster formation module documentation.

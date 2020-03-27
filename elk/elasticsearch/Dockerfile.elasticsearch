@@ -1,8 +1,8 @@
 FROM docker.elastic.co/elasticsearch/elasticsearch:7.6.1
 
-COPY --chown=elasticsearch:elasticsearch elasticsearch.yml /usr/share/elasticsearch/config/
+# COPY --chown=elasticsearch:elasticsearch elasticsearch.yml /usr/share/elasticsearch/config/
 
-# COPY config /usr/share/elasticsearch/config
-# RUN chown -R elasticsearch.elasticsearch /usr/share/elasticsearch/config
+COPY config /usr/share/elasticsearch/config
+RUN chown -R elasticsearch.elasticsearch /usr/share/elasticsearch/config
 
 
