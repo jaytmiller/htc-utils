@@ -1,10 +1,16 @@
-#!  /bin/sh
+#! /bin/bash
 
-#! /bin/sh
-
-for cont in condorbeat kibana logstash elasticsearch; do
-    $cont/run
+for comp in `cat components`;
+do
+    echo =============== starting $comp =================
+    $comp/run
 done
+
+echo =================== docker ps ======================
+docker ps
+
+
+
 
 # sudo chown root.root condorbeat.yml
 # sudo chmod 644 condorbeat.yml

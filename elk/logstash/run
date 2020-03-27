@@ -1,7 +1,6 @@
 #! /bin/sh
 
 docker run -d  \
-       --rm \
        --network=elknet \
        -p 5044:5044 \
        -v /var/log/condor:/var/log/condor \

@@ -1,9 +1,0 @@
-#! /bin/sh
-
-sudo docker network create -d bridge elknet
-
-condorbeat/build
-logstash/build
-kibana/build
-elasticsearch/build
-

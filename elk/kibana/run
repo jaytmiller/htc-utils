@@ -1,7 +1,6 @@
 #! /bin/bash
 
 docker run -d \
-       --rm \
        --network=elknet \
        -p 5601:5601 \
        --name htc-kibana \

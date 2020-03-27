@@ -1,10 +1,13 @@
 #! /bin/sh
 
-for cont in htc-condorbeat htc-kibana htc-logstash htc-elasticsearch; do
-    docker container stop $cont
-    docker container rm $cont
+for comp in `cat components`;
+do
+    docker container stop htc-$comp
+    docker container rm htc-$comp
 done
 
 
+docker ps
 
+docker container ls -a
 
