@@ -2,12 +2,11 @@
 
 for comp in `cat components`;
 do
+    echo =================== stopping htc-$comp ====================
     docker container stop htc-$comp
     docker container rm htc-$comp
 done
 
-
-docker ps
-
+echo ==================== docker containers ======================
 docker container ls -a
 
