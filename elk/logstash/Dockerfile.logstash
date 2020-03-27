@@ -1,5 +1,15 @@
 FROM docker.elastic.co/logstash/logstash:7.6.1
 RUN rm -f /usr/share/logstash/pipeline/logstash.conf
+
+USER root
+
 ADD pipeline/ /usr/share/logstash/pipeline/
+RUN chown -R logstash.root /usr/share/logstash/pipeline && chmod 664 /usr/share/logstash/pipeline/*
+
 ADD config/ /usr/share/logstash/config/
+RUN chown -R logstash.root /usr/share/logstash/config && chmod 664 /usr/share/logstash/config/*
+
 ADD patterns/ /usr/share/logstash/patterns/
+RUN chown -R logstash.root /usr/share/logstash/patterns && chmod 664 /usr/share/logstash/patterns/*
+
+USER logstash
