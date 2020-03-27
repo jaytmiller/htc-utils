@@ -5,7 +5,9 @@ sudo docker network create -d bridge elknet
 for comp in `cat components`;
 do
     echo ============== building $comp =================
-    $comp/build
+    cd $comp
+    ./build
+    cd ..
 done
 
 echo ================= docker image ls =================
