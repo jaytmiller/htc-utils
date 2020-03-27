@@ -14,7 +14,7 @@
 #
 # Use a descriptive name for your cluster:
 #
-cluster.name: htc-elasticsearch-cluster
+cluster.name: htc-elasticsearch
 
 #
 # ------------------------------------ Node ------------------------------------
@@ -59,7 +59,14 @@ bootstrap.memory_lock: true
 # Set the bind address to a specific IP (IPv4 or IPv6):
 #
 #network.host: 192.168.0.1
-network.host: htc-elasticsearch
+# network.host: htc-elasticsearch
+network.host: 0.0.0.0
+http.port: 9200
+
+transport:
+    host: localhost
+    tcp:
+        port: 9300
 
 #
 # Set a custom port for HTTP:
