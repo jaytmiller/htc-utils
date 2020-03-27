@@ -1,6 +1,6 @@
 #! /bin/sh
 
 docker run -d \
-     --network=elknet \
      --name htc-condorbeat \
+     --network=elknet \
      htc-condorbeat

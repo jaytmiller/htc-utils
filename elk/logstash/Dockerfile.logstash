@@ -3,6 +3,8 @@ RUN rm -f /usr/share/logstash/pipeline/logstash.conf
 
 USER root
 
+RUN groupadd --gid 988 condor && useradd --gid 988  --uid 991  condor  --shell /sbin/nologin  --comment "Owner of HTCondor Daemons"
+
 ADD pipeline/ /usr/share/logstash/pipeline/
 RUN chown -R logstash.root /usr/share/logstash/pipeline && chmod 664 /usr/share/logstash/pipeline/*
 

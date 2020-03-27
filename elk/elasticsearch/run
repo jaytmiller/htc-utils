@@ -14,10 +14,10 @@ if [[ ! $(grep 'MEMLOCK=infinity' /etc/systemd/system/docker.service.d/override.
 fi
     
 docker run -d \
-       --network=elknet \
+       --name htc-elasticsearch \
+       --network elknet \
        -p 9200:9200 \
        --ulimit nofile=65536:65536 \
        --ulimit memlock=-1 \
        -v /usr/share/elasticsearch/data \
-       --name htc-elasticsearch \
        htc-elasticsearch 

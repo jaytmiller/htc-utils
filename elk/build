@@ -1,6 +1,6 @@
 #! /bin/sh
 
-sudo docker network create -d bridge elknet
+docker network create -d bridge elknet
 
 for comp in `cat components`;
 do
