@@ -1,0 +1,6 @@
+#! /bin/bash
+
+for comp in condor-base condor-mini;
+do
+    ( cd $comp;  ./build; )
+done
