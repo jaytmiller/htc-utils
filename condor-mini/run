@@ -1,0 +1,8 @@
+#! /bin/bash
+
+docker run -it \
+       --name condor-mini \
+       -p 9601:9601 \
+       --mount type=bind,source=`pwd`/condor_state,destination=/home/jovyan/condor_state \
+       jaytmiller/condor-mini
+

@@ -1,0 +1,12 @@
+#!/bin/bash
+
+set -e
+
+# Tag the latest build with the date. Push the tag in addition
+# to the "latest" tag already pushed.
+DATE=$(date +%F)
+
+TAG=$DOCKER_REPO:$DATE
+
+docker tag "$IMAGE_NAME" "$TAG"
+docker push "$TAG"
