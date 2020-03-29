@@ -27,14 +27,15 @@ build both components:  condor-base and condor-mini.
 
 ```$ ./build```
 
-Child scripts also exist to to development on either component
+Child build scripts also exist to aid development on either component
 seperately.
 
 ## Running
 
 Running condor-mini can be accomplished by executing:
 
-```$ ./run
+```
+$ ./run
 Started HTCondor
 jovyan@68e47ed84c73:~$ condor_status
 Name               OpSys      Arch   State     Activity LoadAv Mem   ActvtyTime
@@ -59,7 +60,13 @@ jovyan@68e47ed84c73:~$ condor_restart
 Sent "Restart" command to local master
 ```
 
-By default ths will start htcondor and place the user at an interactive
+By default this will start htcondor and place the user at an interactive
 bash prompt.
 
+
+## Logs and Condor State
+
+The logs and other condor state are stored in the subdirectory
+condor_state which is bind mounted to the condor-mini docker container
+at runtime.
 
