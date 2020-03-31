@@ -3,7 +3,7 @@
 COUNT=${1:-1}              # number of AWS instances to be instantiated
 INSTANCE=${2:-t2.micro}    # type of AWS instances to instantiate
 DURATION=${3:-8}           # time til automatic termination,  fractional hours, e.g.  0.25 == 15 minutes
-IDLE=${4:-0.25}       # idle time before automatic terminations,  fractional hours, 0.25 == 15 minutes
+IDLE=${4:-8}       # idle time before automatic terminations,  fractional hours, 0.25 == 15 minutes
 
 WORKER_AMI="ami-076c79d19eb4a7d37"    # AMI used for annex workers being created. This is the jwst-cal AMI
 WORKER_AMI="ami-067e7084bd1ebee79"    # HST Calibration code AMI

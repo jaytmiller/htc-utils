@@ -17,7 +17,9 @@ docker run -d \
        --name htc-elasticsearch \
        --network elknet \
        -p 9200:9200 \
+       -p 9300:9300 \
        --ulimit nofile=65536:65536 \
        --ulimit memlock=-1 \
+       -e "discovery.type=single-node" \
        -v /usr/share/elasticsearch/data \
        htc-elasticsearch 

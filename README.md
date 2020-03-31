@@ -13,3 +13,10 @@ See htc-autoscale directory
 
 See jwst-cal directory
 
+## ELK stack and configuration for HTCondor
+
+Dockerfiles and admin scripts for condorbeat, metricbeat, logstash,
+elasticsearch, and kibana based on:
+
+https://agenda.hep.wisc.edu/event/1325/session/16/contribution/2/material/slides/0.pdf
+https://github.com/retzkek/condorbeat

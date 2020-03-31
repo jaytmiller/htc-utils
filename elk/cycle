@@ -1,0 +1,10 @@
+#! /bin/bash
+
+./stop
+
+./build
+
+./cleanup
+
+./run
+

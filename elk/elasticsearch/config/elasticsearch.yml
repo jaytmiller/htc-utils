@@ -61,12 +61,12 @@ bootstrap.memory_lock: true
 #network.host: 192.168.0.1
 # network.host: htc-elasticsearch
 network.host: 0.0.0.0
-http.port: 9200
+# network.publish_host: htc-elasticsearch
 
-transport:
-    host: localhost
-    tcp:
-        port: 9300
+# transport:
+#     host: localhost
+#     tcp:
+#         port: 9300
 
 #
 # Set a custom port for HTTP:
