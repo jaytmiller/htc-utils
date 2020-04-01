@@ -1,9 +1,10 @@
 #! /bin/sh
 
-docker run -d  \
+sudo docker run -it --rm  \
        --name htc-logstash \
-       --network=elknet \
        -p 5044:5044 \
        -p 9600:9600 \
-       --mount type=bind,source=/var/log/condor,destination=/var/log/condor,readonly \
-       htc-logstash
+       --mount type=bind,source=/ifs/archive/test/jwst/store/condor/logs/tljwdmscsched2,destination=/var/log/condor,readonly \
+       htc-logstash  $*
+
+#       --mount type=bind,source=/var/log/condor,destination=/var/log/condor,readonly \
