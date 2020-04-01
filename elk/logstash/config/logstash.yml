@@ -1,3 +1,3 @@
-http.host: "htc-logstash"
+# http.host: "htc-logstash"
 xpack.monitoring.enabled: false
-xpack.monitoring.elasticsearch.hosts: [ "http://htc-elasticsearch:9200" ]
+# xpack.monitoring.elasticsearch.hosts: [ "http://htc-elasticsearch:9200" ]
