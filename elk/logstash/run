@@ -1,6 +1,6 @@
 #! /bin/sh
 
-sudo docker run -it --rm  \
+sudo docker run -d \
        --name htc-logstash \
        -p 5044:5044 \
        -p 9600:9600 \
