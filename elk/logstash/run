@@ -1,10 +1,12 @@
-#! /bin/sh
+#! /bin/sh  -eu
+
+source $1;
+shift;
 
 sudo docker run -d \
-       --name htc-logstash \
+       --name ${HTC_LOGSTASH_CONTAINER_NAME} \
        -p 5044:5044 \
        -p 9600:9600 \
-       --mount type=bind,source=/ifs/archive/test/jwst/store/condor/logs/tljwdmscsched2,destination=/var/log/condor,readonly \
-       htc-logstash  $*
+       --mount type=bind,source=${HTC_CONDOR_LOGS},destination=/var/log/condor,readonly \
+       ${HTC_IMAGE_NAME}  $*
 
-#       --mount type=bind,source=/var/log/condor,destination=/var/log/condor,readonly \

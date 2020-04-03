@@ -1,0 +1,1222 @@
+008 (-01.-01.-01) 03/19 20:22:24 Global JobLog: ctime=1584649344 id=0.9143.1584649344.934352.1.1584649344.934505 sequence=1 size=0 events=0 offset=0 event_off=0 max_rotation=4 creator_name=<>                                                                                                  
+...
+000 (012.000.000) 03/19 20:22:24 Job submitted from host: <18.212.118.91:9618?addrs=18.212.118.91-9618&noUDP&sock=8261_eff6_3>
+...
+028 (012.000.000) 03/19 20:22:24 Job ad information event triggered.
+Proc = 0
+Cluster = 12
+EventTime = "2020-03-19T20:22:24"
+TriggerEventTypeName = "ULOG_SUBMIT"
+Subproc = 0
+EventTypeNumber = 28
+MyType = "SubmitEvent"
+Owner = "ec2-user"
+SubmitHost = "<18.212.118.91:9618?addrs=18.212.118.91-9618&noUDP&sock=8261_eff6_3>"
+ImageSize = 30
+TriggerEventTypeNumber = 0
+...
+001 (012.000.000) 03/19 20:22:41 Job executing on host: <34.239.124.237:9618?addrs=34.239.124.237-9618&noUDP&sock=4525_5a23_3>
+...
+028 (012.000.000) 03/19 20:22:41 Job ad information event triggered.
+Proc = 0
+Cluster = 12
+EventTime = "2020-03-19T20:22:41"
+TriggerEventTypeName = "ULOG_EXECUTE"
+Subproc = 0
+EventTypeNumber = 28
+MyType = "ExecuteEvent"
+Owner = "ec2-user"
+ExecuteHost = "<34.239.124.237:9618?addrs=34.239.124.237-9618&noUDP&sock=4525_5a23_3>"
+JobCurrentStartDate = 1584649359
+ImageSize = 30
+TriggerEventTypeNumber = 1
+...
+006 (012.000.000) 03/19 20:22:49 Image size of job updated: 80
+	1  -  MemoryUsage of job (MB)
+	80  -  ResidentSetSize of job (KB)
+...
+028 (012.000.000) 03/19 20:22:49 Job ad information event triggered.
+Proc = 0
+Cluster = 12
+ResidentSetSize = 80
+EventTime = "2020-03-19T20:22:49"
+TriggerEventTypeName = "ULOG_IMAGE_SIZE"
+Subproc = 0
+EventTypeNumber = 28
+MemoryUsage = 1
+MyType = "JobImageSizeEvent"
+Owner = "ec2-user"
+Size = 80
+JobCurrentStartDate = 1584649359
+ImageSize = 80
+TriggerEventTypeNumber = 6
+...
+005 (012.000.000) 03/19 20:23:01 Job terminated.
+	(1) Normal termination (return value 0)
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Local Usage
+	0  -  Run Bytes Sent By Job
+	28960  -  Run Bytes Received By Job
+	0  -  Total Bytes Sent By Job
+	28960  -  Total Bytes Received By Job
+	Partitionable Resources :    Usage  Request Allocated 
+	   Cpus                 :        0        1         1 
+	   Disk (KB)            :       42       30  59836892 
+	   Gpus                 :                           0 
+	   Memory (MB)          :        1        1       983 
+...
+028 (012.000.000) 03/19 20:23:01 Job ad information event triggered.
+RequestMemory = 1
+Cpus = 1
+Memory = 983
+Proc = 0
+Owner = "ec2-user"
+Disk = 59836892
+RequestCpus = 1
+CpusUsage = 0.0
+RequestDisk = 30
+TotalLocalUsage = "Usr 0 00:00:00, Sys 0 00:00:00"
+GPUs = 0
+MyType = "JobTerminatedEvent"
+RunLocalUsage = "Usr 0 00:00:00, Sys 0 00:00:00"
+RunRemoteUsage = "Usr 0 00:00:00, Sys 0 00:00:00"
+MemoryUsage = 1
+Subproc = 0
+TriggerEventTypeNumber = 5
+EventTypeNumber = 28
+DiskUsage = 42
+EventTime = "2020-03-19T20:23:01"
+Cluster = 12
+ReceivedBytes = 28960.0
+TerminatedNormally = true
+ReturnValue = 0
+TotalRemoteUsage = "Usr 0 00:00:00, Sys 0 00:00:00"
+SentBytes = 0.0
+TotalSentBytes = 0.0
+TotalReceivedBytes = 28960.0
+JobCurrentStartDate = 1584649359
+ImageSize = 80
+TriggerEventTypeName = "ULOG_JOB_TERMINATED"
+...
+000 (013.000.000) 03/26 17:30:56 Job submitted from host: <54.146.249.132:9618?addrs=54.146.249.132-9618&noUDP&sock=4178_56c6_3>
+...
+028 (013.000.000) 03/26 17:30:56 Job ad information event triggered.
+Proc = 0
+Cluster = 13
+EventTime = "2020-03-26T17:30:56"
+TriggerEventTypeName = "ULOG_SUBMIT"
+Subproc = 0
+EventTypeNumber = 28
+MyType = "SubmitEvent"
+Owner = "ec2-user"
+SubmitHost = "<54.146.249.132:9618?addrs=54.146.249.132-9618&noUDP&sock=4178_56c6_3>"
+ImageSize = 30
+TriggerEventTypeNumber = 0
+...
+001 (013.000.000) 03/26 17:30:57 Job executing on host: <3.85.39.184:9618?addrs=3.85.39.184-9618&noUDP&sock=4541_53a7_3>
+...
+028 (013.000.000) 03/26 17:30:57 Job ad information event triggered.
+Proc = 0
+Cluster = 13
+EventTime = "2020-03-26T17:30:57"
+TriggerEventTypeName = "ULOG_EXECUTE"
+Subproc = 0
+EventTypeNumber = 28
+MyType = "ExecuteEvent"
+Owner = "ec2-user"
+ExecuteHost = "<3.85.39.184:9618?addrs=3.85.39.184-9618&noUDP&sock=4541_53a7_3>"
+JobCurrentStartDate = 1585243856
+ImageSize = 30
+TriggerEventTypeNumber = 1
+...
+006 (013.000.000) 03/26 17:31:07 Image size of job updated: 76
+	1  -  MemoryUsage of job (MB)
+	76  -  ResidentSetSize of job (KB)
+...
+028 (013.000.000) 03/26 17:31:07 Job ad information event triggered.
+Proc = 0
+Cluster = 13
+ResidentSetSize = 76
+EventTime = "2020-03-26T17:31:07"
+TriggerEventTypeName = "ULOG_IMAGE_SIZE"
+Subproc = 0
+EventTypeNumber = 28
+MemoryUsage = 1
+MyType = "JobImageSizeEvent"
+Owner = "ec2-user"
+Size = 76
+JobCurrentStartDate = 1585243856
+ImageSize = 76
+TriggerEventTypeNumber = 6
+...
+005 (013.000.000) 03/26 17:31:18 Job terminated.
+	(1) Normal termination (return value 0)
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Local Usage
+	0  -  Run Bytes Sent By Job
+	28960  -  Run Bytes Received By Job
+	0  -  Total Bytes Sent By Job
+	28960  -  Total Bytes Received By Job
+	Partitionable Resources :    Usage  Request Allocated 
+	   Cpus                 :        0        1         1 
+	   Disk (KB)            :       42       30  59817100 
+	   Gpus                 :                           0 
+	   Memory (MB)          :        1        1       983 
+...
+028 (013.000.000) 03/26 17:31:18 Job ad information event triggered.
+RequestMemory = 1
+Cpus = 1
+Memory = 983
+Proc = 0
+Owner = "ec2-user"
+Disk = 59817100
+RequestCpus = 1
+CpusUsage = 0.0
+RequestDisk = 30
+TotalLocalUsage = "Usr 0 00:00:00, Sys 0 00:00:00"
+GPUs = 0
+MyType = "JobTerminatedEvent"
+RunLocalUsage = "Usr 0 00:00:00, Sys 0 00:00:00"
+RunRemoteUsage = "Usr 0 00:00:00, Sys 0 00:00:00"
+MemoryUsage = 1
+Subproc = 0
+TriggerEventTypeNumber = 5
+EventTypeNumber = 28
+DiskUsage = 42
+EventTime = "2020-03-26T17:31:18"
+Cluster = 13
+ReceivedBytes = 28960.0
+TerminatedNormally = true
+ReturnValue = 0
+TotalRemoteUsage = "Usr 0 00:00:00, Sys 0 00:00:00"
+SentBytes = 0.0
+TotalSentBytes = 0.0
+TotalReceivedBytes = 28960.0
+JobCurrentStartDate = 1585243856
+ImageSize = 76
+TriggerEventTypeName = "ULOG_JOB_TERMINATED"
+...
+000 (014.000.000) 03/27 16:10:49 Job submitted from host: <3.94.194.10:9618?addrs=3.94.194.10-9618&noUDP&sock=4119_deaf_3>
+...
+028 (014.000.000) 03/27 16:10:49 Job ad information event triggered.
+Proc = 0
+Cluster = 14
+EventTime = "2020-03-27T16:10:49"
+TriggerEventTypeName = "ULOG_SUBMIT"
+Subproc = 0
+EventTypeNumber = 28
+MyType = "SubmitEvent"
+Owner = "ec2-user"
+SubmitHost = "<3.94.194.10:9618?addrs=3.94.194.10-9618&noUDP&sock=4119_deaf_3>"
+ImageSize = 30
+TriggerEventTypeNumber = 0
+...
+001 (014.000.000) 03/27 16:11:01 Job executing on host: <3.82.200.120:9618?addrs=3.82.200.120-9618&noUDP&sock=4538_44de_3>
+...
+028 (014.000.000) 03/27 16:11:01 Job ad information event triggered.
+Proc = 0
+Cluster = 14
+EventTime = "2020-03-27T16:11:01"
+TriggerEventTypeName = "ULOG_EXECUTE"
+Subproc = 0
+EventTypeNumber = 28
+MyType = "ExecuteEvent"
+Owner = "ec2-user"
+ExecuteHost = "<3.82.200.120:9618?addrs=3.82.200.120-9618&noUDP&sock=4538_44de_3>"
+JobCurrentStartDate = 1585325460
+ImageSize = 30
+TriggerEventTypeNumber = 1
+...
+006 (014.000.000) 03/27 16:11:10 Image size of job updated: 76
+	1  -  MemoryUsage of job (MB)
+	76  -  ResidentSetSize of job (KB)
+...
+028 (014.000.000) 03/27 16:11:10 Job ad information event triggered.
+Proc = 0
+Cluster = 14
+ResidentSetSize = 76
+EventTime = "2020-03-27T16:11:10"
+TriggerEventTypeName = "ULOG_IMAGE_SIZE"
+Subproc = 0
+EventTypeNumber = 28
+MemoryUsage = 1
+MyType = "JobImageSizeEvent"
+Owner = "ec2-user"
+Size = 76
+JobCurrentStartDate = 1585325460
+ImageSize = 76
+TriggerEventTypeNumber = 6
+...
+005 (014.000.000) 03/27 16:11:21 Job terminated.
+	(1) Normal termination (return value 0)
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Local Usage
+	0  -  Run Bytes Sent By Job
+	28960  -  Run Bytes Received By Job
+	0  -  Total Bytes Sent By Job
+	28960  -  Total Bytes Received By Job
+	Partitionable Resources :    Usage  Request Allocated 
+	   Cpus                 :        0        1         1 
+	   Disk (KB)            :       42       30  59802856 
+	   Gpus                 :                           0 
+	   Memory (MB)          :        1        1       983 
+...
+028 (014.000.000) 03/27 16:11:21 Job ad information event triggered.
+RequestMemory = 1
+Cpus = 1
+Memory = 983
+Proc = 0
+Owner = "ec2-user"
+Disk = 59802856
+RequestCpus = 1
+CpusUsage = 0.0
+RequestDisk = 30
+TotalLocalUsage = "Usr 0 00:00:00, Sys 0 00:00:00"
+GPUs = 0
+MyType = "JobTerminatedEvent"
+RunLocalUsage = "Usr 0 00:00:00, Sys 0 00:00:00"
+RunRemoteUsage = "Usr 0 00:00:00, Sys 0 00:00:00"
+MemoryUsage = 1
+Subproc = 0
+TriggerEventTypeNumber = 5
+EventTypeNumber = 28
+DiskUsage = 42
+EventTime = "2020-03-27T16:11:21"
+Cluster = 14
+ReceivedBytes = 28960.0
+TerminatedNormally = true
+ReturnValue = 0
+TotalRemoteUsage = "Usr 0 00:00:00, Sys 0 00:00:00"
+SentBytes = 0.0
+TotalSentBytes = 0.0
+TotalReceivedBytes = 28960.0
+JobCurrentStartDate = 1585325460
+ImageSize = 76
+TriggerEventTypeName = "ULOG_JOB_TERMINATED"
+...
+000 (015.000.000) 03/27 16:27:14 Job submitted from host: <3.94.194.10:9618?addrs=3.94.194.10-9618&noUDP&sock=4119_deaf_3>
+...
+028 (015.000.000) 03/27 16:27:14 Job ad information event triggered.
+Proc = 0
+Cluster = 15
+EventTime = "2020-03-27T16:27:14"
+TriggerEventTypeName = "ULOG_SUBMIT"
+Subproc = 0
+EventTypeNumber = 28
+MyType = "SubmitEvent"
+Owner = "ec2-user"
+SubmitHost = "<3.94.194.10:9618?addrs=3.94.194.10-9618&noUDP&sock=4119_deaf_3>"
+ImageSize = 30
+TriggerEventTypeNumber = 0
+...
+001 (015.000.000) 03/27 16:27:21 Job executing on host: <3.82.200.120:9618?addrs=3.82.200.120-9618&noUDP&sock=4538_44de_3>
+...
+028 (015.000.000) 03/27 16:27:21 Job ad information event triggered.
+Proc = 0
+Cluster = 15
+EventTime = "2020-03-27T16:27:21"
+TriggerEventTypeName = "ULOG_EXECUTE"
+Subproc = 0
+EventTypeNumber = 28
+MyType = "ExecuteEvent"
+Owner = "ec2-user"
+ExecuteHost = "<3.82.200.120:9618?addrs=3.82.200.120-9618&noUDP&sock=4538_44de_3>"
+JobCurrentStartDate = 1585326440
+ImageSize = 30
+TriggerEventTypeNumber = 1
+...
+006 (015.000.000) 03/27 16:27:30 Image size of job updated: 84
+	1  -  MemoryUsage of job (MB)
+	84  -  ResidentSetSize of job (KB)
+...
+028 (015.000.000) 03/27 16:27:30 Job ad information event triggered.
+Proc = 0
+Cluster = 15
+ResidentSetSize = 84
+EventTime = "2020-03-27T16:27:30"
+TriggerEventTypeName = "ULOG_IMAGE_SIZE"
+Subproc = 0
+EventTypeNumber = 28
+MemoryUsage = 1
+MyType = "JobImageSizeEvent"
+Owner = "ec2-user"
+Size = 84
+JobCurrentStartDate = 1585326440
+ImageSize = 84
+TriggerEventTypeNumber = 6
+...
+005 (015.000.000) 03/27 16:27:42 Job terminated.
+	(1) Normal termination (return value 0)
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Local Usage
+	0  -  Run Bytes Sent By Job
+	28960  -  Run Bytes Received By Job
+	0  -  Total Bytes Sent By Job
+	28960  -  Total Bytes Received By Job
+	Partitionable Resources :    Usage  Request Allocated 
+	   Cpus                 :        0        1         1 
+	   Disk (KB)            :       42       30  59802856 
+	   Gpus                 :                           0 
+	   Memory (MB)          :        1        1       983 
+...
+028 (015.000.000) 03/27 16:27:42 Job ad information event triggered.
+RequestMemory = 1
+Cpus = 1
+Memory = 983
+Proc = 0
+Owner = "ec2-user"
+Disk = 59802856
+RequestCpus = 1
+CpusUsage = 0.0
+RequestDisk = 30
+TotalLocalUsage = "Usr 0 00:00:00, Sys 0 00:00:00"
+GPUs = 0
+MyType = "JobTerminatedEvent"
+RunLocalUsage = "Usr 0 00:00:00, Sys 0 00:00:00"
+RunRemoteUsage = "Usr 0 00:00:00, Sys 0 00:00:00"
+MemoryUsage = 1
+Subproc = 0
+TriggerEventTypeNumber = 5
+EventTypeNumber = 28
+DiskUsage = 42
+EventTime = "2020-03-27T16:27:42"
+Cluster = 15
+ReceivedBytes = 28960.0
+TerminatedNormally = true
+ReturnValue = 0
+TotalRemoteUsage = "Usr 0 00:00:00, Sys 0 00:00:00"
+SentBytes = 0.0
+TotalSentBytes = 0.0
+TotalReceivedBytes = 28960.0
+JobCurrentStartDate = 1585326440
+ImageSize = 84
+TriggerEventTypeName = "ULOG_JOB_TERMINATED"
+...
+000 (016.000.000) 03/27 16:31:05 Job submitted from host: <3.94.194.10:9618?addrs=3.94.194.10-9618&noUDP&sock=4119_deaf_3>
+...
+028 (016.000.000) 03/27 16:31:05 Job ad information event triggered.
+Proc = 0
+Cluster = 16
+EventTime = "2020-03-27T16:31:05"
+TriggerEventTypeName = "ULOG_SUBMIT"
+Subproc = 0
+EventTypeNumber = 28
+MyType = "SubmitEvent"
+Owner = "ec2-user"
+SubmitHost = "<3.94.194.10:9618?addrs=3.94.194.10-9618&noUDP&sock=4119_deaf_3>"
+ImageSize = 30
+TriggerEventTypeNumber = 0
+...
+001 (016.000.000) 03/27 16:31:06 Job executing on host: <3.82.200.120:9618?addrs=3.82.200.120-9618&noUDP&sock=4538_44de_3>
+...
+028 (016.000.000) 03/27 16:31:06 Job ad information event triggered.
+Proc = 0
+Cluster = 16
+EventTime = "2020-03-27T16:31:06"
+TriggerEventTypeName = "ULOG_EXECUTE"
+Subproc = 0
+EventTypeNumber = 28
+MyType = "ExecuteEvent"
+Owner = "ec2-user"
+ExecuteHost = "<3.82.200.120:9618?addrs=3.82.200.120-9618&noUDP&sock=4538_44de_3>"
+JobCurrentStartDate = 1585326665
+ImageSize = 30
+TriggerEventTypeNumber = 1
+...
+006 (016.000.000) 03/27 16:31:15 Image size of job updated: 80
+	1  -  MemoryUsage of job (MB)
+	80  -  ResidentSetSize of job (KB)
+...
+028 (016.000.000) 03/27 16:31:15 Job ad information event triggered.
+Proc = 0
+Cluster = 16
+ResidentSetSize = 80
+EventTime = "2020-03-27T16:31:15"
+TriggerEventTypeName = "ULOG_IMAGE_SIZE"
+Subproc = 0
+EventTypeNumber = 28
+MemoryUsage = 1
+MyType = "JobImageSizeEvent"
+Owner = "ec2-user"
+Size = 80
+JobCurrentStartDate = 1585326665
+ImageSize = 80
+TriggerEventTypeNumber = 6
+...
+005 (016.000.000) 03/27 16:31:26 Job terminated.
+	(1) Normal termination (return value 0)
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Local Usage
+	0  -  Run Bytes Sent By Job
+	28960  -  Run Bytes Received By Job
+	0  -  Total Bytes Sent By Job
+	28960  -  Total Bytes Received By Job
+	Partitionable Resources :    Usage  Request Allocated 
+	   Cpus                 :        0        1         1 
+	   Disk (KB)            :       42       30  59802856 
+	   Gpus                 :                           0 
+	   Memory (MB)          :        1        1       983 
+...
+028 (016.000.000) 03/27 16:31:26 Job ad information event triggered.
+RequestMemory = 1
+Cpus = 1
+Memory = 983
+Proc = 0
+Owner = "ec2-user"
+Disk = 59802856
+RequestCpus = 1
+CpusUsage = 0.0
+RequestDisk = 30
+TotalLocalUsage = "Usr 0 00:00:00, Sys 0 00:00:00"
+GPUs = 0
+MyType = "JobTerminatedEvent"
+RunLocalUsage = "Usr 0 00:00:00, Sys 0 00:00:00"
+RunRemoteUsage = "Usr 0 00:00:00, Sys 0 00:00:00"
+MemoryUsage = 1
+Subproc = 0
+TriggerEventTypeNumber = 5
+EventTypeNumber = 28
+DiskUsage = 42
+EventTime = "2020-03-27T16:31:26"
+Cluster = 16
+ReceivedBytes = 28960.0
+TerminatedNormally = true
+ReturnValue = 0
+TotalRemoteUsage = "Usr 0 00:00:00, Sys 0 00:00:00"
+SentBytes = 0.0
+TotalSentBytes = 0.0
+TotalReceivedBytes = 28960.0
+JobCurrentStartDate = 1585326665
+ImageSize = 80
+TriggerEventTypeName = "ULOG_JOB_TERMINATED"
+...
+000 (017.000.000) 03/27 16:33:03 Job submitted from host: <3.94.194.10:9618?addrs=3.94.194.10-9618&noUDP&sock=4119_deaf_3>
+...
+028 (017.000.000) 03/27 16:33:03 Job ad information event triggered.
+Proc = 0
+Cluster = 17
+EventTime = "2020-03-27T16:33:03"
+TriggerEventTypeName = "ULOG_SUBMIT"
+Subproc = 0
+EventTypeNumber = 28
+MyType = "SubmitEvent"
+Owner = "ec2-user"
+SubmitHost = "<3.94.194.10:9618?addrs=3.94.194.10-9618&noUDP&sock=4119_deaf_3>"
+ImageSize = 30
+TriggerEventTypeNumber = 0
+...
+001 (017.000.000) 03/27 16:33:05 Job executing on host: <3.82.200.120:9618?addrs=3.82.200.120-9618&noUDP&sock=4538_44de_3>
+...
+028 (017.000.000) 03/27 16:33:05 Job ad information event triggered.
+Proc = 0
+Cluster = 17
+EventTime = "2020-03-27T16:33:05"
+TriggerEventTypeName = "ULOG_EXECUTE"
+Subproc = 0
+EventTypeNumber = 28
+MyType = "ExecuteEvent"
+Owner = "ec2-user"
+ExecuteHost = "<3.82.200.120:9618?addrs=3.82.200.120-9618&noUDP&sock=4538_44de_3>"
+JobCurrentStartDate = 1585326783
+ImageSize = 30
+TriggerEventTypeNumber = 1
+...
+006 (017.000.000) 03/27 16:33:13 Image size of job updated: 80
+	1  -  MemoryUsage of job (MB)
+	80  -  ResidentSetSize of job (KB)
+...
+028 (017.000.000) 03/27 16:33:13 Job ad information event triggered.
+Proc = 0
+Cluster = 17
+ResidentSetSize = 80
+EventTime = "2020-03-27T16:33:13"
+TriggerEventTypeName = "ULOG_IMAGE_SIZE"
+Subproc = 0
+EventTypeNumber = 28
+MemoryUsage = 1
+MyType = "JobImageSizeEvent"
+Owner = "ec2-user"
+Size = 80
+JobCurrentStartDate = 1585326783
+ImageSize = 80
+TriggerEventTypeNumber = 6
+...
+005 (017.000.000) 03/27 16:33:25 Job terminated.
+	(1) Normal termination (return value 0)
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Local Usage
+	0  -  Run Bytes Sent By Job
+	28960  -  Run Bytes Received By Job
+	0  -  Total Bytes Sent By Job
+	28960  -  Total Bytes Received By Job
+	Partitionable Resources :    Usage  Request Allocated 
+	   Cpus                 :        0        1         1 
+	   Disk (KB)            :       42       30  59802856 
+	   Gpus                 :                           0 
+	   Memory (MB)          :        1        1       983 
+...
+028 (017.000.000) 03/27 16:33:25 Job ad information event triggered.
+RequestMemory = 1
+Cpus = 1
+Memory = 983
+Proc = 0
+Owner = "ec2-user"
+Disk = 59802856
+RequestCpus = 1
+CpusUsage = 0.0
+RequestDisk = 30
+TotalLocalUsage = "Usr 0 00:00:00, Sys 0 00:00:00"
+GPUs = 0
+MyType = "JobTerminatedEvent"
+RunLocalUsage = "Usr 0 00:00:00, Sys 0 00:00:00"
+RunRemoteUsage = "Usr 0 00:00:00, Sys 0 00:00:00"
+MemoryUsage = 1
+Subproc = 0
+TriggerEventTypeNumber = 5
+EventTypeNumber = 28
+DiskUsage = 42
+EventTime = "2020-03-27T16:33:25"
+Cluster = 17
+ReceivedBytes = 28960.0
+TerminatedNormally = true
+ReturnValue = 0
+TotalRemoteUsage = "Usr 0 00:00:00, Sys 0 00:00:00"
+SentBytes = 0.0
+TotalSentBytes = 0.0
+TotalReceivedBytes = 28960.0
+JobCurrentStartDate = 1585326783
+ImageSize = 80
+TriggerEventTypeName = "ULOG_JOB_TERMINATED"
+...
+000 (018.000.000) 03/27 16:33:40 Job submitted from host: <3.94.194.10:9618?addrs=3.94.194.10-9618&noUDP&sock=4119_deaf_3>
+...
+028 (018.000.000) 03/27 16:33:40 Job ad information event triggered.
+Proc = 0
+Cluster = 18
+EventTime = "2020-03-27T16:33:40"
+TriggerEventTypeName = "ULOG_SUBMIT"
+Subproc = 0
+EventTypeNumber = 28
+MyType = "SubmitEvent"
+Owner = "ec2-user"
+SubmitHost = "<3.94.194.10:9618?addrs=3.94.194.10-9618&noUDP&sock=4119_deaf_3>"
+ImageSize = 30
+TriggerEventTypeNumber = 0
+...
+001 (018.000.000) 03/27 16:33:41 Job executing on host: <3.82.200.120:9618?addrs=3.82.200.120-9618&noUDP&sock=4538_44de_3>
+...
+028 (018.000.000) 03/27 16:33:41 Job ad information event triggered.
+Proc = 0
+Cluster = 18
+EventTime = "2020-03-27T16:33:41"
+TriggerEventTypeName = "ULOG_EXECUTE"
+Subproc = 0
+EventTypeNumber = 28
+MyType = "ExecuteEvent"
+Owner = "ec2-user"
+ExecuteHost = "<3.82.200.120:9618?addrs=3.82.200.120-9618&noUDP&sock=4538_44de_3>"
+JobCurrentStartDate = 1585326820
+ImageSize = 30
+TriggerEventTypeNumber = 1
+...
+006 (018.000.000) 03/27 16:33:50 Image size of job updated: 76
+	1  -  MemoryUsage of job (MB)
+	76  -  ResidentSetSize of job (KB)
+...
+028 (018.000.000) 03/27 16:33:50 Job ad information event triggered.
+Proc = 0
+Cluster = 18
+ResidentSetSize = 76
+EventTime = "2020-03-27T16:33:50"
+TriggerEventTypeName = "ULOG_IMAGE_SIZE"
+Subproc = 0
+EventTypeNumber = 28
+MemoryUsage = 1
+MyType = "JobImageSizeEvent"
+Owner = "ec2-user"
+Size = 76
+JobCurrentStartDate = 1585326820
+ImageSize = 76
+TriggerEventTypeNumber = 6
+...
+006 (018.000.000) 03/27 16:43:41 Image size of job updated: 4284
+	1  -  MemoryUsage of job (MB)
+	76  -  ResidentSetSize of job (KB)
+...
+028 (018.000.000) 03/27 16:43:41 Job ad information event triggered.
+Proc = 0
+Cluster = 18
+ResidentSetSize = 76
+EventTime = "2020-03-27T16:43:41"
+TriggerEventTypeName = "ULOG_IMAGE_SIZE"
+Subproc = 0
+EventTypeNumber = 28
+MemoryUsage = 1
+MyType = "JobImageSizeEvent"
+Owner = "ec2-user"
+Size = 4284
+JobCurrentStartDate = 1585326820
+ImageSize = 4284
+TriggerEventTypeNumber = 6
+...
+005 (018.000.000) 03/27 16:43:41 Job terminated.
+	(1) Normal termination (return value 0)
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Local Usage
+	0  -  Run Bytes Sent By Job
+	28960  -  Run Bytes Received By Job
+	0  -  Total Bytes Sent By Job
+	28960  -  Total Bytes Received By Job
+	Partitionable Resources :    Usage  Request Allocated 
+	   Cpus                 :        0        1         1 
+	   Disk (KB)            :       42       30  59802856 
+	   Gpus                 :                           0 
+	   Memory (MB)          :        1        1       983 
+...
+028 (018.000.000) 03/27 16:43:41 Job ad information event triggered.
+RequestMemory = 1
+Cpus = 1
+Memory = 983
+Proc = 0
+Owner = "ec2-user"
+Disk = 59802856
+RequestCpus = 1
+CpusUsage = 0.0
+RequestDisk = 30
+TotalLocalUsage = "Usr 0 00:00:00, Sys 0 00:00:00"
+GPUs = 0
+MyType = "JobTerminatedEvent"
+RunLocalUsage = "Usr 0 00:00:00, Sys 0 00:00:00"
+RunRemoteUsage = "Usr 0 00:00:00, Sys 0 00:00:00"
+MemoryUsage = 1
+Subproc = 0
+TriggerEventTypeNumber = 5
+EventTypeNumber = 28
+DiskUsage = 42
+EventTime = "2020-03-27T16:43:41"
+Cluster = 18
+ReceivedBytes = 28960.0
+TerminatedNormally = true
+ReturnValue = 0
+TotalRemoteUsage = "Usr 0 00:00:00, Sys 0 00:00:00"
+SentBytes = 0.0
+TotalSentBytes = 0.0
+TotalReceivedBytes = 28960.0
+JobCurrentStartDate = 1585326820
+ImageSize = 4284
+TriggerEventTypeName = "ULOG_JOB_TERMINATED"
+...
+000 (019.000.000) 03/27 21:16:39 Job submitted from host: <3.94.194.10:9618?addrs=3.94.194.10-9618&noUDP&sock=4119_deaf_3>
+...
+028 (019.000.000) 03/27 21:16:39 Job ad information event triggered.
+Proc = 0
+Cluster = 19
+EventTime = "2020-03-27T21:16:39"
+TriggerEventTypeName = "ULOG_SUBMIT"
+Subproc = 0
+EventTypeNumber = 28
+MyType = "SubmitEvent"
+Owner = "ec2-user"
+SubmitHost = "<3.94.194.10:9618?addrs=3.94.194.10-9618&noUDP&sock=4119_deaf_3>"
+ImageSize = 30
+TriggerEventTypeNumber = 0
+...
+001 (019.000.000) 03/27 21:16:40 Job executing on host: <3.82.200.120:9618?addrs=3.82.200.120-9618&noUDP&sock=4538_44de_3>
+...
+028 (019.000.000) 03/27 21:16:40 Job ad information event triggered.
+Proc = 0
+Cluster = 19
+EventTime = "2020-03-27T21:16:40"
+TriggerEventTypeName = "ULOG_EXECUTE"
+Subproc = 0
+EventTypeNumber = 28
+MyType = "ExecuteEvent"
+Owner = "ec2-user"
+ExecuteHost = "<3.82.200.120:9618?addrs=3.82.200.120-9618&noUDP&sock=4538_44de_3>"
+JobCurrentStartDate = 1585343799
+ImageSize = 30
+TriggerEventTypeNumber = 1
+...
+006 (019.000.000) 03/27 21:16:49 Image size of job updated: 80
+	1  -  MemoryUsage of job (MB)
+	80  -  ResidentSetSize of job (KB)
+...
+028 (019.000.000) 03/27 21:16:49 Job ad information event triggered.
+Proc = 0
+Cluster = 19
+ResidentSetSize = 80
+EventTime = "2020-03-27T21:16:49"
+TriggerEventTypeName = "ULOG_IMAGE_SIZE"
+Subproc = 0
+EventTypeNumber = 28
+MemoryUsage = 1
+MyType = "JobImageSizeEvent"
+Owner = "ec2-user"
+Size = 80
+JobCurrentStartDate = 1585343799
+ImageSize = 80
+TriggerEventTypeNumber = 6
+...
+005 (019.000.000) 03/27 21:26:40 Job terminated.
+	(1) Normal termination (return value 0)
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Local Usage
+	0  -  Run Bytes Sent By Job
+	28960  -  Run Bytes Received By Job
+	0  -  Total Bytes Sent By Job
+	28960  -  Total Bytes Received By Job
+	Partitionable Resources :    Usage  Request Allocated 
+	   Cpus                 :        0        1         1 
+	   Disk (KB)            :       42       30  59802856 
+	   Gpus                 :                           0 
+	   Memory (MB)          :        1        1       983 
+...
+028 (019.000.000) 03/27 21:26:40 Job ad information event triggered.
+RequestMemory = 1
+Cpus = 1
+Memory = 983
+Proc = 0
+Owner = "ec2-user"
+Disk = 59802856
+RequestCpus = 1
+CpusUsage = 0.0
+RequestDisk = 30
+TotalLocalUsage = "Usr 0 00:00:00, Sys 0 00:00:00"
+GPUs = 0
+MyType = "JobTerminatedEvent"
+RunLocalUsage = "Usr 0 00:00:00, Sys 0 00:00:00"
+RunRemoteUsage = "Usr 0 00:00:00, Sys 0 00:00:00"
+MemoryUsage = 1
+Subproc = 0
+TriggerEventTypeNumber = 5
+EventTypeNumber = 28
+DiskUsage = 42
+EventTime = "2020-03-27T21:26:40"
+Cluster = 19
+ReceivedBytes = 28960.0
+TerminatedNormally = true
+ReturnValue = 0
+TotalRemoteUsage = "Usr 0 00:00:00, Sys 0 00:00:00"
+SentBytes = 0.0
+TotalSentBytes = 0.0
+TotalReceivedBytes = 28960.0
+JobCurrentStartDate = 1585343799
+ImageSize = 80
+TriggerEventTypeName = "ULOG_JOB_TERMINATED"
+...
+000 (020.000.000) 03/27 21:41:41 Job submitted from host: <3.94.194.10:9618?addrs=3.94.194.10-9618&noUDP&sock=4119_deaf_3>
+...
+028 (020.000.000) 03/27 21:41:41 Job ad information event triggered.
+Proc = 0
+Cluster = 20
+EventTime = "2020-03-27T21:41:41"
+TriggerEventTypeName = "ULOG_SUBMIT"
+Subproc = 0
+EventTypeNumber = 28
+MyType = "SubmitEvent"
+Owner = "ec2-user"
+SubmitHost = "<3.94.194.10:9618?addrs=3.94.194.10-9618&noUDP&sock=4119_deaf_3>"
+ImageSize = 30
+TriggerEventTypeNumber = 0
+...
+001 (020.000.000) 03/27 21:42:01 Job executing on host: <3.82.200.120:9618?addrs=3.82.200.120-9618&noUDP&sock=4538_44de_3>
+...
+028 (020.000.000) 03/27 21:42:01 Job ad information event triggered.
+Proc = 0
+Cluster = 20
+EventTime = "2020-03-27T21:42:01"
+TriggerEventTypeName = "ULOG_EXECUTE"
+Subproc = 0
+EventTypeNumber = 28
+MyType = "ExecuteEvent"
+Owner = "ec2-user"
+ExecuteHost = "<3.82.200.120:9618?addrs=3.82.200.120-9618&noUDP&sock=4538_44de_3>"
+JobCurrentStartDate = 1585345320
+ImageSize = 30
+TriggerEventTypeNumber = 1
+...
+006 (020.000.000) 03/27 21:42:10 Image size of job updated: 80
+	1  -  MemoryUsage of job (MB)
+	80  -  ResidentSetSize of job (KB)
+...
+028 (020.000.000) 03/27 21:42:10 Job ad information event triggered.
+Proc = 0
+Cluster = 20
+ResidentSetSize = 80
+EventTime = "2020-03-27T21:42:10"
+TriggerEventTypeName = "ULOG_IMAGE_SIZE"
+Subproc = 0
+EventTypeNumber = 28
+MemoryUsage = 1
+MyType = "JobImageSizeEvent"
+Owner = "ec2-user"
+Size = 80
+JobCurrentStartDate = 1585345320
+ImageSize = 80
+TriggerEventTypeNumber = 6
+...
+005 (020.000.000) 03/27 21:52:01 Job terminated.
+	(1) Normal termination (return value 0)
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Local Usage
+	0  -  Run Bytes Sent By Job
+	28960  -  Run Bytes Received By Job
+	0  -  Total Bytes Sent By Job
+	28960  -  Total Bytes Received By Job
+	Partitionable Resources :    Usage  Request Allocated 
+	   Cpus                 :        0        1         1 
+	   Disk (KB)            :       42       30  59802856 
+	   Gpus                 :                           0 
+	   Memory (MB)          :        1        1       983 
+...
+028 (020.000.000) 03/27 21:52:01 Job ad information event triggered.
+RequestMemory = 1
+Cpus = 1
+Memory = 983
+Proc = 0
+Owner = "ec2-user"
+Disk = 59802856
+RequestCpus = 1
+CpusUsage = 0.0
+RequestDisk = 30
+TotalLocalUsage = "Usr 0 00:00:00, Sys 0 00:00:00"
+GPUs = 0
+MyType = "JobTerminatedEvent"
+RunLocalUsage = "Usr 0 00:00:00, Sys 0 00:00:00"
+RunRemoteUsage = "Usr 0 00:00:00, Sys 0 00:00:00"
+MemoryUsage = 1
+Subproc = 0
+TriggerEventTypeNumber = 5
+EventTypeNumber = 28
+DiskUsage = 42
+EventTime = "2020-03-27T21:52:01"
+Cluster = 20
+ReceivedBytes = 28960.0
+TerminatedNormally = true
+ReturnValue = 0
+TotalRemoteUsage = "Usr 0 00:00:00, Sys 0 00:00:00"
+SentBytes = 0.0
+TotalSentBytes = 0.0
+TotalReceivedBytes = 28960.0
+JobCurrentStartDate = 1585345320
+ImageSize = 80
+TriggerEventTypeName = "ULOG_JOB_TERMINATED"
+...
+000 (021.000.000) 03/31 18:36:22 Job submitted from host: <54.167.122.219:9618?addrs=54.167.122.219-9618&noUDP&sock=4135_d833_3>
+...
+028 (021.000.000) 03/31 18:36:22 Job ad information event triggered.
+Proc = 0
+Cluster = 21
+EventTime = "2020-03-31T18:36:22"
+TriggerEventTypeName = "ULOG_SUBMIT"
+Subproc = 0
+EventTypeNumber = 28
+MyType = "SubmitEvent"
+Owner = "ec2-user"
+SubmitHost = "<54.167.122.219:9618?addrs=54.167.122.219-9618&noUDP&sock=4135_d833_3>"
+ImageSize = 30
+TriggerEventTypeNumber = 0
+...
+000 (022.000.000) 03/31 18:36:26 Job submitted from host: <54.167.122.219:9618?addrs=54.167.122.219-9618&noUDP&sock=4135_d833_3>
+...
+028 (022.000.000) 03/31 18:36:26 Job ad information event triggered.
+Proc = 0
+Cluster = 22
+EventTime = "2020-03-31T18:36:26"
+TriggerEventTypeName = "ULOG_SUBMIT"
+Subproc = 0
+EventTypeNumber = 28
+MyType = "SubmitEvent"
+Owner = "ec2-user"
+SubmitHost = "<54.167.122.219:9618?addrs=54.167.122.219-9618&noUDP&sock=4135_d833_3>"
+ImageSize = 30
+TriggerEventTypeNumber = 0
+...
+000 (023.000.000) 03/31 18:36:26 Job submitted from host: <54.167.122.219:9618?addrs=54.167.122.219-9618&noUDP&sock=4135_d833_3>
+...
+028 (023.000.000) 03/31 18:36:26 Job ad information event triggered.
+Proc = 0
+Cluster = 23
+EventTime = "2020-03-31T18:36:26"
+TriggerEventTypeName = "ULOG_SUBMIT"
+Subproc = 0
+EventTypeNumber = 28
+MyType = "SubmitEvent"
+Owner = "ec2-user"
+SubmitHost = "<54.167.122.219:9618?addrs=54.167.122.219-9618&noUDP&sock=4135_d833_3>"
+ImageSize = 30
+TriggerEventTypeNumber = 0
+...
+001 (021.000.000) 03/31 18:36:31 Job executing on host: <34.207.70.51:9618?addrs=34.207.70.51-9618&noUDP&sock=4503_430e_3>
+...
+028 (021.000.000) 03/31 18:36:31 Job ad information event triggered.
+Proc = 0
+Cluster = 21
+EventTime = "2020-03-31T18:36:31"
+TriggerEventTypeName = "ULOG_EXECUTE"
+Subproc = 0
+EventTypeNumber = 28
+MyType = "ExecuteEvent"
+Owner = "ec2-user"
+ExecuteHost = "<34.207.70.51:9618?addrs=34.207.70.51-9618&noUDP&sock=4503_430e_3>"
+JobCurrentStartDate = 1585679789
+ImageSize = 30
+TriggerEventTypeNumber = 1
+...
+006 (021.000.000) 03/31 18:36:39 Image size of job updated: 76
+	1  -  MemoryUsage of job (MB)
+	76  -  ResidentSetSize of job (KB)
+...
+028 (021.000.000) 03/31 18:36:39 Job ad information event triggered.
+Proc = 0
+Cluster = 21
+ResidentSetSize = 76
+EventTime = "2020-03-31T18:36:39"
+TriggerEventTypeName = "ULOG_IMAGE_SIZE"
+Subproc = 0
+EventTypeNumber = 28
+MemoryUsage = 1
+MyType = "JobImageSizeEvent"
+Owner = "ec2-user"
+Size = 76
+JobCurrentStartDate = 1585679789
+ImageSize = 76
+TriggerEventTypeNumber = 6
+...
+005 (021.000.000) 03/31 18:46:31 Job terminated.
+	(1) Normal termination (return value 0)
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Local Usage
+	0  -  Run Bytes Sent By Job
+	28960  -  Run Bytes Received By Job
+	0  -  Total Bytes Sent By Job
+	28960  -  Total Bytes Received By Job
+	Partitionable Resources :    Usage  Request Allocated 
+	   Cpus                 :        0        1         1 
+	   Disk (KB)            :       42       30  59834660 
+	   Gpus                 :                           0 
+	   Memory (MB)          :        1        1       983 
+...
+028 (021.000.000) 03/31 18:46:31 Job ad information event triggered.
+RequestMemory = 1
+Cpus = 1
+Memory = 983
+Proc = 0
+Owner = "ec2-user"
+Disk = 59834660
+RequestCpus = 1
+CpusUsage = 0.0
+RequestDisk = 30
+TotalLocalUsage = "Usr 0 00:00:00, Sys 0 00:00:00"
+GPUs = 0
+MyType = "JobTerminatedEvent"
+RunLocalUsage = "Usr 0 00:00:00, Sys 0 00:00:00"
+RunRemoteUsage = "Usr 0 00:00:00, Sys 0 00:00:00"
+MemoryUsage = 1
+Subproc = 0
+TriggerEventTypeNumber = 5
+EventTypeNumber = 28
+DiskUsage = 42
+EventTime = "2020-03-31T18:46:31"
+Cluster = 21
+ReceivedBytes = 28960.0
+TerminatedNormally = true
+ReturnValue = 0
+TotalRemoteUsage = "Usr 0 00:00:00, Sys 0 00:00:00"
+SentBytes = 0.0
+TotalSentBytes = 0.0
+TotalReceivedBytes = 28960.0
+JobCurrentStartDate = 1585679789
+ImageSize = 76
+TriggerEventTypeName = "ULOG_JOB_TERMINATED"
+...
+001 (022.000.000) 03/31 18:46:32 Job executing on host: <34.207.70.51:9618?addrs=34.207.70.51-9618&noUDP&sock=4503_430e_3>
+...
+028 (022.000.000) 03/31 18:46:32 Job ad information event triggered.
+Proc = 0
+Cluster = 22
+EventTime = "2020-03-31T18:46:32"
+TriggerEventTypeName = "ULOG_EXECUTE"
+Subproc = 0
+EventTypeNumber = 28
+MyType = "ExecuteEvent"
+Owner = "ec2-user"
+ExecuteHost = "<34.207.70.51:9618?addrs=34.207.70.51-9618&noUDP&sock=4503_430e_3>"
+JobCurrentStartDate = 1585680391
+ImageSize = 30
+TriggerEventTypeNumber = 1
+...
+006 (022.000.000) 03/31 18:46:40 Image size of job updated: 80
+	1  -  MemoryUsage of job (MB)
+	80  -  ResidentSetSize of job (KB)
+...
+028 (022.000.000) 03/31 18:46:40 Job ad information event triggered.
+Proc = 0
+Cluster = 22
+ResidentSetSize = 80
+EventTime = "2020-03-31T18:46:40"
+TriggerEventTypeName = "ULOG_IMAGE_SIZE"
+Subproc = 0
+EventTypeNumber = 28
+MemoryUsage = 1
+MyType = "JobImageSizeEvent"
+Owner = "ec2-user"
+Size = 80
+JobCurrentStartDate = 1585680391
+ImageSize = 80
+TriggerEventTypeNumber = 6
+...
+005 (022.000.000) 03/31 18:56:32 Job terminated.
+	(1) Normal termination (return value 0)
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Local Usage
+	0  -  Run Bytes Sent By Job
+	28960  -  Run Bytes Received By Job
+	0  -  Total Bytes Sent By Job
+	28960  -  Total Bytes Received By Job
+	Partitionable Resources :    Usage  Request Allocated 
+	   Cpus                 :        0        1         1 
+	   Disk (KB)            :       42       30  59834660 
+	   Gpus                 :                           0 
+	   Memory (MB)          :        1        1       983 
+...
+028 (022.000.000) 03/31 18:56:32 Job ad information event triggered.
+RequestMemory = 1
+Cpus = 1
+Memory = 983
+Proc = 0
+Owner = "ec2-user"
+Disk = 59834660
+RequestCpus = 1
+CpusUsage = 0.0
+RequestDisk = 30
+TotalLocalUsage = "Usr 0 00:00:00, Sys 0 00:00:00"
+GPUs = 0
+MyType = "JobTerminatedEvent"
+RunLocalUsage = "Usr 0 00:00:00, Sys 0 00:00:00"
+RunRemoteUsage = "Usr 0 00:00:00, Sys 0 00:00:00"
+MemoryUsage = 1
+Subproc = 0
+TriggerEventTypeNumber = 5
+EventTypeNumber = 28
+DiskUsage = 42
+EventTime = "2020-03-31T18:56:32"
+Cluster = 22
+ReceivedBytes = 28960.0
+TerminatedNormally = true
+ReturnValue = 0
+TotalRemoteUsage = "Usr 0 00:00:00, Sys 0 00:00:00"
+SentBytes = 0.0
+TotalSentBytes = 0.0
+TotalReceivedBytes = 28960.0
+JobCurrentStartDate = 1585680391
+ImageSize = 80
+TriggerEventTypeName = "ULOG_JOB_TERMINATED"
+...
+001 (023.000.000) 03/31 18:57:31 Job executing on host: <34.207.70.51:9618?addrs=34.207.70.51-9618&noUDP&sock=4503_430e_3>
+...
+028 (023.000.000) 03/31 18:57:31 Job ad information event triggered.
+Proc = 0
+Cluster = 23
+EventTime = "2020-03-31T18:57:31"
+TriggerEventTypeName = "ULOG_EXECUTE"
+Subproc = 0
+EventTypeNumber = 28
+MyType = "ExecuteEvent"
+Owner = "ec2-user"
+ExecuteHost = "<34.207.70.51:9618?addrs=34.207.70.51-9618&noUDP&sock=4503_430e_3>"
+JobCurrentStartDate = 1585681049
+ImageSize = 30
+TriggerEventTypeNumber = 1
+...
+006 (023.000.000) 03/31 18:57:39 Image size of job updated: 80
+	1  -  MemoryUsage of job (MB)
+	80  -  ResidentSetSize of job (KB)
+...
+028 (023.000.000) 03/31 18:57:39 Job ad information event triggered.
+Proc = 0
+Cluster = 23
+ResidentSetSize = 80
+EventTime = "2020-03-31T18:57:39"
+TriggerEventTypeName = "ULOG_IMAGE_SIZE"
+Subproc = 0
+EventTypeNumber = 28
+MemoryUsage = 1
+MyType = "JobImageSizeEvent"
+Owner = "ec2-user"
+Size = 80
+JobCurrentStartDate = 1585681049
+ImageSize = 80
+TriggerEventTypeNumber = 6
+...
+005 (023.000.000) 03/31 19:07:31 Job terminated.
+	(1) Normal termination (return value 0)
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Run Local Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Remote Usage
+		Usr 0 00:00:00, Sys 0 00:00:00  -  Total Local Usage
+	0  -  Run Bytes Sent By Job
+	28960  -  Run Bytes Received By Job
+	0  -  Total Bytes Sent By Job
+	28960  -  Total Bytes Received By Job
+	Partitionable Resources :    Usage  Request Allocated 
+	   Cpus                 :        0        1         1 
+	   Disk (KB)            :       42       30  59834660 
+	   Gpus                 :                           0 
+	   Memory (MB)          :        1        1       983 
+...
+028 (023.000.000) 03/31 19:07:31 Job ad information event triggered.
+RequestMemory = 1
+Cpus = 1
+Memory = 983
+Proc = 0
+Owner = "ec2-user"
+Disk = 59834660
+RequestCpus = 1
+CpusUsage = 0.0
+RequestDisk = 30
+TotalLocalUsage = "Usr 0 00:00:00, Sys 0 00:00:00"
+GPUs = 0
+MyType = "JobTerminatedEvent"
+RunLocalUsage = "Usr 0 00:00:00, Sys 0 00:00:00"
+RunRemoteUsage = "Usr 0 00:00:00, Sys 0 00:00:00"
+MemoryUsage = 1
+Subproc = 0
+TriggerEventTypeNumber = 5
+EventTypeNumber = 28
+DiskUsage = 42
+EventTime = "2020-03-31T19:07:31"
+Cluster = 23
+ReceivedBytes = 28960.0
+TerminatedNormally = true
+ReturnValue = 0
+TotalRemoteUsage = "Usr 0 00:00:00, Sys 0 00:00:00"
+SentBytes = 0.0
+TotalSentBytes = 0.0
+TotalReceivedBytes = 28960.0
+JobCurrentStartDate = 1585681049
+ImageSize = 80
+TriggerEventTypeName = "ULOG_JOB_TERMINATED"
+...
