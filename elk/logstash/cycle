@@ -1,0 +1,11 @@
+#! /bin/bash
+
+./build
+
+docker container stop htc-logstash
+docker container prune -f
+
+./run
+
+docker logs -f htc-logstash
+
