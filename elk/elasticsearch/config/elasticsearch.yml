@@ -60,8 +60,11 @@ bootstrap.memory_lock: true
 #
 #network.host: 192.168.0.1
 # network.host: htc-elasticsearch
-network.host: 0.0.0.0
-# network.publish_host: htc-elasticsearch
+network:
+        host: 0.0.0.0
+        publish_host: htc-elasticsearch
+
+discovery.zen.ping.unicast.hosts: ["htc-elasticsearch"]
 
 # transport:
 #     host: localhost

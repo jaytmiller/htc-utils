@@ -1,10 +1,11 @@
-#! /bin/bash -eu
+#! /bin/bash -u
 
 sudo sysctl -w vm.max_map_count=262144
 sudo sysctl -w fs.file-max=65536
 
 if [[ ! -f /etc/systemd/system/docker.service.d/override.conf ]] ; then
-    sudo touch /etc/systemd/system/docker.service.d/override.conf
+    sudo -u root mkdir -p /etc/systemd/system/docker.service.d
+    sudo -u root echo >/etc/systemd/system/docker.service.d/override.conf
 fi
 								    
 if [[ ! $(grep 'MEMLOCK=infinity' /etc/systemd/system/docker.service.d/override.conf) ]] ; then

@@ -4,4 +4,5 @@ docker run -d \
        --name htc-kibana \
        --network elknet \
        -p 5601:5601 \
+       --cpus 2 \
        htc-kibana
