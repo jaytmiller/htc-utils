@@ -2,10 +2,10 @@
 
 ./build
 
-docker container stop htc-logstash
-docker container prune -f
+sudo docker container stop htc-logstash
+sudo docker container prune -f
 
 ./run
 
-docker logs -f htc-logstash
+# docker logs -f htc-logstash
 
