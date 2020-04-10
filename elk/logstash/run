@@ -5,5 +5,5 @@ docker run -d  \
        --network=elknet \
        -p 5044:5044 \
        -p 9600:9600 \
-       --mount type=bind,source=/var/log/condor,destination=/var/log/condor,readonly \
+       --mount type=bind,source=$HOME/condor_log,destination=/var/log/condor \
        htc-logstash
