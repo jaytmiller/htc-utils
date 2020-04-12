@@ -1,5 +1,5 @@
 {
-    "index_patterns" : "htc-condor-events-*",                                                                           
+    "index_patterns" : "htc-eventlog-*",                                                                           
     "settings" : {
         "index.refresh_interval" : "60s",
         "number_of_shards" :   1,
