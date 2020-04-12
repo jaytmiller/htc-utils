@@ -236,6 +236,9 @@
                 "cpu_request" : {
                     "type" : "long"
                 },
+                "dag_node" : {
+                    "type" : "keyword"
+                },
                 "disk_allocated_kb" : {
                     "type" : "long"
                 },
