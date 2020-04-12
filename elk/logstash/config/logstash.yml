@@ -1,3 +1,10 @@
 # http.host: "htc-logstash"
 xpack.monitoring.enabled: false
 # xpack.monitoring.elasticsearch.hosts: [ "http://htc-elasticsearch:9200" ]
+
+# Without this, filters and outputs execute in parallel bounded by
+# available VM/JVM/Docker CPUs.  This can result in out-of-order
+# execution which e.g. could potentially cause the termination event
+# for a job to parse prior to the filtering of all related child
+# events.
+pipeline.workers: 1

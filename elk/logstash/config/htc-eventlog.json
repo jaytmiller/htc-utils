@@ -1,5 +1,5 @@
 {
-    "index_patterns" : "htc-condor-events-*",                                                                           
+    "index_patterns" : "htc-eventlog-*",                                                                           
     "settings" : {
         "index.refresh_interval" : "60s",
         "number_of_shards" :   1,
@@ -235,6 +235,9 @@
                 },
                 "cpu_request" : {
                     "type" : "long"
+                },
+                "dag_node" : {
+                    "type" : "keyword"
                 },
                 "disk_allocated_kb" : {
                     "type" : "long"
