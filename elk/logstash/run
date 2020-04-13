@@ -2,9 +2,12 @@
 
 sudo docker run -d \
        --name htc-logstash \
+       --network=elknet \
        -p 5044:5044 \
        -p 9600:9600 \
-       --mount type=bind,source=/ifs/archive/test/jwst/store/condor/logs/tljwdmscsched2,destination=/var/log/condor,readonly \
+       --mount type=bind,source=$HOME/condor_log,destination=/var/log/condor \
        htc-logstash  $*
 
 #       --mount type=bind,source=/var/log/condor,destination=/var/log/condor,readonly \
+
+
