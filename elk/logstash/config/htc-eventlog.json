@@ -260,6 +260,9 @@
                 "execute_host" : {
                     "type" : "keyword"
                 },
+                "execute_host_name" : {
+                    "type" : "keyword"
+                },
                 "hold_code" : {
                     "type" : "keyword"
                 },
