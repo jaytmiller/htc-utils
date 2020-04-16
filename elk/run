@@ -5,7 +5,9 @@ components=${1:-`cat components`}
 for comp in $components;
 do
     echo =============== starting $comp =================
-    $comp/run
+    cd $comp
+    ./run
+    cd ..
 done
 
 echo =================== docker ps ======================
