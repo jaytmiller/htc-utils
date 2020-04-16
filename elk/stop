@@ -1,6 +1,8 @@
 #! /bin/sh
 
-for comp in `cat components`;
+components=${1:-`cat components`}
+
+for comp in $components;
 do
     echo =================== stopping htc-$comp ====================
     docker container stop htc-$comp

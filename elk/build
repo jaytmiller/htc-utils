@@ -1,8 +1,12 @@
-#! /bin/sh
+#! /bin/bash
 
-docker network create -d bridge elknet
+if [[ `docker network ls | awk '{ print $2 }' | grep elknet` == "" ]]; then
+    docker network create -d bridge elknet
+fi
 
-for comp in `cat components`;
+components=${1:-`cat components`}
+
+for comp in $components;
 do
     echo ============== building $comp =================
     cd $comp

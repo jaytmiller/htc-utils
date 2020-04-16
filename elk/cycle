@@ -1,10 +1,12 @@
 #! /bin/bash
 
-./stop
+./stop $*
 
-./build
+./build $*
 
-./cleanup
+./cleanup $*
 
-./run
+./run $*
+
+
 
