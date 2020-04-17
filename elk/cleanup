@@ -1,9 +1,9 @@
 #! /bin/bash
 
-none_images=`docker images | grep "<none>" | awk {'print $3'}`
+none_images=`sudo docker image ls | grep "<none>" | awk {'print $3'}`
 if [[ $none_images ]]; then
-    docker rmi $none_images
+    sudo docker rmi $none_images
 fi
 
-docker container prune --force
+sudo docker container prune --force
 
