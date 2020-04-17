@@ -2,8 +2,6 @@
 
 sudo docker run -d \
        --name htc-logstash \
-       -p 5044:5044 \
-       -p 9600:9600 \
        --mount type=bind,source=/ifs/archive/test/jwst/store/condor/logs/tljwdmscsched2,destination=/var/log/condor,readonly \
        htc-logstash  $*
 
