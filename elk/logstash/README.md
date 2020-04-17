@@ -97,8 +97,6 @@ which internally uses sudo to execute "docker run".   Currently this does:
 ```
 sudo docker run -d \
        --name htc-logstash \
-       -p 5044:5044 \
-       -p 9600:9600 \
        --mount type=bind,source=/ifs/archive/test/jwst/store/condor/logs/tljwdmscsched2,destination=/var/log/condor,readonly \
        htc-logstash  $*
 ```
@@ -130,9 +128,37 @@ processing a filebeat so 5044 is not needed either.
 
 ## Debug Tips
 
-Assuming the EventLog logstash container is named htc-logstash (probably not true):
+Assume the logstash docker container is named ```htc-logstash``` or substitute
+the real name.
 
-sudo docker exec -it htc-logstash /bin/bash
+Running as a docker daemon, docker stores stderr and stdout and it can be dumped:
 
+```
 sudo docker logs -f htc-logstash
+```
+
+This provides great access to log output.  Further, the
+pipelines/logstash.conf file has a parallel output:
+
+```
+stdout {codec =>"rubydebug"}
+```
+
+which traces what is being sent to elasticsearch.  To avoid overhead
+this is nominally commented out but can be uncommented and put into
+effect by re-running the build script and container.
+
+If you're stuck with a logstash "black hole" and can't figure out
+what's wiping out all your events, you can access the logstash API for
+some basic info:
+
+```
+sudo docker exec -it htc-logstash /bin/bash
+curl -XGET 'localhost:9600/_node/stats?pretty'
+```
+
+Exec'ing into the container and referring to localhost should work
+anywhere regardless of firewalling.  The ```_node/stats``` URL can
+provide information on the basic dataflow through your logstash which
+can give clues as to "where everything is getting dropped."
 
