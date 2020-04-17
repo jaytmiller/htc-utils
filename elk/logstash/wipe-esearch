@@ -1,0 +1,7 @@
+#! /bin/bash
+
+# esearch="http://localhost:9200"
+esearch="https://test.dmdelk.stsci.edu:443/elastic"
+
+echo `curl --silent -XDELETE ${esearch}'/htc-eventlog-*'`
+
