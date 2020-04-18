@@ -1,8 +1,22 @@
 #! /bin/sh
 
-sudo docker run -d \
-       --name htc-logstash \
-       --mount type=bind,source=/ifs/archive/test/jwst/store/condor/logs/tljwdmscsched2,destination=/var/log/condor,readonly \
-       htc-logstash  $*
+# Design is for one container per condor string, but one combined
+# index for all strings discriminated using "pool" index field.
 
-#       --mount type=bind,source=/var/log/condor,destination=/var/log/condor,readonly \
+# Must be customized for each string:
+HTC_EVENTLOG_SCHED_HOST="tljwdmscsched2"
+HTC_EVENTLOG_ELASTIC_HOST="https://test.dmdelk.stsci.edu:443/elastic"
+HTC_EVENTLOG_CONDOR_LOG_DIR="/ifs/archive/test/jwst/store/condor/logs/tljwdmscsched2"  # Note the /ifs/archive/test...
+
+# Generic / derived values which theoretically take care of themselves.
+HTC_EVENTLOG_CONTAINER_NAME="htc-eventlog-${HTC_EVENTLOG_SCHED_HOST}"
+HTC_EVENTLOG_INDEX_NAME="htc-eventlog-%{+YYYY.MM.dd}"   # note generic index, use "pool" field to filter.
+HTC_EVENTLOG_POOL_NAME="pool-${HTC_EVENTLOG_SCHED_HOST}"
+
+sudo docker run -d \
+       --name ${HTC_EVENTLOG_CONTAINER_NAME} \
+       --mount type=bind,source=${HTC_EVENTLOG_CONDOR_LOG_DIR},destination=/var/log/condor,readonly \
+       -e HTC_EVENTLOG_ELASTIC_HOST=${HTC_EVENTLOG_ELASTIC_HOST} \
+       -e HTC_EVENTLOG_INDEX_NAME=${HTC_EVENTLOG_INDEX_NAME} \
+       -e HTC_EVENTLOG_POOL_NAME=${HTC_EVENTLOG_POOL_NAME} \
+       htc-logstash  $*

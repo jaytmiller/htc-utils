@@ -1,7 +1,12 @@
-#! /bin/bash
+#! /bin/bash -eu
+
+# Command to erase documents in the htc-eventlog-* index as an
+# alternative to recreating it...  which ATM breaks everything
+# in Kibana.   Erasing let's you re-populate as long as you
+# enable sincedb_path => "/dev/null" in pipeline/logstash.conf
 
 # esearch="http://localhost:9200"
-esearch="https://test.dmdelk.stsci.edu:443/elastic"
+# esearch="https://test.dmdelk.stsci.edu:443/elastic"
 
 echo `curl --silent -XDELETE ${esearch}'/htc-eventlog-*'`
 
