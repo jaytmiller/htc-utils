@@ -1,0 +1,11 @@
+#! /bin/bash
+
+./build
+
+sudo docker container stop htc-metricbeat
+sudo docker container prune -f
+
+./run
+
+# docker logs -f htc-logstash
+
