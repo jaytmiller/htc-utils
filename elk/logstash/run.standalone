@@ -1,4 +1,4 @@
-#! /bin/sh
+#! /bin/bash
 
 # Design is for one container per condor string, but one combined
 # index for all strings discriminated using "pool" index field.
