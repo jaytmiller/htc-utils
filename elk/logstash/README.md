@@ -56,8 +56,10 @@ form of the string "htc".   The dashboard is named HTCondor EventLog.
 
 ## Configuration files
 
-This is pretty standard Logstash setup by the EventLog app customizes
-each of these.
+This is pretty standard Logstash setup but the EventLog app defines/customizes
+each of these extensively for HTCondor log formats.  The per-string customizations
+are abstracted in these files using environment variables,  these files just
+establish the basic EventLog functionality.
 
 ### pipeline/logstash.conf
 
@@ -67,7 +69,11 @@ including the target Elasticsearch server.
 The input and filter sections first combine multi-line EventLog
 messages into one line and then parse the lines with different
 patterns and logstash filter plugins to produce key-value pairs for
-Elasticsearch.    There's an aggregation process
+Elasticsearch.
+
+There's an aggregation process where events other than Job Ad Information (28)
+are processed on a basic level and saved... then have their basic information
+added to subsequent Job Ad Information documents for the same job.
 
 ### patterns/condor
 
@@ -89,11 +95,10 @@ selecting "import",  and uploading export.json.
 
 ## Points of Customization
 
-First off,  all customization other than the Docker image name is now captured
-in the `./run` script.   But discussing further...
+All customization other than the Docker image name is now captured
+in the `./run` script as environment variable settings.
 
-In order to target multiple strings,   initially there are 3 potential
-points of customization:
+In order to target multiple strings,   initially there are 3 points of customization:
 
    1. pipeline/logstash.conf specifies the elasticsearch server to
    target in the `output` section.
@@ -106,17 +111,15 @@ points of customization:
    into the Docker container.  The container name defined by `run` should also be
    customized to indicate the string the container supports.
 
-To enable usage of a single common Docker image, key environment variables are
-set in the `./run` script and passed into the container,  see below.
-
 ## Notes on /internal/data1/apps/*
 
 ## Building
 
 Dockerfile.logstash was derived from instructions on the Elasticsearch
-website for setting up a self-contained Docker container.  This setup
-approach creates a fully configured logstash image with customized
-files built-in, overlaying the standard Logstash config.
+website for setting up a self-contained Docker container.  This build
+approach creates an EventLog logstash image with semi-customized
+files built-in...  but fully specified only when required env vars are
+set and passed into Docker run.
 
 There is a simple build script which in its current form uses sudo
 internally to run docker:
