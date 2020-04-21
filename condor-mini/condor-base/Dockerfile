@@ -127,6 +127,8 @@ RUN conda install --quiet --yes 'tini=0.18.0' && \
 ENTRYPOINT ["tini", "-g", "--"]
 # --- CMD ["start-notebook.sh"]
 
+CMD ["while [ 1 ]; do sleep 3600; done"]
+
 # --- # Copy local files as late as possible to avoid cache busting
 COPY start.sh start-notebook.sh start-singleuser.sh /usr/local/bin/
 COPY jupyter_notebook_config.py /etc/jupyter/

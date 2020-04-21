@@ -1,0 +1,4 @@
+#! /bin/bash
+
+docker container exec -it htc-condor-mini /bin/bash
+

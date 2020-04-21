@@ -7,7 +7,7 @@
 # Copyright (C) HTCondor Team, Computer Sciences Dept, Univ of Wisconsin-Madison
 # Distributed under terms of the Apache Licence, Version 2.0.
 
-FROM jaytmiller/condor-base:latest
+FROM htc-condor-base:latest
 
 # metadata
 # LABEL maintainer="chtc@cs.wisc.edu"
@@ -33,10 +33,10 @@ RUN apt-get update -qq \
  && apt-get update -qq \
  && apt-get install -qq htcondor \
  && apt-get clean -qq \
- && rm -rf /var/lib/apt/lists/*
-
-RUN apt-get update && apt-get install -qq python-pip
-RUN pip install --no-cache-dir htcondor htchirp htmap
+ && apt-get update \
+ && apt-get install -qq python-pip \
+ && pip install --no-cache-dir htcondor htchirp htmap \
+ && rm -rf /var/lib/apt/lists/* 
 
 # install HTCondor Python bindings, HTChirp, and HTMap
 USER $NB_UID
@@ -54,11 +54,9 @@ COPY --chown=jovyan:100 test_jobs /home/jovyan/test_jobs
 
 # add an entrypoint script that starts HTCondor when the container starts
 COPY --chown=jovyan:100 entrypoint.sh /.entrypoint.sh
-RUN chmod +x /.entrypoint.sh
 
 ENTRYPOINT ["tini", "-g", "/.entrypoint.sh", "--"]
+
 # CMD ["start-notebook.sh"]
-CMD ["/bin/bash"]
-
-
+CMD [ "sleep 2000000000" ]
 

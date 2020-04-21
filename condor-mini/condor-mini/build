@@ -1,4 +1,4 @@
 #! /bin/sh
 
-docker build . -t jaytmiller/condor-mini
+docker build . -t htc-condor-mini
 

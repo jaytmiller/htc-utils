@@ -8,7 +8,7 @@ use ROLE: Execute
 # LOCAL_DIR=$ENV(HOME)/.condor/jupyter_htcondor_state
 LOCAL_DIR=$ENV(HOME)/condor_state
 LOCK=$(LOCAL_DIR)/lock
-LOG=$(LOCAL_DIR)/log
+LOG=$ENV(HOME)/condor_log
 RUN=$(LOCAL_DIR)/run
 SPOOL=$(LOCAL_DIR)/spool
 EXECUTE=$(LOCAL_DIR)/execute
@@ -55,7 +55,7 @@ JOB_TRANSFORM_SetCondaVars @=end
 # value for this variable, so no event log will be written, if not
 # defined.
 
-EVENT_LOG=$ENV(LOCAL_DIR)/log/EventLog
+EVENT_LOG=$(LOG)/EventLog
 
 # EVENT_LOG_MAX_SIZE
 

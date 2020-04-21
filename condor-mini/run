@@ -1,8 +1,9 @@
 #! /bin/bash
 
-docker run -it \
-       --name condor-mini \
+docker run -d \
+       --name htc-condor-mini \
+       --network elknet \
        -p 9618:9618 \
        --mount type=bind,source=`pwd`/condor_state,destination=/home/jovyan/condor_state \
-       jaytmiller/condor-mini
-
+       --mount type=bind,source=`pwd`/condor_log,destination=/home/jovyan/condor_log \
+       htc-condor-mini sleep 2000000000
