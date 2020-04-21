@@ -6,14 +6,14 @@
 # Must be customized for each string:
 HTC_EVENTLOG_SCHED_HOST="htc-condor-mini"
 HTC_EVENTLOG_ELASTIC_HOST="htc-elasticsearch"
-HTC_EVENTLOG_CONDOR_LOG_DIR="$HOME/condor_logs"
+HTC_EVENTLOG_CONDOR_LOG_DIR="`pwd`/../../condor-mini/condor_log"
 
 # Generic / derived values which theoretically take care of themselves.
 HTC_EVENTLOG_CONTAINER_NAME="htc-logstash"
 HTC_EVENTLOG_INDEX_NAME="htc-eventlog-%{+YYYY.MM.dd}"   # note generic index, use "pool" field to filter.
 HTC_EVENTLOG_POOL_NAME="pool-${HTC_EVENTLOG_SCHED_HOST}"
 
-sudo docker run -d \
+docker run -d \
        --name ${HTC_EVENTLOG_CONTAINER_NAME} \
        --network elknet \
        --mount type=bind,source=${HTC_EVENTLOG_CONDOR_LOG_DIR},destination=/var/log/condor,readonly \
