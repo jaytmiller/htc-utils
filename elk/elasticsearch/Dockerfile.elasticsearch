@@ -5,4 +5,5 @@ FROM docker.elastic.co/elasticsearch/elasticsearch:6.6.1
 COPY config /usr/share/elasticsearch/config
 RUN chown -R elasticsearch.elasticsearch /usr/share/elasticsearch/config
 
+USER elasticsearch
 
