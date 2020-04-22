@@ -1,2 +1,4 @@
-elasticsearch kibana logstash
+elasticsearch kibana logstash condorbeat metricbeat
+
+
 
