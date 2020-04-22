@@ -2,23 +2,41 @@ metricbeat.config.modules:
   path: ${path.config}/modules.d/*.yml
   reload.enabled: false
 
-processors:
-- add_cloud_metadata: ~
-- add_docker_metadata: ~
-
-output.elasticsearch:
-  hosts: 'http://0.0.0.0:9200/'
-  # username: '${ELASTICSEARCH_USERNAME:}'
-  # password: '${ELASTICSEARCH_PASSWORD:}'
-
 metricbeat.modules:
 - module: system
-  metricsets: ["cpu","memory","network"]
+  metricsets:
+    - cpu
+    - filesystem
+    - memory
+    - network
+    - process
   enabled: true
-  period: 15s
+  period: 10s
   processes: ['.*']
+  cpu_ticks: false
 - module: docker
-  metricsets: ["container", "cpu", "diskio", "healthcheck", "info", "memory", "network"]
+  metricsets:
+    - container
+    - cpu 
+    - diskio
+    - healthcheck
+    - info
+    - memory
+    - network
   hosts: ["unix:///var/run/docker.sock"]
+  enabled: true
   period: 10s
 
+output.elasticsearch:
+  hosts: ["htc-elasticsearch"]
+  index: "metricbeat-%{+yyyy.MM.dd}"
+
+setup:
+  template:
+      name: "metricbeat"
+      pattern: "metricbeat-*"
+  kibana:
+      host: "htc-kibana"
+
+system:
+   hostfs: "/hostfs"
