@@ -24,10 +24,13 @@ ARG NB_GID="100"
 # default to jupyter lab
 # ENV JUPYTER_ENABLE_LAB=1
 
-# install HTCondor, and a few other convenience tools
+# These apt-get's take time so use multiple layers.
 USER root
-RUN apt-get update -qq \
- && apt-get install -qq gnupg vim less git man \
+
+RUN apt-get update -qq 
+
+# install HTCondor, gnupg is a prereq.
+RUN apt-get install -qq gnupg \
  && wget -qO - https://research.cs.wisc.edu/htcondor/ubuntu/HTCondor-Release.gpg.key | apt-key add - \
  && echo "deb  http://research.cs.wisc.edu/htcondor/ubuntu/${HTCONDOR_VERSION}/bionic bionic contrib" >> /etc/apt/sources.list \
  && apt-get update -qq \
@@ -35,8 +38,12 @@ RUN apt-get update -qq \
  && apt-get clean -qq \
  && apt-get update \
  && apt-get install -qq python-pip \
- && pip install --no-cache-dir htcondor htchirp htmap \
- && rm -rf /var/lib/apt/lists/* 
+ && pip install --no-cache-dir htcondor htchirp htmap
+
+# A few utilities,  jove is poor man's emacs.
+RUN apt-get install -qq --no-install-recommends  vim less git man jove \
+  && rm -rf /var/lib/apt/lists/* 
+
 
 # install HTCondor Python bindings, HTChirp, and HTMap
 USER $NB_UID
