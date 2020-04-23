@@ -1,0 +1,14 @@
+#! /bin/bash
+
+for i in {1..250}; do
+   condor_submit sleep.submit
+done
+
+for i in {1..50}; do
+   condor_submit  fail.submit
+done
+
+for i in {1..250}; do
+   condor_submit sleep.submit
+done
+
