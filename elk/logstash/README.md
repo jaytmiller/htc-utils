@@ -89,9 +89,16 @@ split into.
 ### export.json
 
 Strictly speaking,  this is not a Logstash config file,  it is an export of
-the Kibana index, searches, visualizations, and dashboard.  It can currently
-be reloaded by going to the Kibana management page,  selecting Saved Objects,
-selecting "import",  and uploading export.json.
+the Kibana index, searches, visualizations, and dashboard.
+
+This export file contains dashboards related to both EventLog and condorbeat.
+
+**NOTE:** Prior to loading importing export.json make sure the htc-eventlog-*
+and condorbeat-* index patterns already exist.  Also make sure some index
+pattern is designated as  the default.
+
+export.json can currently be reloaded by going to the Kibana management page,
+selecting Saved Objects, selecting "import", and uploading export.json.
 
 ## Points of Customization
 
@@ -200,7 +207,7 @@ create it seperately unless you're doing development and changing the index/temp
 **CAUTION:** AFAICT Kibana is incredibly brittle and so the same index pattern created at
 different times or loaded from exports.json will be different objects... hence saved
 artifacts (e.g. dashboard) may/will only work with the saved index. If you change the
-index you may wind up doing some dashboard maintenance/reentry as well... 
+index you may wind up doing some dashboard maintenance/reentry as well...
 
 ### Saving Kibana Dashboards
 
@@ -214,7 +221,7 @@ Copy that into this repo and commit it.
 
 ### Loading Kibana Dashboards
 
-To load the saved dashboards do the reverse.   Go to Kibana's `Management` window,  click on 
+To load the saved dashboards do the reverse.   Go to Kibana's `Management` window,  click on
 `Saved Objects`,  click on `Import` at the top right.   Upload `exports.json` saved previously.
 
 ## Adding Fields
@@ -268,4 +275,3 @@ Exec'ing into the container and referring to localhost should work
 anywhere regardless of firewalling.  The ```_node/stats``` URL can
 provide information on the basic dataflow through your logstash which
 can give clues as to "where everything is getting dropped."
-
