@@ -67,6 +67,33 @@
                 "@version" : {
                     "type" : "keyword"
                 },
+                "Args": {
+                    "type": "text"
+                },
+                "Arguments": {
+                    "type": "text"
+                },
+                "BlockReadKbytes": {
+                    "type": "long"
+                },
+                "BlockReads": {
+                    "type": "long"
+                },
+                "BlockWriteKbytes": {
+                    "type": "long"
+                },
+                "BlockWrites": {
+                    "type": "long"
+                },
+                "Cmd": {
+                    "type": "text"
+                },
+                "CompletionDate": {
+                    "type": "long"
+                },
+                "ClusterId": {
+                    "type": "long"
+                },
                 "Checkpointed" : {
                     "type" : "keyword"
                 },
@@ -75,6 +102,15 @@
                 },
                 "CriticalError" : {
                     "type" : "keyword"
+                },
+                "CpusProvisioned": {
+                    "type": "long"
+                },
+                "DiskProvisioned": {
+                    "type": "long"
+                },
+                "DiskUsage": {
+                    "type": "long"
                 },
                 "DAGManJobId" : {
                     "type" : "keyword"
@@ -100,6 +136,15 @@
                 "ExecuteHost" : {
                     "type" : "keyword"
                 },
+                "ExitBySignal": {
+                    "type": "keyword"
+                },
+                "ExitCode": {
+                    "type": "long"
+                },
+                "ExitSignal": {
+                    "type": "long"
+                },
                 "HoldReason" : {
                     "type" : "keyword"
                 },
@@ -109,8 +154,29 @@
                 "HoldReasonSubCode" : {
                     "type" : "keyword"
                 },
+                "IoWait": {
+                    "type": "long"
+                },
                 "Jobsub_Group" : {
                     "type" : "keyword"
+                },
+                "JobCurrentStartDate": {
+                    "type": "long"
+                },
+                "JobCurrentStartExecutingDate": {
+                    "type": "long"
+                },
+                "JobStartDate": {
+                    "type": "long"
+                },
+                "JobStatus": {
+                    "type": "long"
+                },
+                "LastRejMatchReason": {
+                    "type": "text"
+                },
+                "LastRejMatchTime": {
+                    "type": "long"
                 },
                 "LogNotes" : {
                     "type" : "keyword"
@@ -133,9 +199,18 @@
                 "MyType" : {
                     "type" : "keyword"
                 },
+                "NumJobStarts": {
+                    "type": "long"
+                },
+                "NumJobCompletions": {
+                    "type": "long"
+                },
                 "Owner" : {
                     "type" : "keyword"
                 },
+                "ProcId": {
+                    "type": "long"
+                }
                 "POMS_CAMPAIGN_ID" : {
                     "type" : "keyword"
                 },
@@ -145,11 +220,26 @@
                 "Proc" : {
                     "type" : "keyword"
                 },
+                "QDate": {
+                    "type": "long"
+                },
                 "Reason" : {
                     "type" : "keyword"
                 },
                 "ReceivedBytes" : {
                     "type" : "double"
+                },
+                "RecentBlockReadKbytes": {
+                    "type": "long"
+                },
+                "RecentBlockReads": {
+                    "type": "long"
+                },
+                "RecentBlockWriteKbytes": {
+                    "type": "long"
+                },
+                "RecentBlockWrites": {
+                    "type": "long"
                 },
                 "ResidentSetSize" : {
                     "type" : "long"
@@ -368,7 +458,7 @@
                 },
                 "update_id" : {
                     "type" : "keyword"
-                }
+                },
             }
         }
     }

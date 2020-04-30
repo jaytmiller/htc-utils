@@ -185,7 +185,39 @@ EVENT_LOG_JOB_AD_INFORMATION_ATTRS = \
  DAGManJobId \
  MachineAttrMachine0 \
  JobCurrentStartDate \
- ImageSize
+ ImageSize \
+ JobCurrentStartDate \
+ JobCurrentStartExecutingDate \
+ CpusProvisioned \
+ DiskProvisioned \
+ MemoryProvisioned \
+ BlockReadKbytes \
+ BlockReads \
+ BlockWriteKbytes \
+ BlockWrites \
+ RecentBlockReadKbytes \
+ RecentBlockReads \
+ RecentBlockWriteKbytes \
+ RecentBlockWrites \
+ Cmd \
+ Args \
+ Arguments\
+ CompletionDate \
+ ClusterId \
+ DiskUsage \
+ ExitBySignal \
+ ExitCode \
+ ExitSignal \
+ IOWait \
+ JobStartDate \
+ JobStatus \
+ MemoryUsage \
+ LastRejectMatchReason \
+ LastRejectMatchTime \
+ NumJobStarts \
+ NumJobCompletions \
+ QDate \
+ ProcId
 
 # --- #  Absent \
 # --- #  AcctGroup \
@@ -298,7 +330,6 @@ EVENT_LOG_JOB_AD_INFORMATION_ATTRS = \
 # ---  LastVacateTime \
 # --- #  LeaveJobInQueue \
 # ---  LocalSysCpu \
-# ---  JobCurrentStartDate \
 # ---  MachineAttrMachine0 \
 # --- #  MaxHosts \
 # --- #  MaxJobRetirementTime \
