@@ -1,0 +1,41 @@
+#! /usr/bin/env python
+
+"""Python code to hack as needed to print info on raw
+EventLog files outside the scope of ELK.
+"""
+
+import re
+import sys
+import os
+
+def main(filename):
+    """Collect events related to the same jobid into a list
+    and print them in sequence.  XXX read the code to be sure.
+    """
+    events = {}
+    with open(filename) as handle:
+        for line in handle.readlines():
+            if re.match("^\d\d\d.*", line):
+                words = line.split()
+                event_code = words[0]
+                jobid = words[1]
+                jobid = jobid.replace("(","")
+                jobid = jobid.replace(")","")
+                jobid = tuple(jobid.split("."))
+                event = line
+                key = jobid[:1] # (event_code, jobid)
+            elif line.startswith("..."):
+                event += line
+                if key not in events:
+                    events[key] = []
+                events[key].append(event)
+            else:
+                event += line
+    for key in events:
+        if len(events[key]) > 0: # might want >1 for dup events
+            print("="*80)
+            for event in events[key]:
+                print(event)
+
+if __name__ == "__main__":
+    main(sys.argv[1])
