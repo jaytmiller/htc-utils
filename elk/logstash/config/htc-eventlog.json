@@ -461,7 +461,22 @@
                 },
                 "update_id" : {
                     "type" : "keyword"
-                }
+                },
+		"JobDuration" : {
+		    "type": "double"
+		},
+                "DataSet" : {
+                    "type" : "keyword"
+                },
+		"ImageSize" : {
+		    "type" : "long"
+		},
+		"DAGNodeName": {
+		    "type" : "keyword"
+		},
+		"DAGParentNodeNames": {
+		    "type" : "text"
+		}
             }
         }
     }
