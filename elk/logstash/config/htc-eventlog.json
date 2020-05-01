@@ -423,6 +423,9 @@
                 "source" : {
                     "type" : "keyword"
                 },
+                "start_wait" : {
+                    "type" : "long"
+                },
                 "subprocess" : {
                     "type" : "long"
                 },
@@ -458,7 +461,7 @@
                 },
                 "update_id" : {
                     "type" : "keyword"
-                },
+                }
             }
         }
     }
