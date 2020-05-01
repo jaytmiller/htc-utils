@@ -210,7 +210,7 @@
                 },
                 "ProcId": {
                     "type": "long"
-                }
+                },
                 "POMS_CAMPAIGN_ID" : {
                     "type" : "keyword"
                 },
