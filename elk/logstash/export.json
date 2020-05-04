@@ -44,6 +44,28 @@
     }
   },
   {
+    "_id": "1039d0d0-8e4a-11ea-a0ea-b739aedf1b32",
+    "_type": "search",
+    "_source": {
+      "title": "htc-mary-search",
+      "description": "",
+      "hits": 0,
+      "columns": [
+        "Cmd",
+        "ExitCode",
+        "ClusterId"
+      ],
+      "sort": [
+        "@timestamp",
+        "desc"
+      ],
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"index\":\"cd78e760-8bd1-11ea-a0ea-b739aedf1b32\",\"highlightAll\":true,\"version\":true,\"query\":{\"language\":\"kuery\",\"query\":\"\"},\"filter\":[{\"$state\":{\"store\":\"appState\"},\"meta\":{\"alias\":null,\"disabled\":false,\"index\":\"cd78e760-8bd1-11ea-a0ea-b739aedf1b32\",\"key\":\"ExitCode\",\"negate\":false,\"params\":{\"query\":\"1\",\"type\":\"phrase\"},\"type\":\"phrase\",\"value\":\"1\"},\"query\":{\"match\":{\"ExitCode\":{\"query\":\"1\",\"type\":\"phrase\"}}}}]}"
+      }
+    }
+  },
+  {
     "_id": "c8ecf4e0-83f5-11ea-affe-9b56c8d1d4f7",
     "_type": "visualization",
     "_source": {
