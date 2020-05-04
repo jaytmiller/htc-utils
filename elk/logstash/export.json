@@ -29,7 +29,9 @@
         "execute_host_name",
         "MemoryUsage",
         "Owner",
-        "start_wait"
+        "start_wait",
+        "Cmd",
+        "DAGNodeName"
       ],
       "sort": [
         "@timestamp",
@@ -37,7 +39,7 @@
       ],
       "version": 1,
       "kibanaSavedObjectMeta": {
-        "searchSourceJSON": "{\"index\":\"cd78e760-8bd1-11ea-a0ea-b739aedf1b32\",\"highlightAll\":true,\"version\":true,\"query\":{\"language\":\"kuery\",\"query\":\"\"},\"filter\":[]}"
+        "searchSourceJSON": "{\"index\":\"cd78e760-8bd1-11ea-a0ea-b739aedf1b32\",\"highlightAll\":true,\"version\":true,\"query\":{\"language\":\"kuery\",\"query\":\"TriggerEventTypeNumber: 5\"},\"filter\":[]}"
       }
     }
   },
@@ -52,36 +54,6 @@
       "version": 1,
       "kibanaSavedObjectMeta": {
         "searchSourceJSON": "{\"query\":{\"language\":\"lucene\",\"query\":\"\"},\"filter\":[]}"
-      }
-    }
-  },
-  {
-    "_id": "34dc69b0-858b-11ea-9356-776ae403f11e",
-    "_type": "visualization",
-    "_source": {
-      "title": "htc-nonzero-exit-status-vis",
-      "visState": "{\"title\":\"htc-nonzero-exit-status-vis\",\"type\":\"histogram\",\"params\":{\"type\":\"histogram\",\"grid\":{\"categoryLines\":false,\"style\":{\"color\":\"#eee\"}},\"categoryAxes\":[{\"id\":\"CategoryAxis-1\",\"type\":\"category\",\"position\":\"bottom\",\"show\":true,\"style\":{},\"scale\":{\"type\":\"linear\"},\"labels\":{\"show\":true,\"truncate\":100},\"title\":{}}],\"valueAxes\":[{\"id\":\"ValueAxis-1\",\"name\":\"LeftAxis-1\",\"type\":\"value\",\"position\":\"left\",\"show\":true,\"style\":{},\"scale\":{\"type\":\"linear\",\"mode\":\"normal\"},\"labels\":{\"show\":true,\"rotate\":0,\"filter\":false,\"truncate\":100},\"title\":{\"text\":\"Failed Jobs\"}}],\"seriesParams\":[{\"show\":\"true\",\"type\":\"histogram\",\"mode\":\"stacked\",\"data\":{\"label\":\"Failed Jobs\",\"id\":\"1\"},\"valueAxis\":\"ValueAxis-1\",\"drawLinesBetweenPoints\":true,\"showCircles\":true}],\"addTooltip\":true,\"addLegend\":true,\"legendPosition\":\"right\",\"times\":[],\"addTimeMarker\":false},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"count\",\"schema\":\"metric\",\"params\":{\"customLabel\":\"Failed Jobs\"}},{\"id\":\"2\",\"enabled\":true,\"type\":\"date_histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"EventTime\",\"timeRange\":{\"from\":\"now-4h\",\"to\":\"now\",\"mode\":\"quick\"},\"useNormalizedEsInterval\":true,\"interval\":\"auto\",\"time_zone\":\"America/New_York\",\"drop_partials\":false,\"customInterval\":\"2h\",\"min_doc_count\":1,\"extended_bounds\":{},\"customLabel\":\"Event Time\"}}]}",
-      "uiStateJSON": "{\"vis\":{\"colors\":{\"Non-zero Exit Status\":\"#BF1B00\",\"Failed Jobs\":\"#BF1B00\"}}}",
-      "description": "",
-      "savedSearchId": "08157a00-8047-11ea-8ebc-f5527e86eee0",
-      "version": 1,
-      "kibanaSavedObjectMeta": {
-        "searchSourceJSON": "{\"query\":{\"query\":\"_exists_: return_value AND NOT return_value: 0 AND TriggerEventTypeNumber: 5\",\"language\":\"lucene\"},\"filter\":[]}"
-      }
-    }
-  },
-  {
-    "_id": "90f4edd0-80b8-11ea-8ebc-f5527e86eee0",
-    "_type": "visualization",
-    "_source": {
-      "title": "htc-eventlog-memory-usage-vis",
-      "visState": "{\"title\":\"htc-eventlog-memory-usage-vis\",\"type\":\"histogram\",\"params\":{\"type\":\"histogram\",\"grid\":{\"categoryLines\":false,\"style\":{\"color\":\"#eee\"}},\"categoryAxes\":[{\"id\":\"CategoryAxis-1\",\"type\":\"category\",\"position\":\"bottom\",\"show\":true,\"style\":{},\"scale\":{\"type\":\"linear\"},\"labels\":{\"show\":true,\"truncate\":100},\"title\":{}}],\"valueAxes\":[{\"id\":\"ValueAxis-1\",\"name\":\"LeftAxis-1\",\"type\":\"value\",\"position\":\"left\",\"show\":true,\"style\":{},\"scale\":{\"type\":\"linear\",\"mode\":\"normal\"},\"labels\":{\"show\":true,\"rotate\":0,\"filter\":false,\"truncate\":100},\"title\":{\"text\":\"Jobs\"}}],\"seriesParams\":[{\"show\":\"true\",\"type\":\"histogram\",\"mode\":\"stacked\",\"data\":{\"label\":\"Jobs\",\"id\":\"1\"},\"valueAxis\":\"ValueAxis-1\",\"drawLinesBetweenPoints\":true,\"showCircles\":true}],\"addTooltip\":true,\"addLegend\":true,\"legendPosition\":\"right\",\"times\":[],\"addTimeMarker\":false},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"count\",\"schema\":\"metric\",\"params\":{\"customLabel\":\"Jobs\"}},{\"id\":\"2\",\"enabled\":true,\"type\":\"histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"MemoryUsage\",\"interval\":100000000,\"extended_bounds\":{},\"customLabel\":\"Memory Usage (Bytes)\"}}]}",
-      "uiStateJSON": "{}",
-      "description": "",
-      "savedSearchId": "08157a00-8047-11ea-8ebc-f5527e86eee0",
-      "version": 1,
-      "kibanaSavedObjectMeta": {
-        "searchSourceJSON": "{\"query\":{\"query\":\"\",\"language\":\"kuery\"},\"filter\":[]}"
       }
     }
   },
@@ -171,6 +143,36 @@
       "version": 1,
       "kibanaSavedObjectMeta": {
         "searchSourceJSON": "{\"query\":{\"query\":\"TriggerEventTypeNumber: 5\",\"language\":\"lucene\"},\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "34dc69b0-858b-11ea-9356-776ae403f11e",
+    "_type": "visualization",
+    "_source": {
+      "title": "htc-nonzero-exit-status-vis",
+      "visState": "{\"title\":\"htc-nonzero-exit-status-vis\",\"type\":\"histogram\",\"params\":{\"type\":\"histogram\",\"grid\":{\"categoryLines\":false,\"style\":{\"color\":\"#eee\"}},\"categoryAxes\":[{\"id\":\"CategoryAxis-1\",\"type\":\"category\",\"position\":\"bottom\",\"show\":true,\"style\":{},\"scale\":{\"type\":\"linear\"},\"labels\":{\"show\":true,\"truncate\":100},\"title\":{}}],\"valueAxes\":[{\"id\":\"ValueAxis-1\",\"name\":\"LeftAxis-1\",\"type\":\"value\",\"position\":\"left\",\"show\":true,\"style\":{},\"scale\":{\"type\":\"linear\",\"mode\":\"normal\"},\"labels\":{\"show\":true,\"rotate\":0,\"filter\":false,\"truncate\":100},\"title\":{\"text\":\"Failed Jobs\"}}],\"seriesParams\":[{\"show\":\"true\",\"type\":\"histogram\",\"mode\":\"stacked\",\"data\":{\"label\":\"Failed Jobs\",\"id\":\"1\"},\"valueAxis\":\"ValueAxis-1\",\"drawLinesBetweenPoints\":true,\"showCircles\":true}],\"addTooltip\":true,\"addLegend\":true,\"legendPosition\":\"right\",\"times\":[],\"addTimeMarker\":false},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"count\",\"schema\":\"metric\",\"params\":{\"customLabel\":\"Failed Jobs\"}},{\"id\":\"2\",\"enabled\":true,\"type\":\"date_histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"EventTime\",\"timeRange\":{\"from\":\"now-4h\",\"to\":\"now\",\"mode\":\"quick\"},\"useNormalizedEsInterval\":true,\"interval\":\"auto\",\"time_zone\":\"America/New_York\",\"drop_partials\":false,\"customInterval\":\"2h\",\"min_doc_count\":1,\"extended_bounds\":{},\"customLabel\":\"Event Time\"}}]}",
+      "uiStateJSON": "{\"vis\":{\"colors\":{\"Non-zero Exit Status\":\"#BF1B00\",\"Failed Jobs\":\"#BF1B00\"}}}",
+      "description": "",
+      "savedSearchId": "08157a00-8047-11ea-8ebc-f5527e86eee0",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"query\":{\"query\":\"_exists_: return_value AND NOT return_value: 0 AND TriggerEventTypeNumber: 5\",\"language\":\"lucene\"},\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "_id": "90f4edd0-80b8-11ea-8ebc-f5527e86eee0",
+    "_type": "visualization",
+    "_source": {
+      "title": "htc-eventlog-memory-usage-vis",
+      "visState": "{\"title\":\"htc-eventlog-memory-usage-vis\",\"type\":\"histogram\",\"params\":{\"type\":\"histogram\",\"grid\":{\"categoryLines\":false,\"style\":{\"color\":\"#eee\"}},\"categoryAxes\":[{\"id\":\"CategoryAxis-1\",\"type\":\"category\",\"position\":\"bottom\",\"show\":true,\"style\":{},\"scale\":{\"type\":\"linear\"},\"labels\":{\"show\":true,\"truncate\":100},\"title\":{}}],\"valueAxes\":[{\"id\":\"ValueAxis-1\",\"name\":\"LeftAxis-1\",\"type\":\"value\",\"position\":\"left\",\"show\":true,\"style\":{},\"scale\":{\"type\":\"linear\",\"mode\":\"normal\"},\"labels\":{\"show\":true,\"rotate\":0,\"filter\":false,\"truncate\":100},\"title\":{\"text\":\"Jobs\"}}],\"seriesParams\":[{\"show\":\"true\",\"type\":\"histogram\",\"mode\":\"stacked\",\"data\":{\"label\":\"Jobs\",\"id\":\"1\"},\"valueAxis\":\"ValueAxis-1\",\"drawLinesBetweenPoints\":true,\"showCircles\":true}],\"addTooltip\":true,\"addLegend\":true,\"legendPosition\":\"right\",\"times\":[],\"addTimeMarker\":false},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"count\",\"schema\":\"metric\",\"params\":{\"customLabel\":\"Jobs\"}},{\"id\":\"2\",\"enabled\":true,\"type\":\"histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"MemoryUsage\",\"interval\":100000000,\"extended_bounds\":{},\"customLabel\":\"Memory Usage (Bytes)\"}}]}",
+      "uiStateJSON": "{}",
+      "description": "",
+      "savedSearchId": "08157a00-8047-11ea-8ebc-f5527e86eee0",
+      "version": 1,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"query\":{\"query\":\"\",\"language\":\"kuery\"},\"filter\":[]}"
       }
     }
   },
